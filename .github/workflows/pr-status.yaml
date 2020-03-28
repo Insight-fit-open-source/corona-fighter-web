@@ -1,0 +1,13 @@
+name: Set PR review status
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened, edited ]
+
+jobs:
+  wip:
+    name: Set WIP status
+    runs-on: ubuntu-16.04
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: wip/action@v1.0.0

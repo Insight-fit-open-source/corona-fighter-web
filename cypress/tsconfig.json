@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "src/*": ["./src/*"]
+    }
+  },
+  "include": ["../node_modules/cypress", "*/*.ts"],
+  "exclude": ["../__tests__"]
+}

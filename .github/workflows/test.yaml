@@ -1,0 +1,120 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - development
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-16.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ env.cache-name }}
+            ${{ runner.os }}-node-
+            ${{ runner.os }}-
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: .next
+          path: .next
+
+  eslint:
+    name: eslint
+    runs-on: ubuntu-16.04
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ env.cache-name }}
+            ${{ runner.os }}-node-
+            ${{ runner.os }}-
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+  test:
+    name: test
+    runs-on: ubuntu-16.04
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Run Jest
+        uses: stefanoeb/jest-action@1.0.3
+
+  cypress:
+    name: cypress
+    runs-on: ubuntu-16.04
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ env.cache-name }}
+            ${{ runner.os }}-node-
+            ${{ runner.os }}-
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: .next
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v1
+        with:
+          start: npm start
+          wait-on: http://localhost:3000

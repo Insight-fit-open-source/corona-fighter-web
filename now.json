@@ -1,0 +1,15 @@
+{
+  "name": "coronasepush-web",
+  "scope": "sigmadigital",
+  "github": {
+    "enabled": true,
+    "autoAlias": true,
+    "silent": false,
+    "autoJobCancelation": true
+  },
+  "version": 2,
+  "alias": "coronasepush-web",
+  "build": {
+    "env": {}
+  }
+}

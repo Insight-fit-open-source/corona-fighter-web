@@ -1,0 +1,8 @@
+dist
+.idea
+docs
+coverage
+static
+**/node_modules
+jest.config.js
+next.config.js
