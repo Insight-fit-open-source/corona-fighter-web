@@ -4,6 +4,12 @@ auto_deploy: false
 admin_path: 
 webhook_url: 
 sections:
+- type: directory
+  path: forestry/data
+  label: Site Data
+  create: all
+  match: "**/*.json"
+  new_doc_ext: ".json"
 - type: heading
   label: Content
 - type: document
