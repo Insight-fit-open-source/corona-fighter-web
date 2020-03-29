@@ -15,15 +15,6 @@ const BodyWrap = styled.div`
   flex-direction: column;
 `;
 
-const PreviewWrap = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-`;
-
-const Sidebar = styled.div`
-  width: 20vw;
-`;
 
 const Body = styled.div`
   position: relative;
@@ -34,6 +25,7 @@ const Body = styled.div`
 const BodyGeneral = styled.div`
   position: relative;
   flex: 1;
+  padding: 0 1.5rem 3rem;
   overflow-y: auto;
 `;
 
@@ -56,8 +48,6 @@ const AuthBanner = styled.div`
 const Styled = {
   Wrap,
   BodyWrap,
-  PreviewWrap,
-  Sidebar,
   Body,
   BodyGeneral,
   AuthBanner,
