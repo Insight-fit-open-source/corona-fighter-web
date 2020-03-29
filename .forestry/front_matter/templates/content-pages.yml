@@ -1,6 +1,7 @@
 ---
-label: content-pages
+label: content-page
 hide_body: false
+display_field: pageBody
 fields:
 - name: pageTitle
   type: text
@@ -13,7 +14,7 @@ fields:
   default: ''
   config:
     required: false
-    wysiwyg: false
+    wysiwyg: true
     schema:
       format: markdown
   label: Page Body
