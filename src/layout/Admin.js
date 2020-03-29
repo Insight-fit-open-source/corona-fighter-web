@@ -7,7 +7,7 @@ const GeneralSettingsLayout = ({ pageTitle, children }) => (
   <Styled.Wrap>
     <Sidebar />
     <Styled.BodyGeneral>
-      {pageTitle ? (<h2>{pageTitle}</h2>) : null}
+      {pageTitle ? <h2>{pageTitle}</h2> : null}
       {children}
     </Styled.BodyGeneral>
   </Styled.Wrap>
