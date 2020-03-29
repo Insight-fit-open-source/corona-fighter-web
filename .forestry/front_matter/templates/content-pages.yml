@@ -18,3 +18,5 @@ fields:
       format: markdown
   label: Page Body
   description: the main content area for the page
+pages:
+- forestry/data/test-page.json
