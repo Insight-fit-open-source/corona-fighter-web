@@ -46,6 +46,7 @@
     "@material-ui/icons": "^4.5.1",
     "@material-ui/lab": "^4.0.0-alpha.45",
     "@material-ui/pickers": "^3.2.10",
+    "@nivo/stream": "^0.61.1",
     "@sigmadigital/duxedo": "^3.0.0",
     "@types/enzyme": "^3.10.4",
     "@types/enzyme-adapter-react-16": "^1.0.5",
