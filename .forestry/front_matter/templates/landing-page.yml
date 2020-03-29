@@ -8,5 +8,10 @@ fields:
     required: true
     min: '3'
   label: Site Title
+- name: page_title
+  type: text
+  config:
+    required: false
+  label: Page Title
 pages:
 - forestry/data/landingPage.json
