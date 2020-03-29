@@ -10,8 +10,6 @@ sections:
   create: all
   match: "**/*.json"
   new_doc_ext: json
-- type: heading
-  label: Content
 - type: document
   path: pages
   label: Pages
