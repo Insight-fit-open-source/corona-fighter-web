@@ -9,4 +9,4 @@ fields:
     min: '3'
   label: Site Title
 pages:
-- forestry/data/landingPage.json.json
+- forestry/data/landingPage.json
