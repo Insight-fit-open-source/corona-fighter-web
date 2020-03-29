@@ -27,7 +27,7 @@ Cypress.Commands.add('logout', () => {
   cy.get('button:contains(Sign Out)').click();
 });
 
-Cypress.Commands.add('loginAdminUser', () => {
+Cypress.Commands.add('loginUser', () => {
   cy.clearFirebaseAuth();
   cy.fixture('users/admin.json')
     .as('user')
