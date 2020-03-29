@@ -9,7 +9,7 @@ sections:
   label: Site Data
   create: all
   match: "**/*.json"
-  new_doc_ext: ".json"
+  new_doc_ext: json
 - type: heading
   label: Content
 - type: document
