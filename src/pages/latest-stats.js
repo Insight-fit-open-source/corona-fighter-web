@@ -3,7 +3,7 @@ import Admin from 'src/layout/Admin';
 
 export const Home = () => {
   return (
-    <Admin pageTitle={'My Symptoms'}>
+    <Admin pageTitle={'Latest Stats'}>
       <p>any page content</p>
     </Admin>
   );

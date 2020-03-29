@@ -4,7 +4,7 @@ import settings from 'src/app/publicSettings';
 import firebase from 'firebase';
 import { Typography } from '@material-ui/core';
 
-import AuthLayout from '../../layouts/Auth';
+import AuthLayout from '../../layout/Auth';
 import Styled from './styles';
 
 if (!firebase.apps.length) {
