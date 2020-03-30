@@ -6,6 +6,13 @@ const StatsBox = styled.div`
   text-align: center;
 `;
 
-const Styled = { StatsBox };
+const ChartContainer = styled.div`
+  border: 1px solid #eee;
+  height: 50vw;
+  padding: 1rem;
+  width: 100%;
+`;
+
+const Styled = { StatsBox, ChartContainer };
 
 export default Styled;

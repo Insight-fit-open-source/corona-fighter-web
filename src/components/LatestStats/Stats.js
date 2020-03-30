@@ -29,21 +29,23 @@ class Stats extends React.Component {
     const {
       corona_tests: coronaTests,
       corona_cases: coronaCases,
-      corona_negative: coronaNeg,
+      corona_recovered: coronaRecovered,
+      corona_deaths: coronaDeaths,
     } = stats;
-
-    const perCleared = ((coronaNeg / coronaTests) * 100).toFixed(2);
 
     return (
       <Grid container spacing={3}>
-        <Grid item xs={4}>
-          <StatsBox title='# Tests' content={coronaTests} />
+        <Grid item xs={3}>
+          <StatsBox title='Tests' content={coronaTests} />
         </Grid>
-        <Grid item xs={4}>
-          <StatsBox title='# Confirmed' content={coronaCases} />
+        <Grid item xs={3}>
+          <StatsBox title='Confirmed' content={coronaCases} />
         </Grid>
-        <Grid item xs={4}>
-          <StatsBox title='% Cleared' content={perCleared} />
+        <Grid item xs={3}>
+          <StatsBox title='Recovered' content={coronaRecovered} />
+        </Grid>
+        <Grid item xs={3}>
+          <StatsBox title='Deaths' content={coronaDeaths} />
         </Grid>
       </Grid>
     );
