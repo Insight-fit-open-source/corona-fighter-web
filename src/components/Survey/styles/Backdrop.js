@@ -1,4 +1,3 @@
-import { darken } from 'polished';
 import styled from 'styled-components';
 import colors from 'src/app/theme/colors';
 import breakpoints from 'src/app/theme/breakpoints';
@@ -40,6 +39,12 @@ export default styled.div`
     h1 {
       margin-bottom: 3rem;
       position: relative;
+      font-size: calc(1.5rem + 2.5vw);
+      line-height: 1;
+      
+      @media only screen and (min-width: ${breakpoints.values.md}px) {
+        font-size: 3rem;
+      }
 
       &:after {
         content: '';
@@ -48,7 +53,7 @@ export default styled.div`
         background-color: ${colors.pink};
         position: absolute;
         display: block;
-        bottom: -1.4rem;
+        bottom: -1.6rem;
         left: 0;
       }
     }
@@ -86,18 +91,6 @@ export default styled.div`
       height: 100%;
       position: absolute;
       right: 0;
-    }
-  }
-
-  .background__content-next-steps {
-    display: block;
-    position: relative;
-
-    a {
-      display: block;
-      text-decoration: none;
-      color: ${colors.white};
-      line-height: 2rem;
     }
   }
 `;

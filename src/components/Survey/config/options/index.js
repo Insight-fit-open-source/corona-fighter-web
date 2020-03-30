@@ -5,6 +5,7 @@ import additional from './additional';
 import severity from './severity';
 import travel from './travel';
 import tested from './tested';
+import outcomes from './outcomes';
 
 export default {
   feeling,
@@ -14,4 +15,5 @@ export default {
   severity,
   travel,
   tested,
+  outcomes,
 };

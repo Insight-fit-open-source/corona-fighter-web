@@ -3,14 +3,13 @@ import sizes from 'src/app/theme/sizes';
 import breakpoints from 'src/app/theme/breakpoints';
 
 const grids = {
-  additional: '1fr 1fr',
+  'atypical-symptoms': '1fr 1fr',
 };
 
 export default styled.div`
   display: grid;
   grid-template-columns: auto;
-  grid-gap: 1rem 1.5rem;
-  gutter: 1rem;
+  grid-gap: 1rem 2rem;
   width: 80%;
   min-height: 65%;
   

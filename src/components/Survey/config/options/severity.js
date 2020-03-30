@@ -3,7 +3,7 @@ export default {
     exclusive: true,
   },
   yes: {
-    key: 'yes',
+    key: 'increase',
     title: 'yes',
     desc: 'yes',
   },
@@ -13,8 +13,8 @@ export default {
     desc: 'they are the same',
   },
   no: {
-    key: 'no',
-    title: 'no',
-    desc: 'no',
+    key: 'decrease',
+    title: 'the have improved',
+    desc: 'they have improved',
   },
 };

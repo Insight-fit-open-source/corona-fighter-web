@@ -30,9 +30,6 @@ export default ({ active, stepContent ={} }) => {
                 </Link>
               ) : null}
             </div>
-            {/*<div className={`backdrop__img ${title ? 'active' : ''}`}>*/}
-            {/*  <img src='/auth-banner.jpg' alt='Pizza' />*/}
-            {/*</div>*/}
           </motion.div>
         )}
       </AnimatePresence>

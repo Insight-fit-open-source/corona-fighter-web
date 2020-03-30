@@ -11,28 +11,28 @@ export default {
     options: null,
   },
   feeling: {
-    title: 'How are you feeling?',
+    title: 'How are you feeling at the moment?',
     content: '',
     layout: 'question',
     options: options.feeling,
-    next: '/survey/illness',
+    next: '/survey/severe-symptoms',
   },
-  illness: {
-    title: 'Do you have severe symptoms like:',
+  'severe-symptoms': {
+    title: 'Do you have any of these severe symptoms like:',
     content: '',
     layout: 'question',
     options: options.illness,
-    next: '/survey/ncid',
+    next: '/survey/typical-symptoms',
   },
-  ncid: {
-    title: 'Do you have any of these symptoms?',
+  'typical-symptoms': {
+    title: 'Are any of these symptoms bugging you?',
     content: '',
     layout: 'question',
     options: options.ncid,
-    next: '/survey/additional',
+    next: '/survey/atypical-symptoms',
   },
-  additional: {
-    title: 'Do you have any of these additional symptoms?',
+  'atypical-symptoms': {
+    title: 'Do you have any of these other symptoms?',
     content: '',
     layout: 'question',
     options: options.additional,
@@ -43,10 +43,10 @@ export default {
     content: '',
     layout: 'question',
     options: options.severity,
-    next: '/survey/travel',
+    next: '/survey/travel-contact',
   },
-  travel: {
-    title: 'Have you travelled or come into contact with Covid19 recently?',
+  'travel-contact': {
+    title: 'Have you travelled or come into contact with Covid19 in the past 14 days??',
     content: '',
     layout: 'question',
     options: options.travel,

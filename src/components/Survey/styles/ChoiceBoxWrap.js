@@ -11,7 +11,7 @@ export default styled.div`
   justify-content: space-around;
   transform: ${props =>
     props.layoutActive ? 'translate3d(0, 0%, 0)' : 'translate3d(0, -150%, 0)'};
-  transition: transform 0.45s ease-out;
+  transition: transform 0.45s ease-out 0.085s;
 
   @media only screen and (min-width: ${breakpoints.values.sm}px) {
     width: 90vw;

@@ -1,20 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import calculateOutcome from 'src/components/Survey/config/calculateOutcome';
 import { actions } from 'src/store/definitions/survey';
 import steps from 'src/components/Survey/config';
 import {
-  StepLink,
   ChoiceBoxInner,
   Options,
   BackdropContent,
+  OutcomeContent,
 } from 'src/components/Survey/fragments';
 
 import {
   LayoutBlock,
   Backdrop,
   ChoiceBoxWrap,
-  StepsWrap,
+  Outcomes,
   ChoiceBox,
 } from 'src/components/Survey/styles';
 
@@ -27,16 +28,23 @@ export class Survey extends React.PureComponent {
     this.props.stopSurvey();
   }
   render() {
-    const { step, userId } = this.props;
+    const { step, selection } = this.props;
+
+    const outcomeActive = Boolean(
+      steps[step] && steps[step].layout === 'outcome',
+    );
+
     return (
       <LayoutBlock>
-        <Backdrop layoutActive={steps[step].layout === 'backdrop'}>
+        <Backdrop
+          layoutActive={steps[step] && steps[step].layout !== 'question'}>
           <BackdropContent
-            active={steps[step].layout === 'backdrop'}
+            active={steps[step] && steps[step].layout === 'backdrop'}
             stepContent={steps[step]}
           />
         </Backdrop>
-        <ChoiceBoxWrap layoutActive={steps[step].layout === 'question'}>
+        <ChoiceBoxWrap
+          layoutActive={steps[step] && steps[step].layout === 'question'}>
           <ChoiceBox>
             <ChoiceBoxInner
               step={step}
@@ -47,30 +55,29 @@ export class Survey extends React.PureComponent {
               ) : null}
             </ChoiceBoxInner>
           </ChoiceBox>
-          <StepsWrap>
-            {Object.keys(steps).map(
-              (key, index) =>
-                steps[key].layout === 'question' && (
-                  <StepLink
-                    key={key}
-                    link={key}
-                    text={steps[key].linkText}
-                    number={index}
-                    currentStep={step}
-                    selectionComplete={false}
-                  />
-                ),
-            )}
-          </StepsWrap>
         </ChoiceBoxWrap>
+        <Outcomes layoutActive={outcomeActive}>
+          <OutcomeContent
+            active={outcomeActive}
+            outcome={
+              outcomeActive
+                ? calculateOutcome(selection, steps[step].options)
+                : {}
+            }
+          />
+        </Outcomes>
       </LayoutBlock>
     );
   }
 }
+
+const mapState = state => ({
+  selection: state.survey.selected || {},
+});
 
 const mapDispatch = dispatch => ({
   startSurvey: () => dispatch(actions.surveyStarted()),
   stopSurvey: () => dispatch(actions.surveyCompleted()),
 });
 
-export default connect(null, mapDispatch)(Survey);
+export default connect(mapState, mapDispatch)(Survey);
