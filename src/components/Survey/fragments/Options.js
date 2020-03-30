@@ -24,12 +24,12 @@ export const Options = ({
     const selected = getSelection(step);
     const payload = {};
 
-    if (exclusive) {
+    if (exclusive || itemKey === 'none') {
       payload[step] = [itemKey];
     } else if (_.includes(selected, itemKey)) {
       payload[step] = selected.filter(x => x !== itemKey);
     } else {
-      payload[step] = selected.concat([itemKey]);
+      payload[step] = selected.filter(x => x !== 'none').concat([itemKey]);
     }
 
     return selectOption(payload);
@@ -49,7 +49,7 @@ export const Options = ({
             selected={isSelected(item.key, step)}>
             {item.icon ? item.icon : null}
             <Typography
-              variant='h5'
+              variant='body1'
               style={{ textAlign: 'center', fontWeight: 300 }}>
               {item.title}
             </Typography>

@@ -15,10 +15,12 @@ export default styled.div`
   text-align: center;
   position: relative;
   cursor: pointer;
+  padding: 0.5rem;
   border: 1px solid ${colors.greyLight};
   animation: ${fadeIn} 1s linear none;
   transform: scale(1.05);
   transition: transform 165ms ease-in;
+  opacity: 0.5
 
   h5 {
     font-weight: 300;
@@ -37,7 +39,7 @@ export default styled.div`
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
-    padding: ${sizes.space(1)};
+    padding: ${sizes.space(0.5)};
     top: 0;
     left: 0;
     width: 100%;
@@ -54,6 +56,7 @@ export default styled.div`
   }
 
   &:hover {
+    opacity: 1;
     .reveal-description {
       opacity: 0.8;
     }
@@ -62,6 +65,7 @@ export default styled.div`
   ${({ selected }) =>
     selected &&
     `
+    opacity: 1;
     color: ${colors.pink};
     border: 1px solid ${colors.pink};
     box-shadow: 0px 4px 12px rgba(30, 60, 40, 0.15);
