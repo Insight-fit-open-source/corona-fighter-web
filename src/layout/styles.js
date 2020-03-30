@@ -40,7 +40,6 @@ const AuthBody = styled.div`
 
 const AuthBanner = styled.div`
   flex: 2;
-  background-image: url('/auth-banner.jpg');
   background-size: cover;
   background-position: center center;
 `;

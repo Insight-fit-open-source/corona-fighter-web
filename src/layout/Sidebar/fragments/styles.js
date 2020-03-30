@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-
 import colors from 'src/app/theme/colors';
-import sizes from 'src/app/theme/sizes';
 
 const Sidebar = styled.div`
   display: flex;
@@ -37,8 +35,13 @@ const Sidebar = styled.div`
     text-transform: uppercase;
     
     &.active {
-      background: rgba(0,0,0,0.25);
-      border-left: 0.75rem solid deeppink;
+      background: rgba(0,0,0,0.5);
+      border-left: 0.75rem solid ${colors.pink};
+    }
+  }
+  
+  .secondary-nav  a.active {
+      border-left: 0.75rem solid ${colors.orange};
     }
   }
 `;
