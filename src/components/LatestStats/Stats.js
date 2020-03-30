@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { Grid } from '@material-ui/core';
 
 import StatsBox from './StatsBox';
@@ -11,17 +10,17 @@ class Stats extends React.Component {
   };
 
   // async componentDidMount() {
-  //   try {
-  //     const res = await axios('https://blakey.co/covid.php', {
-  //       headers: {
-  //         'Access-Control-Allow-Origin': '*',
-  //         'Content-Type': 'application/json',
-  //       },
-  //     });
-  //     console.log(res);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
+  //   // try {
+  //   //   const res = await axios('https://blakey.co/covid.php', {
+  //   //     headers: {
+  //   //       'Access-Control-Allow-Origin': '*',
+  //   //       'Content-Type': 'application/json',
+  //   //     },
+  //   //   });
+  //   //   console.log(res);
+  //   // } catch (e) {
+  //   //   console.log(e);
+  //   // }
   // }
 
   render() {

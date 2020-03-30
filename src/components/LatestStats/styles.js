@@ -8,7 +8,7 @@ const StatsBox = styled.div`
 
 const ChartContainer = styled.div`
   border: 1px solid #eee;
-  height: 50vw;
+  height: 40vw;
   padding: 1rem;
   width: 100%;
 `;
