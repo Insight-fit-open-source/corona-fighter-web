@@ -13,12 +13,16 @@ export const Options = ({
   selectOption,
   getSelection,
 }) => {
+  if (!items) {
+    return null;
+  }
+
   // eslint-disable-next-line no-underscore-dangle
   const { exclusive } = items._config;
 
   const makeSelection = itemKey => {
     const selected = getSelection(step);
-    const payload = { step };
+    const payload = {};
 
     if (exclusive) {
       payload[step] = [itemKey];

@@ -2,6 +2,8 @@ import duxedo from '@sigmadigital/duxedo';
 
 const defaultState = {
   selected: {},
+  surveyStarted: null,
+  lastCallFailed: false,
 };
 
 const definition = {
@@ -12,6 +14,16 @@ const definition = {
       ...payload,
     },
   }),
+  SURVEY_STARTED: (state) => ({
+    ...state,
+    surveyStarted: state.surveyStarted || Date.now(),
+  }),
+  SURVEY_COMPLETED: (state) => ({
+    ...state,
+    surveyStarted: null,
+  }),
+  SURVEY_SYNC_SUCCEEDED: state => ({ ...state, lastCallFailed: false }),
+  SURVEY_SYNC_FAILED: state => ({ ...state, lastCallFailed: true }),
 };
 
 const { reducer, actions, constants } = duxedo({
