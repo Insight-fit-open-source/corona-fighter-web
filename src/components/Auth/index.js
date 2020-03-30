@@ -15,7 +15,13 @@ const Auth = () => {
   const firebaseUiConfig = {
     signInFlow: 'popup',
     credentialHelper: 'none',
-    signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID],
+    signInOptions: [
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+      firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+      firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+    ],
   };
 
   return (
@@ -24,7 +30,7 @@ const Auth = () => {
         <>
           <Styled.TitleWrap>
             <Typography variant='h1' id='title'>
-              Code Se Push
+              Corona Se Push
             </Typography>
           </Styled.TitleWrap>
           <StyledFirebaseAuth

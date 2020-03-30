@@ -7,7 +7,6 @@ const Sidebar = styled.div`
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
-  justify-content: space-between;
   height: 100%;
   background-color: ${colors.blueDark};
   color: ${colors.white};
@@ -17,14 +16,18 @@ const Sidebar = styled.div`
   width: 30%;
   min-width: 15rem;
   max-width: 22rem;
-  
+
   .branding {
     padding-left: 1.5rem;
   }
-  
-   .main-nav, .secondary-nav {
-    padding-bottom: 3rem;
+
+  .main-nav,
+  .secondary-nav {
     width: 100%;
+  }
+
+  .main-nav {
+    margin-bottom: auto;
   }
 
   a {
@@ -35,10 +38,25 @@ const Sidebar = styled.div`
     line-height: 1.5rem;
     padding: 0.75rem 0 0.75rem 1.5rem;
     text-transform: uppercase;
-    
+
     &.active {
-      background: rgba(0,0,0,0.25);
+      background: rgba(0, 0, 0, 0.25);
       border-left: 0.75rem solid deeppink;
+    }
+  }
+
+  .sign-out {
+    background-color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: ${sizes.space(0.75)} ${sizes.space(1)};
+    width: 100%;
+
+    button {
+      &:not(:last-of-type) {
+        margin-bottom: ${sizes.space(0.75)};
+      }
     }
   }
 `;
