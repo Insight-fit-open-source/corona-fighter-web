@@ -1,5 +1,5 @@
 import FirebaseFactory from 'src/app/lib/firebase';
-import { takeEvery, call, put, ForkEffect, retry } from 'redux-saga/effects';
+import { takeEvery, call, put, ForkEffect } from 'redux-saga/effects';
 import { constants, actions } from 'src/store/definitions/auth';
 
 function* handleSignOut() {
