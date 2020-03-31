@@ -38,7 +38,7 @@ const AuthBody = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: ${sizes.space(0.75)};
+  padding: ${sizes.space(0.5)} ${sizes.space(0.5)}  10vh;
   background-color: ${colors.blueDark};
     overflow-x: hidden;
   overflow-y: auto;
