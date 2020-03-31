@@ -16,7 +16,9 @@
     "test:update": "jest -u",
     "test:ui": "npx majestic --coverage",
     "lint": "tsc --noEmit && eslint ./src/**/*.ts*",
-    "lint:fix": "tsc --noEmit && eslint ./src/**/*.ts* --fix"
+    "lint:fix": "tsc --noEmit && eslint ./src/**/*.ts* --fix",
+    "ci:deploy:staging": "now -A ./staging.now.json --prod --token=$NOW_TOKEN --scope=coronasepush --confirm",
+    "ci:deploy:production": "now -A ./production.now.json --prod --token=$NOW_TOKEN --scope=coronasepush --confirm"
   },
   "husky": {
     "hooks": {
