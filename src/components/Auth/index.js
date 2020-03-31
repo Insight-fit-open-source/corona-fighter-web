@@ -13,7 +13,7 @@ if (!firebase.apps.length) {
 
 const Auth = () => {
   const firebaseUiConfig = {
-    signInFlow: 'popup',
+    signInFlow: 'redirect',
     credentialHelper: 'none',
     signInOptions: [
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
