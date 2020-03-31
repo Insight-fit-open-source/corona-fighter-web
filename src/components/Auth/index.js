@@ -13,7 +13,7 @@ if (!firebase.apps.length) {
 
 const Auth = () => {
   const firebaseUiConfig = {
-    signInFlow: 'popup',
+    signInFlow: 'redirect',
     credentialHelper: 'none',
     signInOptions: [
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -29,8 +29,11 @@ const Auth = () => {
       body={
         <>
           <Styled.TitleWrap>
-            <Typography variant='h1' id='title'>
-              Corona Se Push
+            <Typography variant='h1'>
+              Welcome To Your Daily Symptom Tracker
+            </Typography>
+            <Typography variant='body1'>
+              Join us to reduce pressure on medical facilities, reduce deaths and track the evolution of the disease in our country.
             </Typography>
           </Styled.TitleWrap>
           <StyledFirebaseAuth
