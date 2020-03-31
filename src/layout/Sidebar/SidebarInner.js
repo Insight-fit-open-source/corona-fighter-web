@@ -26,11 +26,11 @@ const SidebarInner = props => {
       </div>
       <div className='secondary-nav'>
         {generateLinks(secondaryNavLinks, router.asPath)}
-      </div>
-      <div className='sign-out'>
-        <Button variant='outlined' color='primary' onClick={handleSignOut}>
-          Sign Out
-        </Button>
+        <div className='sign-out'>
+          <Button variant='text' color='primary' onClick={handleSignOut}>
+            Sign Out
+          </Button>
+        </div>
       </div>
     </>
   );

@@ -3,13 +3,10 @@
 What is the problem that you are trying to solve, or the feature that you are trying to implement?
 
 ## Work done
-
-What steps have you taken to fix the problem outlined in the scope?
+What steps have you taken to achieve the scope?
 
 ## Screenshots
-
-Do you have any relevant screenshots?
+Do you have any relevant screenshots or video?
 
 ## Notes
-
-Are there any other prudent information you would want to add?
+any other information you would like to add?

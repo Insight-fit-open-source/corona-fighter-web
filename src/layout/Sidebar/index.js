@@ -75,10 +75,10 @@ const darkTheme = theme => {
           color: colors.greyLight,
         },
         thumb: {
-          color: colors.green,
+          color: colors.pink,
         },
         track: {
-          color: colors.green,
+          color: colors.pink,
         },
       },
     },

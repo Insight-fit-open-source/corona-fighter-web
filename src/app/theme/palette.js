@@ -2,10 +2,10 @@ import colors from './colors';
 
 const palette = {
   primary: {
-    main: colors.blueDark,
+    main: colors.pink,
   },
   secondary: {
-    main: colors.green,
+    main: colors.orange,
   },
   background: {
     default: colors.white,
