@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import calculateOutcome from 'src/components/Survey/config/calculateOutcome';
 import { actions } from 'src/store/definitions/survey';
+import { actions as profileActions } from 'src/store/definitions/profile';
 import steps from 'src/components/Survey/config';
 import {
   ChoiceBoxInner,
@@ -27,8 +28,22 @@ export class Survey extends React.PureComponent {
   componentWillUnmount() {
     this.props.stopSurvey();
   }
-  render() {
+
+  handleOutcome = outcomeActive => {
+    const { checkin } = this.props;
     const { step, selection } = this.props;
+
+    let outcome = {};
+    if (outcomeActive) {
+      checkin();
+      outcome = calculateOutcome(selection, steps[step].options);
+    }
+
+    return outcome;
+  };
+
+  render() {
+    const { step } = this.props;
 
     const outcomeActive = Boolean(
       steps[step] && steps[step].layout === 'outcome',
@@ -59,11 +74,7 @@ export class Survey extends React.PureComponent {
         <Outcomes layoutActive={outcomeActive}>
           <OutcomeContent
             active={outcomeActive}
-            outcome={
-              outcomeActive
-                ? calculateOutcome(selection, steps[step].options)
-                : {}
-            }
+            outcome={this.handleOutcome(outcomeActive)}
           />
         </Outcomes>
       </LayoutBlock>
@@ -78,6 +89,7 @@ const mapState = state => ({
 const mapDispatch = dispatch => ({
   startSurvey: () => dispatch(actions.surveyStarted()),
   stopSurvey: () => dispatch(actions.surveyCompleted()),
+  checkin: () => dispatch(profileActions.checkin()),
 });
 
 export default connect(mapState, mapDispatch)(Survey);
