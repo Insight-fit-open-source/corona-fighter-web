@@ -14,6 +14,7 @@ export default styled.div`
   height: 100vh;
   overflow-x: auto;
   padding: 1.5rem;
+  z-index: 5;
   transform: ${props =>
     props.layoutActive ? 'translate3d(0, 0%, 0)' : 'translate3d(0, 100%, 0)'};
   transition: transform 0.45s ease-out 0s;

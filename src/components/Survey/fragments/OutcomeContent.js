@@ -6,6 +6,7 @@ import ArrowRightIcon from '@material-ui/icons/ChevronRight';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { actions } from 'src/store/definitions/survey';
+import VirusBg from 'src/components/common/VirusBg';
 
 const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
   if (!active) return null;
@@ -68,6 +69,7 @@ const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
           </div>
         </motion.div>
       ) : null}
+      <VirusBg />
     </AnimatePresence>
   );
 };
