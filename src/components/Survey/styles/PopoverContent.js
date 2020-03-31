@@ -14,7 +14,7 @@ export default styled.div`
     props.layoutActive ? 'translate3d(0%, 0%, 0)' : 'translate3d(0%, 35%, 0)'};
   transition: transform 0.365s ease-in;
 
-  .backdrop__content {
+  .popover__body {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -64,33 +64,14 @@ export default styled.div`
       margin-bottom: 1.5rem;
     }
 
-    button {
-      max-width: 15rem;
-      padding: 0.75rem 0;
+    button:first-of-type {
       margin-top: 4.5rem;
     }
-  }
 
-  .backdrop__img {
-    position: absolute;
-    z-index: -1;
-    height: 100%;
-    width: 65%;
-    top: 0;
-    right: 0;
-    object-fit: cover;
-    object-position: center;
-    opacity: 0;
-    transition: opacity 0.365s;
-
-    &.active {
-      opacity: 1;
-    }
-
-    img {
-      height: 100%;
-      position: absolute;
-      right: 0;
+    button {
+      max-width: 20rem;
+      padding: 0.75rem 0;
+      margin-top: 1rem;
     }
   }
 `;
