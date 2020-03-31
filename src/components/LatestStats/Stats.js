@@ -1,5 +1,8 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
+// import firebase from 'firebase/app';
+// import settings from 'src/app/publicSettings';
+// import FirebaseFactory from 'src/app/lib/firebase';
 
 import StatsBox from './StatsBox';
 import covid from './covid';
@@ -9,19 +12,34 @@ class Stats extends React.Component {
     stats: covid,
   };
 
-  // async componentDidMount() {
-  //   // try {
-  //   //   const res = await axios('https://blakey.co/covid.php', {
-  //   //     headers: {
-  //   //       'Access-Control-Allow-Origin': '*',
-  //   //       'Content-Type': 'application/json',
-  //   //     },
-  //   //   });
-  //   //   console.log(res);
-  //   // } catch (e) {
-  //   //   console.log(e);
-  //   // }
-  // }
+  async componentDidMount() {
+    // try {
+    //   const res = await axios('https://blakey.co/covid.php', {
+    //     headers: {
+    //       'Access-Control-Allow-Origin': '*',
+    //       'Content-Type': 'application/json',
+    //     },
+    //   });
+    //   console.log(res);
+    // } catch (e) {
+    //   console.log(e);
+    // }
+    // if (!firebase.apps.length) {
+    //   try {
+    //     const { firebase, firestore } = await FirebaseFactory.get();
+    //     await firestore.collection('dashbaord').doc('za');
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // }
+    // const firestore = await firebase.firestore();
+    // firestore
+    //   .collection('dashbaord')
+    //   .get()
+    //   .then(snapshot => {
+    //     console.log(snapshot);
+    //   });
+  }
 
   render() {
     const { stats } = this.state;
