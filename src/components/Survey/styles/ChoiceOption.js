@@ -16,11 +16,13 @@ export default styled.div`
   position: relative;
   cursor: pointer;
   padding: 0.5rem;
+  border-radius: 0.25rem;
   border: 1px solid ${colors.greyLight};
+  background-color: ${colors.white};
   animation: ${fadeIn} 1s linear none;
   transform: scale(1.05);
   transition: transform 165ms ease-in;
-  opacity: 0.5
+  opacity: 0.75;
 
   h5 {
     font-weight: 300;
@@ -56,7 +58,7 @@ export default styled.div`
   }
 
   &:hover {
-    opacity: 1;
+    border: 1px solid ${colors.pink};
     .reveal-description {
       opacity: 0.8;
     }
@@ -68,7 +70,7 @@ export default styled.div`
     opacity: 1;
     color: ${colors.pink};
     border: 1px solid ${colors.pink};
-    box-shadow: 0px 4px 12px rgba(30, 60, 40, 0.15);
+    box-shadow: 0px 5px 10px rgba(60, 30, 40, 0.15);
     transform: scale(1.08);
 
     svg {
