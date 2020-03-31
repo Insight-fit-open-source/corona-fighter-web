@@ -9,7 +9,7 @@ sections:
   label: Content Pages
   create: documents
   match: "**/*"
-  new_doc_ext: ".json"
+  new_doc_ext: json
   templates:
   - content-pages
 - type: directory
