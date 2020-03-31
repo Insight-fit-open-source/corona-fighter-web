@@ -1,20 +1,24 @@
 import React from 'react';
 import Link from 'next/link';
+import { connect } from 'react-redux';
 import { Button, Typography } from '@material-ui/core';
 import ButtonIcon from '@material-ui/icons/ChevronRight';
 import Dialog from '@material-ui/core/Dialog';
 import Slide from '@material-ui/core/Slide';
-import { PopoverContent } from 'src/components/Survey/styles';
 import steps from 'src/components/Survey/config';
+import { actions } from 'src/store/definitions/profile';
+import Styled from './styles';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;
 });
 
-const Popover = () => {
+const Popover = props => {
+  const { checkin } = props;
   const [open, setOpen] = React.useState(true);
 
   const handleClose = () => {
+    checkin();
     setOpen(false);
   };
 
@@ -24,9 +28,9 @@ const Popover = () => {
       open={open}
       onClose={handleClose}
       TransitionComponent={Transition}>
-      <PopoverContent
+      <Styled.PopoverContent
         layoutActive={steps.welcome && steps.welcome.layout !== 'question'}>
-        <div className='popover__body'>
+        <Styled.PopoverBody>
           <Typography variant='h1'>How are you feeling?</Typography>
           <Typography variant='body1'>
             Make sure to complete the survey regularly to track your symptoms
@@ -42,10 +46,16 @@ const Popover = () => {
               Let's check together
             </Button>
           </Link>
-        </div>
-      </PopoverContent>
+        </Styled.PopoverBody>
+      </Styled.PopoverContent>
     </Dialog>
   );
 };
 
-export default Popover;
+const mapDispatchToProps = dispatch => {
+  return {
+    checkin: () => dispatch(actions.checkin()),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Popover);

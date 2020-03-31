@@ -1,5 +1,4 @@
 export { default as Backdrop } from './Backdrop';
-export { default as PopoverContent } from './PopoverContent';
 export { default as ChoiceBox } from './ChoiceBox';
 export { default as ChoiceBoxWrap } from './ChoiceBoxWrap';
 export { default as ChoiceInner } from './ChoiceInner';

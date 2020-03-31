@@ -15,7 +15,7 @@ function* retryUpdate() {
       rsf.firestore.updateDocument,
       `profiles/${uid}`,
       'lastCheckin',
-      Date.now(),
+      Date.now().toString(),
     );
   } catch (error) {
     throw new Error(error);
