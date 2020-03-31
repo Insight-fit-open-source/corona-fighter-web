@@ -15,14 +15,18 @@ const Sidebar = styled.div`
   width: 30%;
   min-width: 15rem;
   max-width: 22rem;
-  
+
   .branding {
     padding-left: 1.5rem;
   }
-  
-   .main-nav, .secondary-nav {
-    padding-bottom: 3rem;
+
+  .main-nav,
+  .secondary-nav {
     width: 100%;
+  }
+  
+  .main-nav {
+    flex: 2;
   }
 
   a {
@@ -33,15 +37,24 @@ const Sidebar = styled.div`
     line-height: 1.5rem;
     padding: 0.75rem 0 0.75rem 1.5rem;
     text-transform: uppercase;
-    
+
     &.active {
-      background: rgba(0,0,0,0.5);
+      background: rgba(0, 0, 0, 0.5);
       border-left: 0.75rem solid ${colors.pink};
     }
   }
-  
-  .secondary-nav  a.active {
-      border-left: 0.75rem solid ${colors.orange};
+
+  .secondary-nav a.active {
+    border-left: 0.75rem solid ${colors.orange};
+  }
+
+  .sign-out {
+    padding-top: 0.75rem;
+    border-top: 1px dotted rgba(255, 100, 120, 0.5);
+    margin-top: 0.75rem;
+
+    button {
+      padding: 0.75rem 0 1.5rem 1.5rem;
     }
   }
 `;
