@@ -20,7 +20,11 @@ jobs:
       - name: Deploy staging
         run: npm run ci:deploy:staging
         if: github.ref == 'refs/heads/development'
+        env:
+          NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
 
-      - name: Deploy staging
+      - name: Deploy production
         run: npm run ci:deploy:production
         if: github.ref == 'refs/heads/master'
+        env:
+          NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
