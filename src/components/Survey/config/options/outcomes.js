@@ -4,8 +4,8 @@ export default {
   },
   outcome1: {
     title: 'Get medical attention as soon as possible.',
-    testStatus: 'You require urgent testing and medical care.',
-    body: 'You have one or more severe symptoms sometimes associated with Covid-19. You may need urgent medical care. Please contact your nearest emergency care facility.',
+    testStatus: 'You likely require urgent testing and medical care, If you are not already receiving treatment.',
+    body: 'You have one or more severe symptoms associated with Covid-19. You may need urgent medical care. Please contact your nearest emergency care facility.',
     severity: 'severe',
   },
   outcome2: {
@@ -23,7 +23,7 @@ export default {
   outcome4: {
     title: 'You do not qualify for testing currently',
     testStatus: 'You will most likely be turned away if you attempt to be tested.',
-    body: 'There is no need for panic, though as you have had possible contact with a positive patient or have travelled to a high risk area you do need to self-quarantine for 2 weeks. You might need to be tested should you develop symptoms; use our symptom tracker daily to report symptoms should you experience any.',
+    body: 'There is no need for panic, though as you have had possible contact with a positive patient or have travelled to a high risk area you do need to self-quarantine for 2 weeks. You might need to be tested should you develop symptoms. Use our symptom tracker daily to report symptoms should you experience any.',
     severity: 'warn',
   },
   outcome5: {
@@ -41,7 +41,7 @@ export default {
   outcome7: {
     title: 'You do not qualify for testing.',
     testStatus: 'You will be turned away if you attempt to be tested.',
-    body: 'You have symptoms commonly seen in Covid-19 but no obvious contact with a positive patient. Please remain calm. Your symptoms are most likely due to another cause such as seasonal influenza.Complete our survey daily to keep track of your symptoms. You should seek medical care if your symptoms worsen.',
+    body: 'You have symptoms commonly seen in Covid-19 but no obvious contact with a positive patient. Please remain calm. Your symptoms are most likely due to another cause such as seasonal influenza. Complete our survey daily to keep track of your symptoms. You should seek medical care if your symptoms worsen.',
     severity: 'warn',
   },
 };
