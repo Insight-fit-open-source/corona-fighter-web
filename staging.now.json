@@ -7,7 +7,7 @@
     "autoJobCancelation": true
   },
   "version": 2,
-  "alias": "coronasepush-web",
+  "alias": [ "coronasepush-web-staging.now.sh" ],
   "build": {
     "env": {}
   }
