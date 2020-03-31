@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import colors from 'src/app/theme/colors';
+import breakpoints from 'src/app/theme/breakpoints';
 
 const Sidebar = styled.div`
   display: flex;
@@ -11,10 +12,25 @@ const Sidebar = styled.div`
   color: ${colors.white};
   border-right: 1px solid ${colors.blueMid};
   overflow-y: auto;
-  position: relative;
-  width: 30%;
-  min-width: 15rem;
-  max-width: 22rem;
+  width: 100%;
+  max-width: inherit;
+  position: fixed;
+  z-index: 200;
+  transition: transform 0.365s;
+  transform: translate3d(-100%, 0, 0);
+
+  &.active {
+    transform: translate3d(-0%, 0, 0);
+  }
+
+  @media only screen and (min-width: ${breakpoints.values.md}px) {
+    width: 30%;
+    min-width: 15rem;
+    max-width: 22rem;
+    position: relative;
+    transition: none;
+    transform: translate3d(-0%, 0, 0);
+  }
 
   .branding {
     padding-left: 1.5rem;
@@ -24,7 +40,7 @@ const Sidebar = styled.div`
   .secondary-nav {
     width: 100%;
   }
-  
+
   .main-nav {
     flex: 2;
   }
