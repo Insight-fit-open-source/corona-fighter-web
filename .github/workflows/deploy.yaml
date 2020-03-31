@@ -15,7 +15,10 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Install dependencies
-        run: npm ci && npm i -g now
+        run: npm ci
+
+      - name: Install Now cli
+        run: npm i -g now
 
       - name: Deploy staging
         run: now -A ./production.now.json --prod --token=$NOW_TOKEN --scope=coronasepush --confirm
