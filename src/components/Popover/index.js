@@ -7,6 +7,7 @@ import Dialog from '@material-ui/core/Dialog';
 import Slide from '@material-ui/core/Slide';
 import steps from 'src/components/Survey/config';
 import { actions } from 'src/store/definitions/profile';
+import data from 'forestry/data/popover.json';
 import Styled from './styles';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -31,19 +32,17 @@ const Popover = props => {
       <Styled.PopoverContent
         layoutActive={steps.welcome && steps.welcome.layout !== 'question'}>
         <Styled.PopoverBody>
-          <Typography variant='h1'>How are you feeling?</Typography>
-          <Typography variant='body1'>
-            Make sure to complete the survey regularly to track your symptoms
-          </Typography>
+          <Typography variant='h1'>{data.heading}</Typography>
+          <Typography variant='body1'>{data.body}</Typography>
           <Button variant='contained' color='secondary' onClick={handleClose}>
-            The same as before
+            {data.ok_button_text}
           </Button>
           <Link href='/survey/[step]' as='/survey/feeling'>
             <Button
               variant='contained'
               color='secondary'
               endIcon={<ButtonIcon />}>
-              Let's check together
+              {data.not_ok_button_text}
             </Button>
           </Link>
         </Styled.PopoverBody>
