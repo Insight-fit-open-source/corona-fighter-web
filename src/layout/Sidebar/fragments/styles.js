@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-
 import colors from 'src/app/theme/colors';
-import sizes from 'src/app/theme/sizes';
 
 const Sidebar = styled.div`
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
+  justify-content: space-between;
   height: 100%;
   background-color: ${colors.blueDark};
   color: ${colors.white};
@@ -25,9 +24,9 @@ const Sidebar = styled.div`
   .secondary-nav {
     width: 100%;
   }
-
+  
   .main-nav {
-    margin-bottom: auto;
+    flex: 2;
   }
 
   a {
@@ -40,23 +39,22 @@ const Sidebar = styled.div`
     text-transform: uppercase;
 
     &.active {
-      background: rgba(0, 0, 0, 0.25);
-      border-left: 0.75rem solid deeppink;
+      background: rgba(0, 0, 0, 0.5);
+      border-left: 0.75rem solid ${colors.pink};
     }
   }
 
+  .secondary-nav a.active {
+    border-left: 0.75rem solid ${colors.orange};
+  }
+
   .sign-out {
-    background-color: inherit;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: ${sizes.space(0.75)} ${sizes.space(1)};
-    width: 100%;
+    padding-top: 0.75rem;
+    border-top: 1px dotted rgba(255, 100, 120, 0.5);
+    margin-top: 0.75rem;
 
     button {
-      &:not(:last-of-type) {
-        margin-bottom: ${sizes.space(0.75)};
-      }
+      padding: 0.75rem 0 1.5rem 1.5rem;
     }
   }
 `;

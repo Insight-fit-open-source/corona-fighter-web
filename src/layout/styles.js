@@ -20,6 +20,8 @@ const Body = styled.div`
   position: relative;
   flex: 1;
   padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
 `;
 
 const BodyGeneral = styled.div`
@@ -34,23 +36,20 @@ const AuthBody = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: ${sizes.space(2)};
+  align-items: center;
+  justify-content: center;
+  padding: ${sizes.space(0.75)};
   background-color: ${colors.blueDark};
+    overflow-x: hidden;
+  overflow-y: auto;
 `;
 
-const AuthBanner = styled.div`
-  flex: 2;
-  background-image: url('/auth-banner.jpg');
-  background-size: cover;
-  background-position: center center;
-`;
 
 const Styled = {
   Wrap,
   BodyWrap,
   Body,
   BodyGeneral,
-  AuthBanner,
   AuthBody,
 };
 
