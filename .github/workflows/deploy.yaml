@@ -17,13 +17,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Now cli
-        run: npm i -g now
-
       - name: Deploy staging
-        run: now -A ./production.now.json --prod --token=$NOW_TOKEN --scope=coronasepush --confirm
+        run: npm run ci:deploy:staging
         if: github.ref == 'refs/heads/development'
 
       - name: Deploy staging
-        run: now -A ./staging.now.json --prod --token=$NOW_TOKEN --scope=coronasepush --confirm
+        run: npm run ci:deploy:production
         if: github.ref == 'refs/heads/master'
