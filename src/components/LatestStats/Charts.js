@@ -68,6 +68,8 @@ class Charts extends React.Component {
       areaBaselineValue: 0,
       axisTop: null,
       axisRight: null,
+      enableCrosshair: false,
+      enableSlices: 'x',
       xScale: { type: 'point' },
       yScale: {
         type: 'linear',
