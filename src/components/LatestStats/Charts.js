@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
+import format from 'date-format';
 import ChartLine from './ChartLine';
 import Styled from './styles';
 
@@ -28,9 +29,15 @@ class Charts extends React.Component {
 
     data.map(dObj => {
       Object.entries(dObj).forEach(([key, value]) => {
-        // const thisDate = Date(parseInt(`${dObj.date}000`, 10));
+        const thisDate = format(
+          'yyyy-MM-dd',
+          new Date(parseInt(`${dObj.date}000`, 10)),
+        );
         if (key !== 'date') {
-          newObj[key].push({ x: dObj.date, y: value });
+          newObj[key].push({
+            x: thisDate,
+            y: value,
+          });
         }
       });
     });
@@ -50,6 +57,7 @@ class Charts extends React.Component {
     const chartSettings = {
       data: chartData,
       isInteractive: true,
+      useMesh: true,
       offsetType: 'none',
       fillOpacity: 0.85,
       enableArea: true,
