@@ -1,12 +1,15 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
+import { Button } from '@material-ui/core';
+
+import Logo from 'src/components/common/Logo';
 import { actions } from 'src/store/definitions/auth';
 import mainNavLinks from 'src/layout/nav/main';
 import secondaryNavLinks from 'src/layout/nav/secondary';
 import generateLinks from 'src/layout/nav/generateLinks';
 import IsProtectedPage from 'src/app/lib/firebase/auth/IsProtectedPage';
-import { Button } from '@material-ui/core';
+
 
 const SidebarInner = props => {
   const router = useRouter();
@@ -19,7 +22,7 @@ const SidebarInner = props => {
   return (
     <>
       <div className='branding'>
-        <h3>C19 Se Push</h3>
+        <Logo />
       </div>
       <div className='main-nav'>
         {generateLinks(mainNavLinks, router.asPath)}

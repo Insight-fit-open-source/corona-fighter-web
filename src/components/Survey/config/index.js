@@ -2,7 +2,7 @@ import options from './options';
 
 export default {
   welcome: {
-    title: "Let's Get Started",
+    title: "Let's See How You're Doing Today.",
     content:
       'By Tracking your symptoms daily, you can find out if you should get tested.  Please be honest when answering our questions. Fake information will lead to unnecessary testing.',
     layout: 'backdrop',

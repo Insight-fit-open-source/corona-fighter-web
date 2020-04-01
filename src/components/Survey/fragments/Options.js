@@ -13,7 +13,7 @@ export const Options = ({
   selectOption,
   getSelection,
 }) => {
-  if (!items) {
+  if (!items || step === 'outcome') {
     return null;
   }
 
