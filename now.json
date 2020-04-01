@@ -2,12 +2,11 @@
   "scope": "coronasepush",
   "github": {
     "enabled": false,
-    "autoAlias": true,
+    "autoAlias": false,
     "silent": false,
     "autoJobCancelation": true
   },
   "version": 2,
-  "alias": "coronasepush-web",
   "build": {
     "env": {}
   }
