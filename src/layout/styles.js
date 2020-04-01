@@ -30,7 +30,6 @@ const BodyGeneral = styled.div`
   position: relative;
   flex: 1;
   padding: 5rem 1.5rem 3rem;
-  padding: 5rem 1.5rem 3rem;
   overflow-y: auto;
 
   .pageHeader {

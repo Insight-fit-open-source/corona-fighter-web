@@ -19,7 +19,7 @@ const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
   const whatsNext = {
     severe: () => (
       <>
-        <Link href='/content/[page]' as='/content/where-to-help'>
+        <Link href='/content/[page]' as='/content/where-to-get-help'>
           <Button
             variant='contained'
             color='primary'
