@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
 import format from 'date-format';
+import colors from 'src/app/theme/colors';
 import ChartLine from './ChartLine';
 import Styled from './styles';
 
@@ -12,6 +13,13 @@ const keyNames = {
   recoveriesCount: 'Recoveries',
   fatalityCount: 'Fatalities',
 };
+
+const chartColors = [
+  colors.pink,
+  colors.blueLight,
+  colors.orange,
+  colors.green,
+];
 
 const formatData = data => {
   const newObj = {
@@ -37,10 +45,10 @@ const formatData = data => {
   });
 
   let newData = [];
-  Object.entries(newObj).forEach(([key, value]) => {
+  Object.entries(newObj).forEach(([key, value], index) => {
     newData = [
       ...newData,
-      { id: keyNames[key], color: 'hsl(255, 70%, 50%)', data: value },
+      { id: keyNames[key], color: chartColors[index], data: value },
     ];
   });
 
@@ -59,7 +67,7 @@ const Charts = ({ data }) => {
     enableArea: true,
     areaOpacity: 1,
     enablePoints: false,
-    colors: { scheme: 'paired' },
+    colors: { datum: 'color' },
     margin: { top: 50, right: 140, bottom: 50, left: 60 },
     areaBaselineValue: 0,
     axisTop: null,
