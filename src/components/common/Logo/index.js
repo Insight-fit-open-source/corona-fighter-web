@@ -2,7 +2,7 @@ import React from 'react';
 import LogoWrap from './style';
 
 export default ({ styles }) => (
-  <LogoWrap styles={styles}>
+  <LogoWrap style={styles}>
     <svg viewBox='0 0 183 38'>
       <g
         id='Page-1'

@@ -5,6 +5,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import ButtonIcon from '@material-ui/icons/ChevronRight';
 
+import Logo from 'src/components/common/Logo';
+
 export default ({ active, stepContent ={} }) => {
   const { title, content, next, nextText } = stepContent;
   return (
@@ -17,6 +19,7 @@ export default ({ active, stepContent ={} }) => {
             exit={{ opacity: 0 }}
             key='backdrop'>
             <div className='backdrop__content'>
+              <Logo styles={{ width: '12rem', marginBottom: '1.5rem' }} />
               <Typography variant='h1'>{title}</Typography>
               <Typography variant='body1'>{content}</Typography>
               {next ? (

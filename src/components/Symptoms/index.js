@@ -5,7 +5,11 @@ import moment from 'moment';
 
 import { actions } from 'src/store/definitions/survey';
 
-export const Symptoms = ({ requestSync, surveyResults, surveyResultsCount }) => {
+export const Symptoms = ({
+  requestSync,
+  surveyResults,
+  surveyResultsCount,
+}) => {
   console.log(surveyResults);
   console.log(surveyResultsCount);
 
@@ -13,19 +17,26 @@ export const Symptoms = ({ requestSync, surveyResults, surveyResultsCount }) => 
     requestSync();
   }, [requestSync]);
 
-  return surveyResultsCount ? _(surveyResults).keys().sort().reverse().map(key => (
-    <div key={key}>
-      <h5>{surveyResults[key].outcome.severity}</h5>
-      <p>{surveyResults[key].outcome.body}</p>
-    </div>
-  )).value() : (
-    <p>You Haven't completed a survey yet, once you have you'll see them appear here.</p>
-  );
+  return surveyResultsCount ? (
+    _(surveyResults)
+      .keys()
+      .sort()
+      .reverse()
+      .map(key =>
+        surveyResults[key].outcome && surveyResults[key].outcome.body ? (
+          <div key={key}>
+            <h5>{surveyResults[key].outcome.severity}</h5>
+            <p>{surveyResults[key].outcome.body}</p>
+          </div>
+        ) : null,
+      )
+      .value()
+  ) : null;
 };
 
 const mapState = state => ({
-  surveyResults: state.survey. surveyResults,
-  surveyResultsCount: _.values(state.survey. surveyResults).length > 0,
+  surveyResults: state.survey.surveyResults,
+  surveyResultsCount: _.values(state.survey.surveyResults).length > 0,
 });
 const mapDispatch = dispatch => ({
   requestSync: () => dispatch(actions.surveySyncRequested()),
