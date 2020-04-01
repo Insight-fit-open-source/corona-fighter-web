@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import format from 'date-format';
+import FirebaseFactory from 'src/app/lib/firebase';
 import ChartLine from './ChartLine';
 import Styled from './styles';
 
@@ -16,8 +17,39 @@ const keyNames = {
 
 class Charts extends React.Component {
   state = {
-    data: graph,
+    data: [],
   };
+
+  async componentDidMount() {
+    try {
+      const { firestore } = await FirebaseFactory.get();
+      const firebaseData = firestore
+        .collection('cumulative')
+        .get()
+        .then(function(querySnapshot) {
+          const { data } = querySnapshot.docs[0].data();
+
+          console.log(data);
+
+          this.setState({
+            data,
+          });
+
+          // querySnapshot.forEach(function(doc) {
+          //   const { data } = doc.data();
+          //   // console.log(data);
+          //   // this.setState({
+          //   //   data,
+          //   // });
+          // });
+        });
+
+      console.log(firebaseData);
+    } catch (error) {
+      console.log('Error creating new draft options:', error);
+      return Promise.reject(new Error());
+    }
+  }
 
   formatData = data => {
     const newObj = {
