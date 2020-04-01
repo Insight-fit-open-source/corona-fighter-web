@@ -7,7 +7,7 @@ import ButtonIcon from '@material-ui/icons/ChevronRight';
 
 import Logo from 'src/components/common/Logo';
 
-export default ({ active, stepContent ={} }) => {
+export default ({ active, stepContent = {} }) => {
   const { title, content, next, nextText } = stepContent;
   return (
     <>

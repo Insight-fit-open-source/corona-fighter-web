@@ -14,7 +14,7 @@ const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
 
   React.useEffect(() => {
     setOutcome(outcome);
-  },[active]);
+  }, [active]);
 
   const whatsNext = {
     severe: () => (
@@ -64,7 +64,7 @@ const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
           exit={{ opacity: 0 }}
           key='results'>
           <div className='results'>
-            <Logo styles={{ width: '12rem', margin: '0 0 1.5rem 0'}} />
+            <Logo styles={{ width: '12rem', margin: '0 0 1.5rem 0' }} />
             <Typography variant='h1' className={outcome.severity}>
               <strong>{outcome.title}</strong>
             </Typography>

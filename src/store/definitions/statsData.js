@@ -1,13 +1,18 @@
 import duxedo from '@sigmadigital/duxedo';
 
 const defaultState = {
-  menuIsOpen: false,
+  cumulative: [],
+  daily: {},
 };
 
 const definition = {
-  SET_MENU_STATE: (state, { payload }) => ({
+  CUMULATIVE_SYNCED: (state, { payload }) => ({
     ...state,
-    menuIsOpen: payload.menuIsOpen,
+    cumulative: payload.data,
+  }),
+  DAILY_SYNCED: (state, { payload }) => ({
+    ...state,
+    daily: payload,
   }),
 };
 
@@ -15,6 +20,7 @@ const { reducer, actions, constants } = duxedo({
   definition,
   defaultState,
 });
+
 export { reducer, actions, constants, defaultState as state };
 
 export default reducer;

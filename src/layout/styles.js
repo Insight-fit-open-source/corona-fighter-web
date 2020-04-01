@@ -64,7 +64,6 @@ const BodyGeneral = styled.div`
   }
 
   @media only screen and (min-width: ${breakpoints.values.md}px) {
-
     .pageHeader {
       position: absolute;
       box-shadow: none;
