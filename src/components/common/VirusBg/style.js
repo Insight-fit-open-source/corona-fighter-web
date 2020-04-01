@@ -1,19 +1,19 @@
 import styled, { keyframes } from 'styled-components';
 
 const slowMo = keyframes`
-  0% { 
-  opacity: 0.8; 
+  0% {
+  opacity: 0.8;
   transform: scale3d(1,1,1) rotate(-5deg);
   }
-  70% { 
-  opacity: 0.8; 
+  70% {
+  opacity: 0.8;
   transform: scale3d(1.1,1.1,1) rotate(0deg);
   }
-  100% { 
-  opacity: 0.8; 
+  100% {
+  opacity: 0.8;
   transform: scale3d(1,1,1) rotate(-5deg);
   }
-  
+
 `;
 
 export default styled.div`
@@ -26,7 +26,8 @@ export default styled.div`
   overflow: hidden;
   z-index: 0;
   height: 40vw;
-  
+  pointer-events: none;
+
   svg {
     width: auto;
     height:  100%;
