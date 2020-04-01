@@ -14,7 +14,7 @@ export default {
   },
   no: {
     key: 'decrease',
-    title: 'the have improved',
+    title: 'they have improved',
     desc: 'they have improved',
   },
 };
