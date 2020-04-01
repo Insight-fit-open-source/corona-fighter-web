@@ -19,7 +19,7 @@ export default {
     severity: 'severe',
   },
   outcome3: {
-    title: 'You seem healthy and do not qualify for testing.',
+    title: 'You seem healthy and testing is currently unnecessary.',
     testStatus: 'You will be turned away if you attempt to be tested.',
     body:
       'You are well and not displaying any symptoms of Covid-19. Please complete our survey daily to track any symptoms you experience.',
@@ -34,7 +34,7 @@ export default {
     severity: 'warn',
   },
   outcome5: {
-    title: 'You do not qualify for testing.',
+    title: 'The NICD do not currently recommend testing.',
     testStatus: 'You will be turned away if you attempt to be tested.',
     body:
       'You are displaying one or more symptoms sometimes seen in Covid-19. However, your symptoms are not considered typical and could be caused by something else. Complete our survey daily to keep track of your symptoms. You should seek medical care if your symptoms worsen.',
