@@ -120,13 +120,15 @@ const Charts = ({ data }) => {
   };
 
   return (
-    <Grid container spacing={3}>
+    <Styled.ChartGrid container spacing={3}>
       <Grid item xs={12}>
         <Styled.ChartContainer>
-          <ChartLine settings={chartSettings} />
+          <Styled.ChartInner>
+            <ChartLine settings={chartSettings} />
+          </Styled.ChartInner>
         </Styled.ChartContainer>
       </Grid>
-    </Grid>
+    </Styled.ChartGrid>
   );
 };
 
