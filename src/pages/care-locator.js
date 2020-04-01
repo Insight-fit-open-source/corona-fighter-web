@@ -5,7 +5,7 @@ import TestingFacilityLocator from 'src/components/TestingFacilityLocator';
 
 export const CareLocator = () => {
   return (
-    <Admin pageTitle='Care Locator'>
+    <Admin pageTitle='Care Locator' isMap>
       <TestingFacilityLocator />
     </Admin>
   );
