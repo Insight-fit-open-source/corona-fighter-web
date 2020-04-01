@@ -48,7 +48,8 @@ const BodyGeneral = styled.div`
       0 5px 18px ${rgba(colors.blueDark, 0.07)};
 
     h4 {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
+      line-height: 1.15;
     }
 
     .hamburger {
@@ -81,7 +82,6 @@ const BodyGeneral = styled.div`
 
 const AuthBody = styled.div`
   position: relative;
-  z-index: 10;
   flex: 1;
   display: flex;
   flex-direction: column;

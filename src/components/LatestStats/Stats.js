@@ -1,29 +1,46 @@
 import React from 'react';
+import _ from 'lodash';
 import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
+import moment from 'moment';
 import StatsBox from './StatsBox';
 
-const Stats = ({ data }) => {
+const Stats = ({ data, children }) => {
+  const count = _.values(data).length;
+  const stats = count > 0 ? _.values(data)[count -1] : null
+
+  if (!stats) {
+    return null;
+  }
+
   const {
-    corona_tests: coronaTests,
-    corona_cases: coronaCases,
-    corona_recovered: coronaRecovered,
-    corona_deaths: coronaDeaths,
-  } = data;
+    date,
+    testCount,
+    confirmedCasesCount,
+    recoveriesCount,
+    fatalityCount,
+  } = stats;
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} sm={6} lg={3}>
-        <StatsBox title='Tests' content={coronaTests} />
+      <Grid item xs={12} lg={4}>
+        <StatsBox title='Tests' content={testCount} />
       </Grid>
-      <Grid item xs={12} sm={6} lg={3}>
-        <StatsBox title='Confirmed' content={coronaCases} />
+      <Grid item xs={12} lg={4}>
+        <StatsBox title='Confirmed' content={confirmedCasesCount} />
       </Grid>
-      <Grid item xs={12} sm={6} lg={3}>
-        <StatsBox title='Recovered' content={coronaRecovered} />
+      <Grid item xs={12} lg={4}>
+        <StatsBox title='Percentage Positive' content={`${Math.round((confirmedCasesCount/testCount * 100 * 100))/100}%`} />
       </Grid>
-      <Grid item xs={12} sm={6} lg={3}>
-        <StatsBox title='Fatalities' content={coronaDeaths} />
+      {children}
+      <Grid item xs={12} lg={4}>
+        <StatsBox title='Recovered' content={recoveriesCount} />
+      </Grid>
+      <Grid item xs={12} lg={4}>
+        <StatsBox title='Fatalities' content={fatalityCount} />
+      </Grid>
+      <Grid item xs={12} lg={4}>
+        <StatsBox title='Last Updated' content={moment.unix(date).fromNow()} />
       </Grid>
     </Grid>
   );
@@ -31,7 +48,7 @@ const Stats = ({ data }) => {
 
 const mapStateToProps = state => {
   return {
-    data: state.statsData.daily,
+    data: state.statsData.cumulative,
   };
 };
 

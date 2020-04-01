@@ -4,7 +4,7 @@ import LatestStats from 'src/components/LatestStats';
 
 export const Home = () => {
   return (
-    <Admin pageTitle='Latest Stats'>
+    <Admin pageTitle='Latest Stats for tests of Symptomatic Patients'>
       <LatestStats />
     </Admin>
   );
