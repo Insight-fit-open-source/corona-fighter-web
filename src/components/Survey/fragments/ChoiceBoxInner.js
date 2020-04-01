@@ -19,7 +19,7 @@ const OptionsWrap = ({ step, title, nextLink, children, hasSelection }) => (
       <Link href={`/survey/[step]`} as={`${nextLink}`}>
         <Button
           variant='contained'
-          color='secondary'
+          color='primary'
           disabled={!hasSelection(step)}
           endIcon={<ArrowRightIcon />}>
           Next

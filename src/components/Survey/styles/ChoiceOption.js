@@ -58,7 +58,7 @@ export default styled.div`
   }
 
   &:hover {
-    border: 1px solid ${colors.pink};
+    border: 1px solid ${colors.blueDark};
     .reveal-description {
       opacity: 0.8;
     }
@@ -68,13 +68,14 @@ export default styled.div`
     selected &&
     `
     opacity: 1;
-    color: ${colors.pink};
-    border: 1px solid ${colors.pink};
+    color: ${colors.blueDark};
+    background-color: ${colors.blueLight};
+    border: 1px solid ${colors.blueLight};
     box-shadow: 0px 5px 10px rgba(60, 30, 40, 0.15);
     transform: scale(1.08);
 
     svg {
-      fill: ${colors.pink};
+      fill: ${colors.blueDark};
     }
   `}
 `;

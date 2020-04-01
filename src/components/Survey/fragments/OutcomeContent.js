@@ -73,9 +73,9 @@ const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
             <Typography variant='body1'>{outcome.testStatus}</Typography>
             <div className='next'>{whatsNext[outcome.severity]()}</div>
           </div>
+          <VirusBg />
         </motion.div>
       ) : null}
-      <VirusBg />
     </AnimatePresence>
   );
 };
