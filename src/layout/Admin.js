@@ -9,17 +9,21 @@ import IsProtectedPage from 'src/app/lib/firebase/auth/IsProtectedPage';
 import Sidebar from 'src/layout/Sidebar';
 import Styled from './styles';
 
-const GeneralSettingsLayout = ({ pageTitle, openMenu, closeMenu, menuIsOpen, children }) => (
+const GeneralSettingsLayout = ({
+  pageTitle,
+  openMenu,
+  closeMenu,
+  menuIsOpen,
+  children,
+}) => (
   <Styled.Wrap>
     <Sidebar active={menuIsOpen} closeMenu={closeMenu} />
     <Styled.BodyGeneral>
-      <div className="pageHeader">
+      <div className='pageHeader'>
         <IconButton onClick={() => openMenu()} className='hamburger'>
           <MenuIcon />
         </IconButton>
-        {pageTitle ?
-          <Typography variant='h4'>{pageTitle}</Typography>
-          : null}
+        {pageTitle ? <Typography variant='h4'>{pageTitle}</Typography> : null}
       </div>
       {children}
     </Styled.BodyGeneral>

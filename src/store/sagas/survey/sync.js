@@ -36,8 +36,5 @@ export function* subscribe() {
 }
 
 export default function* root() {
-  yield takeLatest(
-    surveyConstants.SURVEY_SYNC_REQUESTED,
-    subscribe,
-  );
+  yield takeLatest(surveyConstants.SURVEY_SYNC_REQUESTED, subscribe);
 }

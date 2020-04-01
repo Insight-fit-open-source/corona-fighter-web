@@ -17,21 +17,21 @@ export const Symptoms = ({
     requestSync();
   }, [requestSync]);
 
-  return surveyResultsCount ? (
-    _(surveyResults)
-      .keys()
-      .sort()
-      .reverse()
-      .map(key =>
-        surveyResults[key].outcome && surveyResults[key].outcome.body ? (
-          <div key={key}>
-            <h5>{surveyResults[key].outcome.severity}</h5>
-            <p>{surveyResults[key].outcome.body}</p>
-          </div>
-        ) : null,
-      )
-      .value()
-  ) : null;
+  return surveyResultsCount
+    ? _(surveyResults)
+        .keys()
+        .sort()
+        .reverse()
+        .map(key =>
+          surveyResults[key].outcome && surveyResults[key].outcome.body ? (
+            <div key={key}>
+              <h5>{surveyResults[key].outcome.severity}</h5>
+              <p>{surveyResults[key].outcome.body}</p>
+            </div>
+          ) : null,
+        )
+        .value()
+    : null;
 };
 
 const mapState = state => ({

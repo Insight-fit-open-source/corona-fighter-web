@@ -22,7 +22,9 @@ const Popover = props => {
   const { checkin, isAuthenticated, lastCheckin, onBoardingComplete } = props;
 
   const showPopover =
-    isAuthenticated && moment().subtract(6, 'hours') > moment(+lastCheckin) && onBoardingComplete;
+    isAuthenticated &&
+    moment().subtract(6, 'hours') > moment(+lastCheckin) &&
+    onBoardingComplete;
   const [open, setOpen] = React.useState(Boolean(showPopover));
 
   const handleClose = () => {
