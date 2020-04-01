@@ -8,7 +8,7 @@ const TitleWrap = styled.div`
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  
+
   .logo {
     display: block;
     position: relative;

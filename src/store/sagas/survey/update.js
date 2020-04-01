@@ -1,11 +1,5 @@
 import FirebaseFactory from 'src/app/lib/firebase';
-import {
-  takeEvery,
-  call,
-  put,
-  retry,
-  select,
-} from 'redux-saga/effects';
+import { takeEvery, call, put, retry, select } from 'redux-saga/effects';
 import { actions, constants } from 'src/store/definitions/survey';
 
 function* retryUpdate(payload) {
@@ -21,12 +15,9 @@ function* retryUpdate(payload) {
   data[surveyStarted] = selected;
 
   try {
-    yield call(
-      rsf.firestore.setDocument,
-      `surveyResponses/${uid}/`,
-      data,
-      { merge: true },
-    );
+    yield call(rsf.firestore.setDocument, `surveyResponses/${uid}/`, data, {
+      merge: true,
+    });
 
     yield put(actions.surveySyncSucceeded());
   } catch (error) {

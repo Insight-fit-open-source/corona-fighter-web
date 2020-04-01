@@ -30,7 +30,7 @@ export default styled.div`
 
   svg {
     width: auto;
-    height:  100%;
+    height: 100%;
     display: inline-block;
     position: relative;
     margin: 0 auto;

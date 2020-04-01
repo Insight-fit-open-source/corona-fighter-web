@@ -29,14 +29,15 @@ const Auth = () => {
     <AuthLayout>
       <>
         <Styled.TitleWrap>
-          <div className="logo">
+          <div className='logo'>
             <Logo />
           </div>
           <Typography variant='h1'>
             Welcome To Your Daily Symptom Tracker
           </Typography>
           <Typography variant='body1'>
-            Join us to reduce pressure on medical facilities, reduce deaths and track the evolution of the disease in our country.
+            Join us to reduce pressure on medical facilities, reduce deaths and
+            track the evolution of the disease in our country.
           </Typography>
         </Styled.TitleWrap>
         <StyledFirebaseAuth

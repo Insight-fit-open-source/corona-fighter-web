@@ -10,7 +10,6 @@ import secondaryNavLinks from 'src/layout/nav/secondary';
 import generateLinks from 'src/layout/nav/generateLinks';
 import IsProtectedPage from 'src/app/lib/firebase/auth/IsProtectedPage';
 
-
 const SidebarInner = props => {
   const router = useRouter();
 
