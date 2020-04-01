@@ -1,16 +1,46 @@
 import React from 'react';
-import Sidebar from 'src/layout/Sidebar';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { Typography, IconButton } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+
+import { actions } from 'src/store/definitions/session';
 import IsProtectedPage from 'src/app/lib/firebase/auth/IsProtectedPage';
+import Sidebar from 'src/layout/Sidebar';
 import Styled from './styles';
 
-const GeneralSettingsLayout = ({ pageTitle, children, noPadding = false }) => (
+const GeneralSettingsLayout = ({
+  pageTitle,
+  openMenu,
+  closeMenu,
+  menuIsOpen,
+  children,
+  noPadding,
+}) => (
   <Styled.Wrap>
-    <Sidebar />
+    <Sidebar active={menuIsOpen} closeMenu={closeMenu} />
     <Styled.BodyGeneral noPadding={noPadding}>
-      {pageTitle ? <h2>{pageTitle}</h2> : null}
+      <div className='pageHeader'>
+        <IconButton onClick={() => openMenu()} className='hamburger'>
+          <MenuIcon />
+        </IconButton>
+        {pageTitle ? <Typography variant='h4'>{pageTitle}</Typography> : null}
+      </div>
       {children}
     </Styled.BodyGeneral>
   </Styled.Wrap>
 );
 
-export default IsProtectedPage(GeneralSettingsLayout);
+const mapState = state => ({
+  menuIsOpen: state.session.menuIsOpen,
+});
+
+const mapDispatch = dispatch => ({
+  openMenu: () => dispatch(actions.setMenuState({ menuIsOpen: true })),
+  closeMenu: () => dispatch(actions.setMenuState({ menuIsOpen: false })),
+});
+
+export default compose(
+  IsProtectedPage,
+  connect(mapState, mapDispatch),
+)(GeneralSettingsLayout);

@@ -27,7 +27,7 @@ const typography = {
       4,
     ),
     fontWeight: 300,
-    opactiy: 0.9,
+    opactiy: 1,
   },
   h3: {
     ...Knife.getTypeStyles(
@@ -37,7 +37,7 @@ const typography = {
       3,
     ),
     fontWeight: 500,
-    opactiy: 0.9,
+    opactiy: 1,
   },
   h4: {
     ...Knife.getTypeStyles(
@@ -47,7 +47,7 @@ const typography = {
       2,
     ),
     fontWeight: 500,
-    opacity: 0.85,
+    opacity: 1,
   },
   h5: {
     ...Knife.getTypeStyles(
@@ -57,7 +57,7 @@ const typography = {
       1,
     ),
     fontWeight: 500,
-    opacity: 0.8,
+    opacity: 1,
   },
   h6: {
     ...Knife.getTypeStyles(
@@ -68,7 +68,7 @@ const typography = {
     ),
     fontWeight: 500,
     letterSpacing: 0.5,
-    opacity: 0.7,
+    opacity: 1,
   },
   body1: {
     ...Knife.getTypeStyles(

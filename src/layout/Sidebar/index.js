@@ -85,8 +85,8 @@ const darkTheme = theme => {
   });
 };
 
-const Sidebar = ({ children }) => (
-  <Styled.Sidebar>
+const Sidebar = ({ children, active, closeMenu }) => (
+  <Styled.Sidebar active={active} onClick={() => closeMenu()}>
     <ThemeProvider theme={theme => darkTheme(theme)}>
       <SidebarInner />
     </ThemeProvider>

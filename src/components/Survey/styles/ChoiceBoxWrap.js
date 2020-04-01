@@ -7,6 +7,7 @@ export default styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-flow: column nowrap;
   align-items: center;
   justify-content: space-around;
   transform: ${props =>

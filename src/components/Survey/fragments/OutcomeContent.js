@@ -5,11 +5,17 @@ import { Button, Typography } from '@material-ui/core';
 import ArrowRightIcon from '@material-ui/icons/ChevronRight';
 import { AnimatePresence, motion } from 'framer-motion';
 
+import Logo from 'src/components/common/Logo';
 import { actions } from 'src/store/definitions/survey';
+import VirusBg from 'src/components/common/VirusBg';
 
 const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
   if (!active) return null;
-  setOutcome(outcome);
+
+  React.useEffect(() => {
+    setOutcome(outcome);
+  },[active]);
+
   const whatsNext = {
     severe: () => (
       <>
@@ -58,6 +64,7 @@ const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
           exit={{ opacity: 0 }}
           key='results'>
           <div className='results'>
+            <Logo styles={{ width: '12rem', margin: '0 0 1.5rem 0'}} />
             <Typography variant='h1' className={outcome.severity}>
               <strong>{outcome.title}</strong>
             </Typography>
@@ -68,6 +75,7 @@ const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
           </div>
         </motion.div>
       ) : null}
+      <VirusBg />
     </AnimatePresence>
   );
 };

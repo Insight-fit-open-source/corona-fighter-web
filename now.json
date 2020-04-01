@@ -1,6 +1,5 @@
 {
-  "name": "coronasepush-web",
-  "scope": "sigmadigital",
+  "scope": "coronasepush",
   "github": {
     "enabled": true,
     "autoAlias": true,

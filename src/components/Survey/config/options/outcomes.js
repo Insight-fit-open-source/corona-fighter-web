@@ -15,13 +15,13 @@ export default {
     severity: 'severe',
   },
   outcome3: {
-    title: 'You do not qualify for testing.',
+    title: 'You seem healthy and do not qualify for testing.',
     testStatus: 'You will be turned away if you attempt to be tested.',
     body: 'You are well and not displaying any symptoms of Covid-19. Please complete our survey daily to track any symptoms you experience.',
     severity: 'normal',
   },
   outcome4: {
-    title: 'You do not qualify for testing currently',
+    title: 'Despite possible contact, You do not qualify for testing currently',
     testStatus: 'You will most likely be turned away if you attempt to be tested.',
     body: 'There is no need for panic, though as you have had possible contact with a positive patient or have travelled to a high risk area you do need to self-quarantine for 2 weeks. You might need to be tested should you develop symptoms. Use our symptom tracker daily to report symptoms should you experience any.',
     severity: 'warn',
