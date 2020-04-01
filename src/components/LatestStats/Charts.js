@@ -15,18 +15,18 @@ const keyNames = {
 
 const formatData = data => {
   const newObj = {
-    fatalityCount: [{ x: 0, y: 0 }],
-    recoveriesCount: [{ x: 0, y: 0 }],
-    confirmedCasesCount: [{ x: 0, y: 0 }],
-    testCount: [{ x: 0, y: 0 }],
+    fatalityCount: [],
+    recoveriesCount: [],
+    confirmedCasesCount: [],
+    testCount: [],
   };
 
   data.forEach(dObj => {
     Object.entries(dObj).forEach(([key, value]) => {
-      const thisDate = format(
-        'yyyy-MM-dd',
-        new Date(parseInt(`${dObj.date}000`, 10)),
-      );
+      const thisDate =
+        dObj.date !== null
+          ? format('yyyy-MM-dd', new Date(parseInt(`${dObj.date}000`, 10)))
+          : 0;
       if (key !== 'date') {
         newObj[key].push({
           x: thisDate,
@@ -38,7 +38,10 @@ const formatData = data => {
 
   let newData = [];
   Object.entries(newObj).forEach(([key, value]) => {
-    newData = [...newData, { id: keyNames[key], data: value }];
+    newData = [
+      ...newData,
+      { id: keyNames[key], color: 'hsl(255, 70%, 50%)', data: value },
+    ];
   });
 
   return newData;
@@ -56,7 +59,7 @@ const Charts = ({ data }) => {
     enableArea: true,
     areaOpacity: 1,
     enablePoints: false,
-    colors: { scheme: 'blues' },
+    colors: { scheme: 'purple_blue' },
     margin: { top: 50, right: 140, bottom: 50, left: 60 },
     areaBaselineValue: 0,
     axisTop: null,
