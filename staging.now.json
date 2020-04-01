@@ -1,7 +1,7 @@
 {
   "scope": "coronasepush",
   "github": {
-    "enabled": true,
+    "enabled": false,
     "autoAlias": true,
     "silent": false,
     "autoJobCancelation": true
