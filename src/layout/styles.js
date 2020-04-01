@@ -15,7 +15,6 @@ const BodyWrap = styled.div`
   flex-direction: column;
 `;
 
-
 const Body = styled.div`
   position: relative;
   flex: 1;
@@ -25,7 +24,7 @@ const Body = styled.div`
 const BodyGeneral = styled.div`
   position: relative;
   flex: 1;
-  padding: 0 1.5rem 3rem;
+  padding: ${({ noPadding }) => (noPadding ? '0' : '0 1.5rem 3rem')};
   overflow-y: auto;
 `;
 
