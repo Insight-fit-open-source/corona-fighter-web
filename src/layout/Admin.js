@@ -15,11 +15,10 @@ const GeneralSettingsLayout = ({
   closeMenu,
   menuIsOpen,
   children,
-  noPadding,
 }) => (
   <Styled.Wrap>
     <Sidebar active={menuIsOpen} closeMenu={closeMenu} />
-    <Styled.BodyGeneral noPadding={noPadding}>
+    <Styled.BodyGeneral>
       <div className='pageHeader'>
         <IconButton onClick={() => openMenu()} className='hamburger'>
           <MenuIcon />
