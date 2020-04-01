@@ -9,7 +9,7 @@ export default {
   },
   'Where to get Help': {
     link: '/content/[page]',
-    as: '/content/where-to-help',
+    as: '/content/where-to-get-help',
   },
   'General Guidelines': {
     link: '/content/[page]',

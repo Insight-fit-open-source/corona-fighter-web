@@ -17,5 +17,5 @@ export default {
     appId: process.env.APP_ID || '1:966661181602:web:0b0911b19a3cefe21bc7fb',
     measurementId: process.env.MEASUREMENT_ID || 'G-QFC4GSCXKR',
   },
-  GOOGLE_API_KEY: 'AIzaSyCorQm3g4mBVQQdaoVKxB4kYto3v5WIiD0',
+  GOOGLE_API_KEY: 'AIzaSyB40XfiwjO8BMalLuL-4sUc5qz35eDWaMo',
 };
