@@ -81,7 +81,6 @@ const BodyGeneral = styled.div`
 
 const AuthBody = styled.div`
   position: relative;
-  z-index: 10;
   flex: 1;
   display: flex;
   flex-direction: column;

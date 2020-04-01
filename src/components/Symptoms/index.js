@@ -1,37 +1,63 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import {
+  ExpansionPanel,
+  ExpansionPanelSummary,
+  ExpansionPanelDetails,
+  Typography,
+} from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import moment from 'moment';
 
 import { actions } from 'src/store/definitions/survey';
+
+import { Wrapper, Item } from './styles';
 
 export const Symptoms = ({
   requestSync,
   surveyResults,
   surveyResultsCount,
 }) => {
-  console.log(surveyResults);
-  console.log(surveyResultsCount);
-
   React.useEffect(() => {
     requestSync();
   }, [requestSync]);
 
-  return surveyResultsCount
-    ? _(surveyResults)
-        .keys()
-        .sort()
-        .reverse()
-        .map(key =>
-          surveyResults[key].outcome && surveyResults[key].outcome.body ? (
-            <div key={key}>
-              <h5>{surveyResults[key].outcome.severity}</h5>
-              <p>{surveyResults[key].outcome.body}</p>
-            </div>
-          ) : null,
-        )
-        .value()
-    : null;
+  return (
+    <Wrapper>
+      {surveyResultsCount
+        ? _(surveyResults)
+            .keys()
+            .sort()
+            .reverse()
+            .map(key =>
+              surveyResults[key].outcome && surveyResults[key].outcome.body ? (
+                <Item key={key} severity={surveyResults[key].outcome.severity}>
+                  <ExpansionPanel>
+                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} className={surveyResults[key].outcome.severity}>
+                      <Typography variant='body1'>
+                        {surveyResults[key].outcome.title} -{' '}
+                        <small>
+                          {moment.unix(key / 1000).fromNow()}
+                        </small>
+                      </Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                      <Typography variant='body1'>
+                        {surveyResults[key].outcome.testStatus}
+                      </Typography>
+                      <Typography variant='body1'>
+                        {surveyResults[key].outcome.body}
+                      </Typography>
+                    </ExpansionPanelDetails>
+                  </ExpansionPanel>
+                </Item>
+              ) : null,
+            )
+            .value()
+        : null}
+    </Wrapper>
+  );
 };
 
 const mapState = state => ({
