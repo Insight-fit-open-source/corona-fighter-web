@@ -13,16 +13,16 @@ const Stats = ({ data }) => {
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={3}>
+      <Grid item xs={12} sm={6} lg={3}>
         <StatsBox title='Tests' content={coronaTests} />
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={12} sm={6} lg={3}>
         <StatsBox title='Confirmed' content={coronaCases} />
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={12} sm={6} lg={3}>
         <StatsBox title='Recovered' content={coronaRecovered} />
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={12} sm={6} lg={3}>
         <StatsBox title='Deaths' content={coronaDeaths} />
       </Grid>
     </Grid>
