@@ -36,7 +36,7 @@ export const Symptoms = ({
                   <ExpansionPanel>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} className={surveyResults[key].outcome.severity}>
                       <Typography variant='body1'>
-                        {surveyResults[key].outcome.title} -{' '}
+                        {surveyResults[key].outcome.title}
                         <small>
                           {moment.unix(key / 1000).fromNow()}
                         </small>
