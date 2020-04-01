@@ -79,12 +79,12 @@ export default styled.div`
     height: 100%;
     z-index: 20;
 
-    @media only screen and (min-width: ${breakpoints.values.sm}px) {
+    @media only screen and (min-width: ${breakpoints.values.md}px) {
       padding: 3rem;
       width: 70%;
     }
 
-    @media only screen and (min-width: ${breakpoints.values.md}px) {
+    @media only screen and (min-width: ${breakpoints.values.lg}px) {
       width: 50%;
     }
   }

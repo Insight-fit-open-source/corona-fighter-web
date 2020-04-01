@@ -5,8 +5,10 @@ import Styled from './styles';
 
 const AuthLayout = ({ children }) => (
   <Styled.Wrap>
-    <Styled.AuthBody>{children}</Styled.AuthBody>
-    <VirusBg />
+    <Styled.AuthBody>
+      <VirusBg />
+      {children}
+    </Styled.AuthBody>
   </Styled.Wrap>
 );
 
