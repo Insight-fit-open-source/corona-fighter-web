@@ -29,7 +29,7 @@ const Body = styled.div`
 const BodyGeneral = styled.div`
   position: relative;
   flex: 1;
-  padding: ${({ isMap }) => (isMap ? '5rem 0 0' : '5rem 1.5rem 3rem')};
+  padding: ${({ isMap }) => (isMap ? '4rem 0 0' : '6rem 1.5rem 3rem')};
   overflow-y: auto;
 
   .pageHeader {
