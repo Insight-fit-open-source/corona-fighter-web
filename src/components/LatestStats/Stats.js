@@ -23,7 +23,7 @@ const Stats = ({ data }) => {
         <StatsBox title='Recovered' content={coronaRecovered} />
       </Grid>
       <Grid item xs={12} sm={6} lg={3}>
-        <StatsBox title='Deaths' content={coronaDeaths} />
+        <StatsBox title='Fatalities' content={coronaDeaths} />
       </Grid>
     </Grid>
   );
