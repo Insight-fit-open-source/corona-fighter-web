@@ -9,7 +9,7 @@ import Styled from './styles';
 const keyNames = {
   date: 'Date',
   testCount: 'Tests',
-  confirmedCasesCount: 'Confirmed Cases',
+  confirmedCasesCount: 'Confirmed',
   recoveriesCount: 'Recoveries',
   fatalityCount: 'Fatalities',
 };
@@ -68,7 +68,7 @@ const Charts = ({ data }) => {
     areaOpacity: 1,
     enablePoints: false,
     colors: { datum: 'color' },
-    margin: { top: 50, right: 140, bottom: 50, left: 60 },
+    margin: { top: 20, right: 60, bottom: 100, left: 60 },
     areaBaselineValue: 0,
     axisTop: null,
     axisRight: null,
@@ -93,13 +93,13 @@ const Charts = ({ data }) => {
     },
     legends: [
       {
-        anchor: 'bottom-right',
-        direction: 'column',
+        anchor: 'bottom',
+        direction: 'row',
         justify: false,
-        translateX: 100,
-        translateY: 0,
+        translateX: 0,
+        translateY: 80,
         itemsSpacing: 0,
-        itemDirection: 'left-to-right',
+        itemDirection: 'top-to-bottom',
         itemWidth: 80,
         itemHeight: 20,
         itemOpacity: 0.75,
