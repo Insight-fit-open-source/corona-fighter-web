@@ -2,7 +2,7 @@ import React from 'react';
 import BgWrap from './style';
 
 export default ({ styles }) => (
-  <BgWrap styles={styles}>
+  <BgWrap style={styles}>
     <svg viewBox='0 0 7950 2150'>
       <g id='Virus'>
         <g>

@@ -77,6 +77,7 @@ export default styled.div`
     width: 100%;
     height: 100%;
     height: 100%;
+    z-index: 20;
 
     @media only screen and (min-width: ${breakpoints.values.sm}px) {
       padding: 3rem;

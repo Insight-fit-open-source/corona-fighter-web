@@ -13,16 +13,11 @@ const defaultState = {
   updatedAt: '',
 };
 
-export const themeOptionsSynced = (state, { payload }) => ({
-  ...state,
-  ...payload,
-  subscribed: true,
-});
-
 const definition = {
   PROFILE_SYNCED: (state, { payload }) => ({
     ...state,
     ...payload,
+    lastCallFailed: false,
   }),
   PROFILE_SYNC_FAILED: state => ({ ...state, lastCallFailed: true }),
   CHECKIN: state => ({ ...state }),

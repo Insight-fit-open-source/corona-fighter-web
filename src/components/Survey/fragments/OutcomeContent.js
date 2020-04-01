@@ -10,7 +10,11 @@ import VirusBg from 'src/components/common/VirusBg';
 
 const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
   if (!active) return null;
-  setOutcome(outcome);
+
+  React.useEffect(() => {
+    setOutcome(outcome);
+  },[active]);
+
   const whatsNext = {
     severe: () => (
       <>

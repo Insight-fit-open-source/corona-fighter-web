@@ -4,6 +4,7 @@ const defaultState = {
   selected: {},
   surveyStarted: null,
   lastCallFailed: false,
+  surveyResults: {},
 };
 
 const definition = {
@@ -14,15 +15,20 @@ const definition = {
       ...payload,
     },
   }),
-  SURVEY_STARTED: (state) => ({
+  SURVEY_STARTED: state => ({
     ...state,
     surveyStarted: state.surveyStarted || Date.now(),
   }),
-  SURVEY_COMPLETED: (state) => ({
+  SURVEY_COMPLETED: state => ({
     ...state,
     surveyStarted: null,
   }),
-  SURVEY_SYNC_SUCCEEDED: state => ({ ...state, lastCallFailed: false }),
+  SURVEY_SYNC_REQUESTED: state => ({ ...state }),
+  SURVEY_SYNC_SUCCEEDED: (state, { payload }) => ({
+    ...state,
+    surveyResults: { ...payload },
+    lastCallFailed: false,
+  }),
   SURVEY_SYNC_FAILED: state => ({ ...state, lastCallFailed: true }),
 };
 

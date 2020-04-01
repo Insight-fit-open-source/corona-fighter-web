@@ -1,8 +1,10 @@
 import styled from 'styled-components';
+import { rgba } from 'polished';
 import colors from 'src/app/theme/colors';
 import breakpoints from 'src/app/theme/breakpoints';
 
 const Sidebar = styled.div`
+  will-change: 'transform';
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
@@ -16,24 +18,24 @@ const Sidebar = styled.div`
   max-width: inherit;
   position: fixed;
   z-index: 200;
-  transition: transform 0.365s;
+  transition: transform 0.365s linear;
+  transition-delay: 0.24s;
   transform: translate3d(-100%, 0, 0);
-
-  &.active {
-    transform: translate3d(-0%, 0, 0);
-  }
+  ${props => props.active && 'transform: translate3d(-0%, 0, 0)'};
 
   @media only screen and (min-width: ${breakpoints.values.md}px) {
     width: 30%;
     min-width: 15rem;
     max-width: 22rem;
-    position: relative;
+    position: sticky;
     transition: none;
     transform: translate3d(-0%, 0, 0);
+    box-shadow: 3px 0px 14px ${rgba(colors.blueDark, 0.07)};
   }
 
   .branding {
-    padding-left: 1.5rem;
+    padding: 0.75rem 0 1.5rem;
+    width: 12rem;
   }
 
   .main-nav,

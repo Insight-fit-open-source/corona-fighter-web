@@ -10,8 +10,6 @@ const PopoverContent = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${colors.blueDark};
-  transform: ${props =>
-    props.layoutActive ? 'translate3d(0%, 0%, 0)' : 'translate3d(0%, 35%, 0)'};
   transition: transform 0.365s ease-in;
 `;
 
@@ -25,6 +23,7 @@ const PopoverBody = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 50;
   background: ${colors.blueDark};
   color: ${colors.white};
 
