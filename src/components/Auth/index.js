@@ -1,10 +1,11 @@
 import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import settings from 'src/app/publicSettings';
 import firebase from 'firebase';
 import { Typography } from '@material-ui/core';
 
-import AuthLayout from '../../layout/Auth';
+import settings from 'src/app/publicSettings';
+import Logo from 'src/components/common/Logo';
+import AuthLayout from 'src/layout/Auth';
 import Styled from './styles';
 
 if (!firebase.apps.length) {
@@ -25,24 +26,26 @@ const Auth = () => {
   };
 
   return (
-    <AuthLayout
-      body={
-        <>
-          <Styled.TitleWrap>
-            <Typography variant='h1'>
-              Welcome To Your Daily Symptom Tracker
-            </Typography>
-            <Typography variant='body1'>
-              Join us to reduce pressure on medical facilities, reduce deaths and track the evolution of the disease in our country.
-            </Typography>
-          </Styled.TitleWrap>
-          <StyledFirebaseAuth
-            uiConfig={firebaseUiConfig}
-            firebaseAuth={firebase.auth()}
-          />
-        </>
-      }
-    />
+    <AuthLayout>
+      <>
+        <Styled.TitleWrap>
+          <div className='logo'>
+            <Logo />
+          </div>
+          <Typography variant='h1'>
+            Welcome To Your Daily Symptom Tracker
+          </Typography>
+          <Typography variant='body1'>
+            Join us to reduce pressure on medical facilities, reduce deaths and
+            track the evolution of the disease in our country.
+          </Typography>
+        </Styled.TitleWrap>
+        <StyledFirebaseAuth
+          uiConfig={firebaseUiConfig}
+          firebaseAuth={firebase.auth()}
+        />
+      </>
+    </AuthLayout>
   );
 };
 

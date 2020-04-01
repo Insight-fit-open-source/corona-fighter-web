@@ -14,6 +14,7 @@ export default styled.div`
   height: 100vh;
   overflow-x: auto;
   padding: 1.5rem;
+  z-index: 5;
   transform: ${props =>
     props.layoutActive ? 'translate3d(0, 0%, 0)' : 'translate3d(0, 100%, 0)'};
   transition: transform 0.45s ease-out 0s;
@@ -76,6 +77,7 @@ export default styled.div`
     width: 100%;
     height: 100%;
     height: 100%;
+    z-index: 20;
 
     @media only screen and (min-width: ${breakpoints.values.sm}px) {
       padding: 3rem;

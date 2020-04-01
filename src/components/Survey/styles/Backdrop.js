@@ -31,7 +31,7 @@ export default styled.div`
       padding: 3rem;
       width: 70%;
     }
-    
+
     @media only screen and (min-width: ${breakpoints.values.md}px) {
       width: 50%;
     }
@@ -41,7 +41,7 @@ export default styled.div`
       position: relative;
       font-size: calc(1.5rem + 2.5vw);
       line-height: 1;
-      
+
       @media only screen and (min-width: ${breakpoints.values.md}px) {
         font-size: 3rem;
       }

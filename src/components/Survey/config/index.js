@@ -2,7 +2,7 @@ import options from './options';
 
 export default {
   welcome: {
-    title: "Let's Get Started",
+    title: "Let's See How You're Doing Today.",
     content:
       'By Tracking your symptoms daily, you can find out if you should get tested.  Please be honest when answering our questions. Fake information will lead to unnecessary testing.',
     layout: 'backdrop',
@@ -46,7 +46,8 @@ export default {
     next: '/survey/travel-contact',
   },
   'travel-contact': {
-    title: 'Have you travelled or come into contact with Covid19 in the past 14 days??',
+    title:
+      'Have you travelled or come into contact with Covid19 in the past 14 days??',
     content: '',
     layout: 'question',
     options: options.travel,

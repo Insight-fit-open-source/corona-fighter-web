@@ -10,6 +10,7 @@ const definition = {
     data: payload,
   }),
   GET_DATA_FAILED: state => ({ ...state }),
+  GET_DATA_REQUESTED: state => ({ ...state }),
 };
 
 const { reducer, actions, constants } = duxedo({

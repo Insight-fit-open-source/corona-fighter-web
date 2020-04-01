@@ -4,13 +4,24 @@ import colors from 'src/app/theme/colors';
 
 const TitleWrap = styled.div`
   width: 100%;
-  
-    h1,
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+
+  .logo {
+    display: block;
+    position: relative;
+    height: 3rem;
+    width: 12rem;
+  }
+
+  h1,
   p {
     text-align: center;
     color: ${colors.white};
     width: 100%;
-    margin: 0 auto 1.5rem;
+    margin: 0 0 1.5rem;
   }
 
   h1 {
