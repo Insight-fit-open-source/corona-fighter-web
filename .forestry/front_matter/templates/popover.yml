@@ -1,0 +1,34 @@
+---
+label: Popover
+hide_body: true
+fields:
+  - name: heading
+    type: text
+    config:
+      required: true
+      min: '3'
+    label: Heading
+    default: Popover Heading
+  - name: body
+    type: textarea
+    default: Some body text here
+    config:
+      required: false
+      wysiwyg: false
+      schema:
+        format: markdown
+    label: Body
+  - name: ok_button_text
+    type: text
+    config:
+      required: true
+    label: OK Button Text
+    default: Same as before
+  - name: not_ok_button_text
+    type: text
+    config:
+      required: true
+    label: Not Ok Button Text
+    default: Let's check together
+pages:
+  - forestry/data/popover.json

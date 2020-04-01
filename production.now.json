@@ -1,0 +1,23 @@
+{
+  "scope": "sigmadigital",
+  "github": {
+    "enabled": false,
+    "autoAlias": true,
+    "silent": false,
+    "autoJobCancelation": true
+  },
+  "version": 2,
+  "alias": [ "app.testforcovid.co.za" ],
+  "build": {
+    "env": {
+      "API_KEY": "@prod-api-key",
+      "AUTH_DOMAIN": "@prod-auth-domain",
+      "DATABASE_URL": "@prod-database-url",
+      "PROJECT_ID": "@prod-project-id",
+      "STORAGE_BUCKET": "@prod-storage-bucket",
+      "MESSAGING_SENDER_ID": "@prod-messaging-sender-id",
+      "APP_ID": "@prod-app-id",
+      "MEASUREMENT_ID": "@prod-measurement-id"
+    }
+  }
+}

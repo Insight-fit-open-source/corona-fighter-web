@@ -1,0 +1,26 @@
+---
+label: Landing Page
+hide_body: false
+fields:
+- name: site_title
+  type: text
+  config:
+    required: true
+    min: '3'
+  label: Site Title
+- name: page_title
+  type: text
+  config:
+    required: false
+  label: Page Title
+- name: page_body
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: false
+    schema:
+      format: markdown
+  label: Page Body
+pages:
+- forestry/data/landingPage.json

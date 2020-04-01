@@ -14,7 +14,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import es6promise from 'es6-promise';
 
 import rootDefinition, { initialState } from './definitions';
-import rootSaga from './sagas';
+import rootSaga from './sagas/index';
 
 es6promise.polyfill();
 

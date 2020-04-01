@@ -1,10 +1,9 @@
 import { all, fork } from 'redux-saga/effects';
 
-import auth from './auth/auth';
-import signOut from './auth/signOut';
+import sync from './sync';
 
 export default function* rootSaga() {
   if (typeof window !== 'undefined') {
-    yield all([fork(auth)]);
+    yield all([fork(sync)]);
   }
 }

@@ -1,0 +1,14 @@
+{
+  "scope": "coronasepush",
+  "github": {
+    "enabled": false,
+    "autoAlias": false,
+    "silent": false,
+    "autoJobCancelation": true
+  },
+  "version": 2,
+  "alias": [ "app-staging.testforcovid.co.za" ],
+  "build": {
+    "env": {}
+  }
+}
