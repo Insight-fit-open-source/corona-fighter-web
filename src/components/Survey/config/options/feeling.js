@@ -5,16 +5,16 @@ export default {
   healthy: {
     key: 'healthy',
     title: 'Healthy & Normal',
-    desc: 'I feel completely fine',
+    desc: 'Healthy & Normal',
   },
   notHealthly: {
     key: 'notHealthy',
     title: 'I feel sick',
-    desc: "I don't think this is normal",
+    desc: 'I feel sick',
   },
   sick: {
     key: 'sick',
     title: 'I feel very sick',
-    desc: "This isn't normal",
+    desc: 'I feel very sick',
   },
 };
