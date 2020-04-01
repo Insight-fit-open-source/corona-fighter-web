@@ -1,16 +1,19 @@
 import duxedo from '@sigmadigital/duxedo';
 
 const defaultState = {
-  data: [],
+  cumulative: [],
+  daily: {},
 };
 
 const definition = {
-  GET_DATA_SUCCESS: (state, { payload }) => ({
+  CUMULATIVE_SYNCED: (state, { payload }) => ({
     ...state,
-    data: payload,
+    cumulative: payload.data,
   }),
-  GET_DATA_FAILED: state => ({ ...state }),
-  GET_DATA_REQUESTED: state => ({ ...state }),
+  DAILY_SYNCED: (state, { payload }) => ({
+    ...state,
+    daily: payload,
+  }),
 };
 
 const { reducer, actions, constants } = duxedo({
