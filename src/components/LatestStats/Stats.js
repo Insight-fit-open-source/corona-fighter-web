@@ -23,23 +23,23 @@ const Stats = ({ data, children }) => {
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} sm={6} lg={4}>
+      <Grid item xs={12} lg={4}>
         <StatsBox title='Tests' content={testCount} />
       </Grid>
-      <Grid item xs={12} sm={6} lg={4}>
+      <Grid item xs={12} lg={4}>
         <StatsBox title='Confirmed' content={confirmedCasesCount} />
       </Grid>
-      <Grid item xs={12} sm={6} lg={4}>
+      <Grid item xs={12} lg={4}>
         <StatsBox title='Percentage Positive' content={`${Math.round((confirmedCasesCount/testCount * 100 * 100))/100}%`} />
       </Grid>
       {children}
-      <Grid item xs={12} sm={6} lg={4}>
+      <Grid item xs={12} lg={4}>
         <StatsBox title='Recovered' content={recoveriesCount} />
       </Grid>
-      <Grid item xs={12} sm={6} lg={4}>
+      <Grid item xs={12} lg={4}>
         <StatsBox title='Fatalities' content={fatalityCount} />
       </Grid>
-      <Grid item xs={12} sm={6} lg={4}>
+      <Grid item xs={12} lg={4}>
         <StatsBox title='Last Updated' content={moment.unix(date).fromNow()} />
       </Grid>
     </Grid>
