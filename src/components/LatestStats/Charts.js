@@ -59,7 +59,7 @@ const Charts = ({ data }) => {
     enableArea: true,
     areaOpacity: 1,
     enablePoints: false,
-    colors: { scheme: 'purple_blue' },
+    colors: { scheme: 'paired' },
     margin: { top: 50, right: 140, bottom: 50, left: 60 },
     areaBaselineValue: 0,
     axisTop: null,
