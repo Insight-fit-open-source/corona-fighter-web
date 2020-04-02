@@ -26,7 +26,7 @@ export default {
     severity: 'normal',
   },
   outcome4: {
-    title: 'Despite possible contact, You do not qualify for testing currently',
+    title: 'Despite possible contact, you do not qualify for testing currently',
     testStatus:
       'You will most likely be turned away if you attempt to be tested.',
     body:

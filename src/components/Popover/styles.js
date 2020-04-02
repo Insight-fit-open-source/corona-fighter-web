@@ -14,9 +14,7 @@ const PopoverContent = styled.div`
 `;
 
 const PopoverBody = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
+  display: block;
   padding: 1.5rem;
   position: absolute;
   top: 0;
@@ -27,23 +25,29 @@ const PopoverBody = styled.div`
   background: ${colors.blueDark};
   color: ${colors.white};
 
+  @media only screen and (mxa-height: 600px) {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+  }
+
   @media only screen and (min-width: ${breakpoints.values.sm}px) {
-    padding: 3rem;
-    width: 70%;
+    padding: 3rem 40% 3rem 3rem;
   }
 
   @media only screen and (min-width: ${breakpoints.values.md}px) {
-    width: 50%;
+    padding: 3rem 50% 3rem 3rem;
   }
 
   h1 {
-    margin-bottom: 3rem;
+    margin: 3rem 0;
     position: relative;
     font-size: calc(1.5rem + 2.5vw);
     line-height: 1;
 
     @media only screen and (min-width: ${breakpoints.values.md}px) {
       font-size: 3rem;
+      margin: 0.7.5rem 0 3rem 0;
     }
 
     &:after {
