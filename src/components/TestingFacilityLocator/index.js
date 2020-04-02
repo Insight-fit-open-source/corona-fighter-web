@@ -32,10 +32,12 @@ const ContainerDiv = styled.div`
     background: #fff;
     margin-right: 1rem;
     border-radius: 4px;
+    max-width: 91vw;
   }
 
   .MuiInputBase-root {
     margin-bottom: 0;
+    max-width: 91vw;
   }
 `;
 
@@ -159,6 +161,10 @@ class MyComponents extends Component {
                 <Typography variant='body2'>
                   <strong>Appointment Needed:</strong>
                   {selected.appointmentNeeded}
+                </Typography>
+                <Typography variant='body2'>
+                  <strong>Lab:</strong>
+                  {selected.lab}
                 </Typography>
                 <Typography variant='body2'>
                   <strong>Price:</strong> {selected.price}

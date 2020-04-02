@@ -12,9 +12,11 @@ const AutocompleteContainer = styled.div`
   background: #fff;
   margin: 10px;
   border-radius: 4px;
+  max-width: 91vw;
 
   .MuiInputBase-root {
     margin: 0;
+    max-width: 91vw;
   }
 `;
 
