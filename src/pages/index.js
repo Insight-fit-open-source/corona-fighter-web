@@ -24,9 +24,8 @@ export const Home = ({ isAuthenticated }) => {
             </Link>
           }>
           {/*<AlertTitle>Take The Symptoms Survey, and Help Fight COVID19</AlertTitle>*/}
-          Take The Symptoms Survey, and Help Fight COVID19.
+          <span className='hide-on-mobile'>Take The Symptoms Survey, and Help Fight COVID19.</span>
         </Alert>
-
         <Symptoms />
       </Admin>
     </>

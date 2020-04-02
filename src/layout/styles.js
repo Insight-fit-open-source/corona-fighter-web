@@ -10,6 +10,12 @@ const Wrap = styled.div`
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+
+  .hide-on-mobile {
+    @media only screen and (max-width: ${breakpoints.values.sm}px) {
+        display: none;
+    }
+  }
 `;
 
 const BodyWrap = styled.div`
