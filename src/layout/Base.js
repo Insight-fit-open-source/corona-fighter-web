@@ -1,7 +1,8 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import WithAuth from 'src/app/lib/firebase/auth/WithAuth';
-import Popover from 'src/components/Popover';
-import OnBoarding from 'src/components/Onboarding';
+const Popover  = dynamic(import('src/components/Popover'), { ssr: false})
+const OnBoarding  = dynamic(import('src/components/Onboarding'), { ssr: false})
 
 const Base = ({ children, isAuthenticated }) => (
   <>

@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { Button, Typography } from '@material-ui/core';
 import ButtonIcon from '@material-ui/icons/ChevronRight';
 import Dialog from '@material-ui/core/Dialog';
-import Slide from '@material-ui/core/Slide';
 
 import moment from 'moment';
 import WithAuth from 'src/app/lib/firebase/auth/WithAuth';
@@ -13,10 +12,6 @@ import { actions } from 'src/store/definitions/profile';
 import data from 'forestry/data/popover.json';
 import VirusBg from 'src/components/common/VirusBg';
 import Styled from './styles';
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction='up' ref={ref} {...props} />;
-});
 
 const Popover = props => {
   const { checkin, isAuthenticated, lastCheckin, onBoardingComplete } = props;
@@ -36,8 +31,7 @@ const Popover = props => {
     <Dialog
       fullScreen
       open={open}
-      onClose={handleClose}
-      TransitionComponent={Transition}>
+      onClose={handleClose}>
       <VirusBg styles={{ zIndex: 100 }} />
       <Styled.PopoverContent>
         <Styled.PopoverBody>

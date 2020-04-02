@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import colors from 'src/app/theme/colors';
+import breakpoints from 'src/app/theme/breakpoints';
 import sizes from 'src/app/theme/sizes';
 
 const fadeIn = keyframes`
@@ -57,12 +58,14 @@ export default styled.div`
     }
   }
 
-  &:hover {
-    border: 1px solid ${colors.blueLight};
-    background-color: rgba(186, 232, 232, 0.25);
+  @media only screen and (min-width: ${breakpoints.values.md}px) {
+    &:hover {
+      border: 1px solid ${colors.blueLight};
+      background-color: rgba(186, 232, 232, 0.25);
 
-    .reveal-description {
-      opacity: 0.8;
+      .reveal-description {
+        opacity: 0.8;
+      }
     }
   }
 
