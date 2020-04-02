@@ -15,12 +15,15 @@ const OnBoardingContent = styled.div`
   .MuiFormControl-root.MuiTextField-root {
       width: 100%;
   }
+  
+  form button {
+    line-height: 3rem;
+    padding: 0 3rem;
+  }
 `;
 
 const OnBoardingBody = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
+  display: block;
   padding: 1.5rem;
   position: absolute;
   top: 0;
@@ -29,25 +32,31 @@ const OnBoardingBody = styled.div`
   height: 100%;
   z-index: 50;
   background: ${colors.greyXLight};
-  //color: ${colors.white};
+  overflow-y: scroll;
+   
 
-  @media only screen and (min-width: ${breakpoints.values.sm}px) {
-    padding: 3rem;
-    width: 70%;
+  @media only screen and (min-width: ${breakpoints.values.md}px) and (min-height: 600px) {
+    display: flex;
+    flex-flow: column nowrap;
+  justify-content: center;
+    padding: 3rem 40% 3rem 3rem;
+    width: 100%;
   }
 
-  @media only screen and (min-width: ${breakpoints.values.md}px) {
-    width: 50%;
+  @media only screen and (min-width: ${breakpoints.values.lg}px) {
+    padding: 3rem 50% 3rem 3rem;
+    width: 100%;
   }
 
-  h1 {
-    margin-bottom: 3rem;
+  h2 {
+    margin: 3rem 0;
     position: relative;
     font-size: calc(1.5rem + 2.5vw);
     line-height: 1;
 
     @media only screen and (min-width: ${breakpoints.values.md}px) {
       font-size: 3rem;
+      margin: 0.7.5rem 0 3rem 0;
     }
 
     &:after {
@@ -68,17 +77,13 @@ const OnBoardingBody = styled.div`
     margin-bottom: 1.5rem;
   }
 
-  button:first-of-type {
-    margin-top: 4.5rem;
-  }
-
   button {
-    max-width: 20rem;
-    padding: 0.75rem 0;
+    width: 100%;
     margin-top: 1rem;
+    height: 3.5rem;
+    line-height: 3.5rem;
   }
 `;
-
 
 export default {
   OnBoardingContent,
