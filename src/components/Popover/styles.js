@@ -25,9 +25,11 @@ const PopoverBody = styled.div`
   background: ${colors.blueDark};
   color: ${colors.white};
 
-  @media only screen and (mxa-height: 600px) {
+  @media only screen and (max-height: 600px) {
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: column;
+    overflow: scroll;
+    align-items: stretch;
     justify-content: center;
   }
 
