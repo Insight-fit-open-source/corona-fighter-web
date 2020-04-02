@@ -11,9 +11,7 @@ import Styled from './styles';
 
 const OnBoarding = props => {
   const { isAuthenticated, userId, onBoardingComplete } = props;
-
   const showOnBoarding = isAuthenticated && !onBoardingComplete;
-  const [open, setOpen] = React.useState(Boolean(showOnBoarding));
 
   const closeDialog = () => {
     setOpen(false);
@@ -22,7 +20,7 @@ const OnBoarding = props => {
   return (
     <Dialog
       fullScreen
-      open={open}
+      open={showOnBoarding}
       onClose={() => {}}>
       <Styled.OnBoardingContent>
         <Styled.OnBoardingBody>
