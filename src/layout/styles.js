@@ -1,14 +1,17 @@
-import styled , { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { rgba } from 'polished';
 
 import colors from 'src/app/theme/colors';
 import breakpoints from 'src/app/theme/breakpoints';
 import sizes from 'src/app/theme/sizes';
 
-
 const GlobalStyle = createGlobalStyle`
   html {
-    font-size: 14px;
+    font-size: 12px;
+
+    @media  (min-height: 450px) {
+      font-size: 14px;
+    }
 
     @media  (min-height: 650px), (min-width: 600px) {
       font-size: 16px;
@@ -18,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
       font-size: 17px;
     }
   }
-`
+`;
 const Wrap = styled.div`
   display: flex;
   height: 100vh;
@@ -27,7 +30,7 @@ const Wrap = styled.div`
 
   .hide-on-mobile {
     @media only screen and (max-width: ${breakpoints.values.sm}px) {
-        display: none;
+      display: none;
     }
   }
 `;
@@ -114,7 +117,7 @@ const AuthBody = styled.div`
 `;
 
 const Styled = {
-  createGlobalStyle,
+  GlobalStyle,
   Wrap,
   BodyWrap,
   Body,
