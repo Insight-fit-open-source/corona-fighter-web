@@ -21,7 +21,10 @@ const Auth = () => {
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
       firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-      firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+      {
+        provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+        defaultCountry: 'ZA',
+      },
     ],
   };
 
@@ -37,7 +40,7 @@ const Auth = () => {
           </Typography>
           <Typography variant='body1'>
             Join us to reduce pressure on medical facilities, reduce deaths and
-            track the evolution of the disease in our country.
+            track the evolution of the disease in South Africa.
           </Typography>
         </Styled.TitleWrap>
         <StyledFirebaseAuth

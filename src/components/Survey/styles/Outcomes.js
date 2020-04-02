@@ -12,7 +12,7 @@ export default styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-  overflow-x: auto;
+  overflow: hidden;
   padding: 1.5rem;
   z-index: 5;
   transform: ${props =>
@@ -24,7 +24,7 @@ export default styled.div`
     line-height: 1.2;
     margin-bottom: 3rem;
     position: relative;
-    text-transform: capitalize;
+    text-transform: none;
 
     &:after {
       content: '';
@@ -78,6 +78,7 @@ export default styled.div`
     height: 100%;
     height: 100%;
     z-index: 20;
+    overflow-y: auto;
 
     @media only screen and (min-width: ${breakpoints.values.md}px) {
       padding: 3rem;

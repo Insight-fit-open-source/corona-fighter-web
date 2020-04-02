@@ -19,7 +19,7 @@ const slowMo = keyframes`
 export default styled.div`
   position: fixed;
   mix-blend-mode: screen;
-  bottom: -20%;
+  bottom: -4%;
   left: 0;
   width: 100%;
   max-width: 100%;
@@ -27,6 +27,7 @@ export default styled.div`
   z-index: 0;
   height: 40vw;
   pointer-events: none;
+  transform: translate3d(0,0,0);
 
   svg {
     width: auto;
@@ -35,5 +36,13 @@ export default styled.div`
     position: relative;
     margin: 0 auto;
     animation: ${slowMo} 12s ease-in-out infinite;
+  }
+
+  @media only screen and (min-width: 600px) {
+    bottom: -8%;
+  }
+
+   @media only screen and (min-width: 960px) {
+    bottom: -18%;
   }
 `;
