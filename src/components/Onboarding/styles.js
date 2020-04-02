@@ -9,7 +9,7 @@ const OnBoardingContent = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: ${colors.blueDark};
+  background-color: ${colors.greyXLight};
   transition: transform 0.365s ease-in;
 `;
 
@@ -24,8 +24,8 @@ const OnBoardingBody = styled.div`
   width: 100%;
   height: 100%;
   z-index: 50;
-  background: ${colors.blueDark};
-  color: ${colors.white};
+  background: ${colors.greyXLight};
+  //color: ${colors.white};
 
   @media only screen and (min-width: ${breakpoints.values.sm}px) {
     padding: 3rem;

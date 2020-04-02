@@ -7,11 +7,9 @@ import ButtonIcon from '@material-ui/icons/ChevronRight';
 import Dialog from '@material-ui/core/Dialog';
 import Slide from '@material-ui/core/Slide';
 
-import moment from 'moment';
 import WithAuth from 'src/app/lib/firebase/auth/WithAuth';
-import { actions } from 'src/store/definitions/profile';
-import data from 'forestry/data/popover.json';
 import VirusBg from 'src/components/common/VirusBg';
+import Form from './Form';
 import Styled from './styles';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -19,16 +17,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const OnBoarding = props => {
-  const { checkin, isAuthenticated, lastCheckin, onBoardingComplete } = props;
+  const { isAuthenticated, onBoardingComplete } = props;
 
-  const showOnBoarding =
-    isAuthenticated &&
-    moment().subtract(6, 'hours') > moment(+lastCheckin) &&
-    onBoardingComplete;
+  const showOnBoarding = isAuthenticated && !onBoardingComplete;
   const [open, setOpen] = React.useState(Boolean(showOnBoarding));
 
-  const handleClose = () => {
-    checkin();
+  const handleSubmit = () => {
     setOpen(false);
   };
 
@@ -36,24 +30,22 @@ const OnBoarding = props => {
     <Dialog
       fullScreen
       open={open}
-      onClose={handleClose}
+      onClose={() => {}}
       TransitionComponent={Transition}>
       <VirusBg styles={{ zIndex: 100 }} />
       <Styled.OnBoardingContent>
         <Styled.OnBoardingBody>
-          <Typography variant='h1'>{data.heading}</Typography>
-          <Typography variant='body1'>{data.body}</Typography>
-          <Link href='/survey/[step]' as='/survey/feeling'>
-            <Button
-              variant='contained'
-              color='primary'
-              endIcon={<ButtonIcon />}>
-              {data.not_ok_button_text}
-            </Button>
-          </Link>
-          <Button variant='outlined' color='secondary' onClick={handleClose}>
-            {data.ok_button_text}
-          </Button>
+          <Typography variant='h2'>Let's Get To Know You.</Typography>
+          <Typography variant='body1'>Some basic details will help our analysis of your symptoms. We wouldn't force you and we promise to protect your information. Your honesty will help us help you, and help all South Africans. </Typography>
+          <Form />
+          {/*<Link href='/survey/[step]' as='/survey/feeling'>*/}
+          {/*  <Button*/}
+          {/*    variant='contained'*/}
+          {/*    color='primary'*/}
+          {/*    endIcon={<ButtonIcon />}>*/}
+          {/*    ok*/}
+          {/*  </Button>*/}
+          {/*</Link>*/}
         </Styled.OnBoardingBody>
       </Styled.OnBoardingContent>
     </Dialog>
@@ -61,12 +53,7 @@ const OnBoarding = props => {
 };
 
 const mapState = state => ({
-  lastCheckin: state.profile.lastCheckin,
   onBoardingComplete: state.profile.onBoardingComplete,
 });
 
-const mapDispatch = dispatch => ({
-  checkin: () => dispatch(actions.checkin()),
-});
-
-export default compose(WithAuth, connect(mapState, mapDispatch))(OnBoarding);
+export default compose(WithAuth, connect(mapState))(OnBoarding);
