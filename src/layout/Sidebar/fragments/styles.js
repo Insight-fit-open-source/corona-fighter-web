@@ -34,8 +34,8 @@ const Sidebar = styled.div`
   }
 
   .branding {
-    padding: 0.75rem 0 1.5rem;
-    width: 12rem;
+    padding: 0.75rem 1.5rem 1.5rem;
+    width: 14rem;
   }
 
   .main-nav,
