@@ -20,7 +20,7 @@ export default styled.div`
     display: block;
   }
 
-  @media only screen and (min-width: ${breakpoints.values.md}px) {
+  @media only screen and (min-width: 960px) and (min-height: 600px) {
     width: 80vw;
     height: 70vh;
   }
