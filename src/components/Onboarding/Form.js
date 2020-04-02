@@ -1,21 +1,25 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
+import Select from './Select';
 import {
   Button,
   LinearProgress,
   FormControl,
   InputLabel,
-  MenuItem,
+  MenuItem, Grid,
 } from '@material-ui/core';
-import { TextField, Select } from 'formik-material-ui';
+import { TextField  } from 'formik-material-ui';
 import {
   TimePicker,
   DatePicker,
   DateTimePicker,
 } from 'formik-material-ui-pickers';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+
+
 // Depending on the library you picked
 import DateFnsUtils from '@date-io/date-fns';
+import StatsBox from '../LatestStats/StatsBox';
 export default () => {
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -31,49 +35,53 @@ export default () => {
             alert(JSON.stringify(values, null, 2));
           }, 500);
         }}>
-        {({ submitForm, isSubmitting, handleChange  }) => (
+        {({ submitForm, isSubmitting  }) => (
           <Form>
+          <Grid container spacing={3}>
+          <Grid item xs={12} md={6}>
             <Field component={TextField} name='fullname' label='Full Name' />
-            <Field component={DatePicker} name='dob' label='Date' />
-            <Field
-              component={TextField}
-              name='email'
-              type='email'
-              label='Email'
-            />
-            <Field component={TextField} name='phone' label='Phone Number' />
-            <Field
-              component={TextField}
-              name='location'
-              label='Suburb or Address'
-            />
-            <FormControl>
-              {/*<InputLabel htmlFor='age-simple'>Age</InputLabel>*/}
+          </Grid>
+            <Grid item xs={12} md={6}>
+              <Field component={DatePicker} name='dob' label='Date' />
+            </Grid>
+            <Grid item xs={12} md={6}>
               <Field
-                displayEmpty
-                multiple
-                component={Select}
-                onChange={handleChange}
-                name='age'
-                inputProps={{
-                  id: 'age-simple',
-                  value: [],
-                  renderValue: (selected) => {
-                    console.log(selected);
-                    return selected;
-                  },
-                }}>
-                {[10, 20, 30].map(val => (
-                  <MenuItem value={val} key={val}>
-                    {val}
-                  </MenuItem>
-                ))}
-                {/*<MenuItem value={10}>Ten</MenuItem>*/}
-                {/*<MenuItem value={20}>Twenty</MenuItem>*/}
-                {/*<MenuItem value={30}>Thirty</MenuItem>*/}
-              </Field>
-            </FormControl>
-            ;{isSubmitting && <LinearProgress />}
+                component={TextField}
+                name='email'
+                type='email'
+                label='Email'
+              />
+          </Grid>
+            <Grid item xs={12} md={6}>
+              <Field component={TextField} name='phone' label='Phone Number' />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Field
+                component={TextField}
+                name='location'
+                label='Suburb or Address'
+              />
+            </Grid>
+          </Grid>
+            <Field
+              classNmae={'conditions-select'}
+              component={Select}
+              name='conditions'
+              isMulti={true}
+              options={[
+                { value: 'heart disease', label: 'Heart Disease' },
+                { value: 'lung disease', label: 'Lung Disease' },
+                { value: 'high blood pressure', label: 'High Blood Pressure' },
+                { value: 'cancer', label: 'Cancer' },
+                { value: 'low immune system', label: 'immune System, TB, HIV etc' },
+              ]}
+            />
+            <Field
+              component={TextField}
+              name='medication'
+              label='Any Medication?'
+            />
+            {isSubmitting && <LinearProgress />}
             <br />
             <Button
               variant='contained'

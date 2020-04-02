@@ -10,7 +10,6 @@ import Symptoms from 'src/components/Symptoms';
 export const Home = () => {
   return (
     <>
-      {isAuthenticated && <Popover />}
       <Admin pageTitle='My Symptoms'>
         <Alert
           severity='info'

@@ -11,6 +11,10 @@ const OnBoardingContent = styled.div`
   height: 100vh;
   background-color: ${colors.greyXLight};
   transition: transform 0.365s ease-in;
+
+  .MuiFormControl-root.MuiTextField-root {
+      width: 100%;
+  }
 `;
 
 const OnBoardingBody = styled.div`
@@ -74,6 +78,7 @@ const OnBoardingBody = styled.div`
     margin-top: 1rem;
   }
 `;
+
 
 export default {
   OnBoardingContent,
