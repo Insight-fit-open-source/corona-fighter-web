@@ -14,16 +14,18 @@ export const Home = ({ isAuthenticated }) => {
     <>
       {isAuthenticated && <Popover />}
       <Admin pageTitle='My Symptoms'>
-          <Alert severity="info"  action={
+        <Alert
+          severity='info'
+          action={
             <Link href='/survey/[step]' as='/survey/welcome'>
-            <Button color="inherit" size="small">
-              Take the Survey
-            </Button>
+              <Button color='inherit' size='small'>
+                Take the Survey
+              </Button>
             </Link>
           }>
-            {/*<AlertTitle>Take The Symptoms Survey, and Help Fight COVID19</AlertTitle>*/}
-            Take The Symptoms Survey, and Help Fight COVID19.
-          </Alert>
+          {/*<AlertTitle>Take The Symptoms Survey, and Help Fight COVID19</AlertTitle>*/}
+          Take The Symptoms Survey, and Help Fight COVID19.
+        </Alert>
 
         <Symptoms />
       </Admin>
