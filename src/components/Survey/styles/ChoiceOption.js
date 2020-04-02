@@ -58,9 +58,18 @@ export default styled.div`
   }
 
   &:hover {
-    border: 1px solid ${colors.blueDark};
+    border: 1px solid ${colors.blueLight};
+    background-color: rgba(186, 232, 232, 0.25);
+
     .reveal-description {
       opacity: 0.8;
+    }
+  }
+
+  &:active {
+    border: none;
+    .reveal-description {
+      opacity: 0;
     }
   }
 

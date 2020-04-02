@@ -11,7 +11,7 @@ export default styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   padding: 1.5rem;
   z-index: 5;
@@ -80,13 +80,17 @@ export default styled.div`
     z-index: 20;
     overflow-y: auto;
 
+     @media (max-height: 750px) {
+      overflow-y: scroll;
+      display: block;
+    }
+
     @media only screen and (min-width: ${breakpoints.values.md}px) {
-      padding: 3rem;
-      width: 70%;
+      padding: 3rem 30% 3rem 3rem;
     }
 
     @media only screen and (min-width: ${breakpoints.values.lg}px) {
-      width: 50%;
+      padding: 3rem 50% 3rem 3rem;
     }
   }
 `;

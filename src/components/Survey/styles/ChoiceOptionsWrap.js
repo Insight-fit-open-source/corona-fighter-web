@@ -12,7 +12,8 @@ export default styled.div`
   grid-gap: 1rem 2rem;
   width: 80%;
   min-height: 65%;
-  
+  margin-bottom: 1.5rem;
+
   @media only screen and (min-width: ${breakpoints.values.md}px) {
     grid-template-columns: ${({ step }) => grids[step] || 'auto'};
   }
