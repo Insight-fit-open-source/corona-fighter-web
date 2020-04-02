@@ -4,8 +4,9 @@ import breakpoints from 'src/app/theme/breakpoints';
 export default styled.div`
   will-change: 'transofrm';
   background-color: transparent;
-  width: 100vw;
-  height: 100vh;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -14,9 +15,9 @@ export default styled.div`
     props.layoutActive ? 'translate3d(0, 0%, 0)' : 'translate3d(0, -150%, 0)'};
   transition: transform 0.45s ease-out 0.085s;
 
-  @media only screen and (min-width: ${breakpoints.values.sm}px) {
-    width: 90vw;
-    height: 70vh;
+  @media (max-height: 600px) {
+    overflow-y: scroll;
+    display: block;
   }
 
   @media only screen and (min-width: ${breakpoints.values.md}px) {
