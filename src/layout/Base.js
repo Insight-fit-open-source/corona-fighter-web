@@ -6,7 +6,7 @@ import OnBoarding from 'src/components/Onboarding';
 const Base = ({ children, isAuthenticated }) => (
   <>
     {children}
-    {/*{isAuthenticated && <OnBoarding />}*/}
+    {isAuthenticated && <OnBoarding />}
     {isAuthenticated && <Popover />}
   </>
 );
