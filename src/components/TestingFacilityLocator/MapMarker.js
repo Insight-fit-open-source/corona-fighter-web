@@ -48,6 +48,9 @@ const MapMarker = ({ selected, location, onBoxClose }) => (
           <strong>Appointment Needed:</strong> {location.appointmentNeeded}
         </Typography>
         <Typography variant='body2'>
+          <strong>Lab</strong> {location.lab}
+        </Typography>
+        <Typography variant='body2'>
           <strong>Price:</strong> {location.price}
         </Typography>
         <Button variant='contained' onClick={onBoxClose}>

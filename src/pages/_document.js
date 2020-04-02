@@ -30,6 +30,23 @@ export default class MyDocument extends Document {
             href='/favicon-16x16.png'
           />
           <link rel='manifest' href='/site.webmanifest' />
+          <style>
+            {`html {
+            font-size: 12px;
+
+            @media  (min-height: 450px) {
+            font-size: 14px;
+          }
+
+            @media  (min-height: 650px), (min-width: 600px) {
+            font-size: 16px;
+          }
+
+            @media (min-height: 650px), (min-width: 1440px) {
+            font-size: 17px;
+          }
+          }`}
+          </style>
         </Head>
         <body>
           <Main />

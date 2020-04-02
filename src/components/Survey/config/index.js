@@ -47,7 +47,7 @@ export default {
   },
   'travel-contact': {
     title:
-      'Have you travelled or come into contact with Covid19 in the past 14 days??',
+      'Have you travelled or come into contact with Covid19 in the past 14 days?',
     content: '',
     layout: 'question',
     options: options.travel,

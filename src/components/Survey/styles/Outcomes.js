@@ -24,7 +24,7 @@ export default styled.div`
     line-height: 1.2;
     margin-bottom: 3rem;
     position: relative;
-    text-transform: capitalize;
+    text-transform: none;
 
     &:after {
       content: '';
