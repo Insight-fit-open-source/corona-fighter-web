@@ -33,19 +33,25 @@ export default class MyDocument extends Document {
           <style>
             {`html {
             font-size: 12px;
-
-            @media  (min-height: 450px) {
+          }
+           @media  (min-height: 450px) {
+           html {
             font-size: 14px;
+            }
           }
 
-            @media  (min-height: 650px), (min-width: 600px) {
+            @media  (min-height: 650px) {
+            html {
             font-size: 16px;
+            }
           }
 
-            @media (min-height: 650px), (min-width: 1440px) {
-            font-size: 17px;
+            @media (min-height: 650px), (min-width: 1140px) {
+            html {
+              font-size: 16px;
+            }
           }
-          }`}
+          `}
           </style>
         </Head>
         <body>
