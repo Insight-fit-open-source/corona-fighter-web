@@ -38,14 +38,6 @@ const OnBoarding = props => {
           <Typography variant='h2'>Let's Get To Know You.</Typography>
           <Typography variant='body1'>Some basic details will help our analysis of your symptoms. We wouldn't force you and we promise to protect your information. Your honesty will help us help you, and help all South Africans. </Typography>
           <Form />
-          {/*<Link href='/survey/[step]' as='/survey/feeling'>*/}
-          {/*  <Button*/}
-          {/*    variant='contained'*/}
-          {/*    color='primary'*/}
-          {/*    endIcon={<ButtonIcon />}>*/}
-          {/*    ok*/}
-          {/*  </Button>*/}
-          {/*</Link>*/}
         </Styled.OnBoardingBody>
       </Styled.OnBoardingContent>
     </Dialog>
