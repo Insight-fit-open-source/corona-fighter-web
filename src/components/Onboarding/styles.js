@@ -33,12 +33,11 @@ const OnBoardingBody = styled.div`
   z-index: 50;
   background: ${colors.greyXLight};
   overflow-y: scroll;
-   
 
-  @media only screen and (min-width: ${breakpoints.values.md}px) and (min-height: 600px) {
+  @media only screen and (min-width: ${breakpoints.values.md}px) and  (min-height: 600px) {
     display: flex;
     flex-flow: column nowrap;
-  justify-content: center;
+    justify-content: center;
     padding: 3rem 40% 3rem 3rem;
     width: 100%;
   }
@@ -77,11 +76,15 @@ const OnBoardingBody = styled.div`
     margin-bottom: 1.5rem;
   }
 
+  button:first-of-type {
+    margin-top: 4.5rem;
+  }
+
   button {
     width: 100%;
+    max-width: 20rem;
+    padding: 0.75rem 0;
     margin-top: 1rem;
-    height: 3.5rem;
-    line-height: 3.5rem;
   }
 `;
 
