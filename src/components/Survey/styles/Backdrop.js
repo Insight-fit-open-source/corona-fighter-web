@@ -72,6 +72,7 @@ export default styled.div`
       max-width: 15rem;
       padding: 0.75rem 0;
       margin-top: 4.5rem;
+      width: 100%;
     }
   }
 

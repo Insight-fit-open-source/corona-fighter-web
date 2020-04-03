@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 import breakpoints from 'src/app/theme/breakpoints';
 export default styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: space-between;
+  display: block;
+  position: relative;
   width: 100%;
   height: 100%;
 
@@ -26,5 +24,11 @@ export default styled.div`
           font-size: 1.56rem;
         line-height: 2.25rem;
     }
+  }
+  @media only screen and (min-width: ${breakpoints.values.md}px) {
+    display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
   }
 `;
