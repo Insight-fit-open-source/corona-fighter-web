@@ -7,6 +7,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { actions } from 'src/store/definitions/session';
 import IsProtectedPage from 'src/app/lib/firebase/auth/IsProtectedPage';
 import Sidebar from 'src/layout/Sidebar';
+import Social from 'src/components/common/Social';
 import Base from './Base';
 import Styled from './styles';
 
@@ -27,6 +28,7 @@ const GeneralSettingsLayout = ({
             <MenuIcon />
           </IconButton>
           {pageTitle ? <Typography variant='h4'>{pageTitle}</Typography> : null}
+          <Social right={true} hideOnMobile={true} />
         </div>
         {children}
       </Styled.BodyGeneral>
@@ -44,6 +46,5 @@ const mapDispatch = dispatch => ({
 });
 
 export default compose(
-  IsProtectedPage,
   connect(mapState, mapDispatch),
 )(GeneralSettingsLayout);

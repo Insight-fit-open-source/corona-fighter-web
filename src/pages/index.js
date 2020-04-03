@@ -12,7 +12,7 @@ export const Home = () => {
     <>
       <Admin pageTitle='My Symptoms'>
         <Alert
-          severity='info'
+          severity='warning'
           action={
             <Link href='/survey/[step]' as='/survey/welcome'>
               <Button color='inherit' size='small'>
@@ -20,7 +20,7 @@ export const Home = () => {
               </Button>
             </Link>
           }>
-          <span className='hide-on-mobile'>Take The Symptoms Survey, and Help Fight COVID19.</span>
+          <span className='hide-on-mobile'>Take the symptoms survey daily and Help Fight COVID19.</span>
         </Alert>
         <Symptoms />
       </Admin>

@@ -2,6 +2,7 @@ import React from 'react';
 import Admin from 'src/layout/Admin';
 import { withRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
+import Social from 'src/components/common/Social';
 import howToHelp from 'src/app/forestry/data/Content_Pages/how-to-help.json';
 import staySafe from 'src/app/forestry/data/Content_Pages/how-to-stay-safe.json';
 import privacy from 'src/app/forestry/data/Content_Pages/privacy-policy.json';
@@ -58,6 +59,7 @@ export class Content extends React.PureComponent {
                 />
               ))
             : null}
+            <Social />
         </div>
       </Admin>
     );

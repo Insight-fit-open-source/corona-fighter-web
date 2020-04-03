@@ -5,6 +5,7 @@ import { Button, Typography } from '@material-ui/core';
 import ArrowRightIcon from '@material-ui/icons/ChevronRight';
 import { AnimatePresence, motion } from 'framer-motion';
 
+import Social from 'src/components/common/Social';
 import Logo from 'src/components/common/Logo';
 import { actions } from 'src/store/definitions/survey';
 import VirusBg from 'src/components/common/VirusBg';
@@ -97,6 +98,10 @@ const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
             <Typography variant='body1'>{outcome.testStatus}</Typography>
             <div className='next'>
               {whatsNext[outcome.severity]()}
+            </div>
+            <div className="social-wrap">
+              <Typography variant='h5'>Share this tool with your loved ones and help fight COVID19.</Typography>
+              <Social invert={true} left={true} />
             </div>
           </div>
           <VirusBg />

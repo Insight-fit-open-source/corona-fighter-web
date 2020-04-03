@@ -47,6 +47,14 @@ const Auth = () => {
           uiConfig={firebaseUiConfig}
           firebaseAuth={firebase.auth()}
         />
+        <p>
+          <small>
+            By accessing this site, you agree to the terms set out in our{' '}
+            <a href='http://app.testforcovid.co.za/content/privacy-policy' target='_blank'>
+              Privacy Policy
+            </a>
+          </small>
+        </p>
       </>
     </AuthLayout>
   );

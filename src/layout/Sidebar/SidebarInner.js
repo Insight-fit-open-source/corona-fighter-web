@@ -42,4 +42,4 @@ const mapDispatchToProps = dispatch => ({
   signOut: () => dispatch(actions.signOutRequested()),
 });
 
-export default connect(null, mapDispatchToProps)(IsProtectedPage(SidebarInner));
+export default connect(null, mapDispatchToProps)(SidebarInner);

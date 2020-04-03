@@ -34,8 +34,8 @@ const formatData = data => {
       const thisDate =
         dObj.date !== null
           ? format('yyyy-MM-dd', new Date(parseInt(`${dObj.date}000`, 10)))
-          : 0;
-      if (key !== 'date') {
+          : null;
+      if (key !== 'date' && dObj.date !== null) {
         newObj[key].push({
           x: thisDate,
           y: value,
