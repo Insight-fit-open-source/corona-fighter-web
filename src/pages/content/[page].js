@@ -6,6 +6,8 @@ import Social from 'src/components/common/Social';
 import howToHelp from 'src/app/forestry/data/Content_Pages/how-to-help.json';
 import staySafe from 'src/app/forestry/data/Content_Pages/how-to-stay-safe.json';
 import privacy from 'src/app/forestry/data/Content_Pages/privacy-policy.json';
+import shouldTest from 'src/app/forestry/data/Content_Pages/should-you-test.json';
+import getInvolved from 'src/app/forestry/data/Content_Pages/get-involved.json';
 
 export class Content extends React.PureComponent {
   state = {
@@ -16,6 +18,8 @@ export class Content extends React.PureComponent {
     'how-to-help': howToHelp,
     'how-to-stay-safe': staySafe,
     'privacy-policy': privacy,
+    'should-you-test': shouldTest,
+    'get-involved': getInvolved,
   };
 
   componentDidMount() {
@@ -26,6 +30,12 @@ export class Content extends React.PureComponent {
     this.setState(() => ({
       content: this.routeMapping[page],
     }));
+
+    if (page === 'get-involved') {
+      const script = document.createElement('script');
+      script.src = 'https://paperform.co/__embed';
+      document.body.appendChild(script);
+    }
   }
 
   render() {
@@ -49,6 +59,8 @@ export class Content extends React.PureComponent {
             <ReactMarkdown
               source={content.pageBody}
               parserOptions={{ commonMark: true }}
+              escapeHtml={false}
+              transformLinkUri={null}
             />
           ) : null}
           {content && content.content_section
@@ -56,10 +68,12 @@ export class Content extends React.PureComponent {
                 <ReactMarkdown
                   source={block.content}
                   parserOptions={{ commonMark: true }}
+                  escapeHtml={false}
+                  transformLinkUri={null}
                 />
               ))
             : null}
-            <Social />
+          <Social />
         </div>
       </Admin>
     );
