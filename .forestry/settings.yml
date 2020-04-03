@@ -5,7 +5,7 @@ admin_path:
 webhook_url: 
 sections:
 - type: directory
-  path: src/app/forestry/data/Content Pages
+  path: src/app/forestry/data/Content_Pages
   label: Content Pages
   create: documents
   match: "**/*"
