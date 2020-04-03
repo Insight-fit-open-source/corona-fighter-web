@@ -57,8 +57,10 @@ export default styled.div`
   }
 
   button {
+    width: 100%;
     max-width: 15rem;
     padding: 0.75rem;
+    margin: 0 1rem 1rem 0;
   }
 
   p {

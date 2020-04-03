@@ -19,7 +19,7 @@ const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
   const whatsNext = {
     severe: () => (
       <>
-        <Link href='/content/[page]' as='/content/where-to-get-help'>
+        <Link href='/care-locator' as='/care-locator'>
           <Button
             variant='contained'
             color='primary'
@@ -27,28 +27,52 @@ const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
             Where To Get Help
           </Button>
         </Link>
+        <Link href='/content/[page]' as='/content/how-to-stay-safe'>
+          <Button
+            variant='outlined'
+            color='secondary'
+            endIcon={<ArrowRightIcon />}>
+            How To Stay Safe
+          </Button>
+        </Link>
       </>
     ),
     warn: () => (
       <>
-        <Link href='/content/[page]' as='/content/general-guidelines'>
+        <Link href='/content/[page]' as='/content/how-to-stay-safe'>
           <Button
             variant='contained'
             color='primary'
             endIcon={<ArrowRightIcon />}>
-            General Guidelines
+            How To Stay Safe
+          </Button>
+        </Link>
+        <Link href='/content/[page]' as='/content/how-to-help'>
+          <Button
+            variant='outlined'
+            color='secondary'
+            endIcon={<ArrowRightIcon />}>
+            How To Help
           </Button>
         </Link>
       </>
     ),
     normal: () => (
       <>
-        <Link href='/latest-stats' as='/latest-stats'>
+        <Link href='/content/[page]' as='/content/how-to-help'>
           <Button
             variant='contained'
             color='primary'
             endIcon={<ArrowRightIcon />}>
-            View Latest Stats
+            How To Help
+          </Button>
+        </Link>
+        <Link href='/latest-stats' as='/latest-stats'>
+          <Button
+            variant='outlined'
+            color='secondary'
+            endIcon={<ArrowRightIcon />}>
+            Latest Stats
           </Button>
         </Link>
       </>
@@ -71,7 +95,9 @@ const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
             <Typography variant='body1'>{outcome.body}</Typography>
             <Typography variant='h4'>should you test?</Typography>
             <Typography variant='body1'>{outcome.testStatus}</Typography>
-            <div className='next'>{whatsNext[outcome.severity]()}</div>
+            <div className='next'>
+              {whatsNext[outcome.severity]()}
+            </div>
           </div>
           <VirusBg />
         </motion.div>
