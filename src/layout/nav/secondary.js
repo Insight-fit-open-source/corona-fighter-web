@@ -1,5 +1,5 @@
 export default {
-  'Should You Test': {
+  'Should I Get Tested?': {
     link: '/content/[page]',
     as: '/content/should-you-test',
   },
