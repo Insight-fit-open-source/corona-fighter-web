@@ -21,4 +21,3 @@ fields:
   description: the main content area for the page
 pages:
 - forestry/data/Content Pages/test-page.json
-- forestry/data/test_page.json
