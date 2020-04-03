@@ -34,8 +34,8 @@ const Popover = props => {
       !profileSyncInProcess &&
         !authInProcess &&
         isAuthenticated &&
-        !onBoardingComplete &&
-        moment().subtract(6, 'hours') > moment(+lastCheckin),
+        onBoardingComplete &&
+        moment().subtract(6, 'hours') > moment.unix(+lastCheckin),
     );
   }, [
     profileSyncInProcess,
