@@ -12,7 +12,7 @@ export const Home = () => {
     <>
       <Admin pageTitle='My Symptoms'>
         <Alert
-          severity='warning'
+          severity='success'
           action={
             <Link href='/survey/[step]' as='/survey/welcome'>
               <Button color='inherit' size='small'>
