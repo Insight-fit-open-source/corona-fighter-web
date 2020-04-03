@@ -11,7 +11,7 @@ export default {
     link: '/content/[page]',
     as: '/content/how-to-stay-safe',
   },
-  'Privacy Polidt': {
+  'Privacy Policy': {
     link: '/content/[page]',
     as: '/content/privacy-policy',
   },
