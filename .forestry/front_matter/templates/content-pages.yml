@@ -44,3 +44,5 @@ fields:
     max: 
     labelField: 
   label: content section
+pages:
+- src/app/forestry/data/Content_Pages/should-you-test.json
