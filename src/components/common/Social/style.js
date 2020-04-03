@@ -25,16 +25,13 @@ export const SocialWrapper = styled.div`
       : null}
 
   .react-share__ShareButton {
-    width: 2.5rem;
-    height: 2.5rem;
     display: inline-block;
     margin: 0.75rem;
     padding: 0;
   }
   svg {
-    width: 1.5rem;
-    height: 1.5rem;
     fill: ${colors.blueDark};
+    padding-top: 0.55rem;
 
     ${props =>
       props.invert
