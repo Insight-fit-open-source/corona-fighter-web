@@ -45,9 +45,11 @@ export const Symptoms = ({
                     <ExpansionPanelDetails>
                       <div className='panel-inner'>
                         <Typography variant='body1'>
+                          <strong>Should I get tested?</strong><br/>
                           {surveyResults[key].outcome.testStatus}
                         </Typography>
                         <Typography variant='body1'>
+                          <strong>General Guidance:</strong><br/>
                           {surveyResults[key].outcome.body}
                         </Typography>
                       </div>

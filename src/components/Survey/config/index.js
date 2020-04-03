@@ -54,16 +54,14 @@ export default {
     next: '/survey/tested',
   },
   tested: {
-    title:
-      'Have you travelled or come into contact with Covid19 in the past 14 days?',
+    title: 'Have you had a test for COVID19?',
     content: '',
     layout: 'question',
     options: options.tested,
     next: '/survey/behavior',
   },
   behavior: {
-    title:
-      'Where are you at the moment',
+    title: 'Where are you at the moment',
     content: '',
     layout: 'question',
     options: options.behaviour,
