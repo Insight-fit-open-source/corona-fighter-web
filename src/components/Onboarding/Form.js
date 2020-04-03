@@ -59,7 +59,7 @@ export class FirebaseForm extends React.PureComponent {
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
-                  <Field component={DatePicker} name='dob' label='Date' />
+                  <Field component={DatePicker} name='dob' label='Date of Birth' />
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <Field
