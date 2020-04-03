@@ -3,6 +3,8 @@ import Admin from 'src/layout/Admin';
 import { withRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
 import howToHelp from 'src/app/forestry/data/Content_Pages/how-to-help.json';
+import staySafe from 'src/app/forestry/data/Content_Pages/how-to-stay-safe.json';
+import privacy from 'src/app/forestry/data/Content_Pages/privacy-policy.json';
 
 export class Content extends React.PureComponent {
   state = {
@@ -11,6 +13,8 @@ export class Content extends React.PureComponent {
 
   routeMapping = {
     'how-to-help': howToHelp,
+    'how-to-stay-safe': staySafe,
+    'privacy-policy': privacy,
   };
 
   componentDidMount() {
