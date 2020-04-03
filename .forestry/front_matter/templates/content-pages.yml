@@ -57,4 +57,5 @@ fields:
     labelField: 
   label: content section
 pages:
+- src/app/forestry/data/Content_Pages/get-involved.json
 - src/app/forestry/data/Content_Pages/should-you-test.json
