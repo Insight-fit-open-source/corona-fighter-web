@@ -13,7 +13,7 @@ sections:
   templates:
   - content-pages
 - type: directory
-  path: forestry/data
+  path: src/app/forestry/data
   label: Site Data
   create: all
   match: "**/*.json"
