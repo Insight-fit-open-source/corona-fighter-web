@@ -3,18 +3,18 @@ label: content-page
 hide_body: false
 display_field: pageTitle
 fields:
-- name: intro
-  type: text
-  config:
-    required: false
-  label: intro
-  description: lead in for the page
 - name: pageTitle
   type: text
   config:
     required: false
   label: Page Title
   description: This will appear at the top of the page
+- name: intro
+  type: text
+  config:
+    required: false
+  label: intro
+  description: lead in for the page
 - name: pageBody
   type: textarea
   default: ''
@@ -45,7 +45,5 @@ fields:
     labelField: 
   label: content section
 pages:
-- forestry/data/Content Pages/how-to-help.json
-- forestry/data/Content Pages/how-to-stay-safe.json
-- forestry/data/Content Pages/privacy-policy.json
-- forestry/data/Content Pages/test-page.json
+- src/app/forestry/data/Content_Pages/get-involved.json
+- src/app/forestry/data/Content_Pages/should-you-test.json

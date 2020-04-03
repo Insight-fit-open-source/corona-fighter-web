@@ -68,14 +68,18 @@ const BodyGeneral = styled.div`
       }
     }
   }
-  
+
   .inner-content {
-      width: 100%;
-      
-      a {
-        color: ${colors.pink}!important;
-      }
+    width: 100%;
+
+    a {
+      color: ${colors.pink}!important;
     }
+
+    img {
+      max-width: 100%;
+    }
+  }
 
   @media only screen and (min-width: ${breakpoints.values.md}px) {
     .pageHeader {
@@ -91,7 +95,9 @@ const BodyGeneral = styled.div`
         display: none;
       }
     }
-    
+  }
+  
+    @media only screen and (min-width: ${breakpoints.values.lg}px) {
     .inner-content {
       padding-right: 40%;
     }
@@ -109,6 +115,21 @@ const AuthBody = styled.div`
   background-color: ${colors.blueDark};
   overflow-x: hidden;
   overflow-y: auto;
+
+  small {
+    display: block;
+    position: relative;
+    z-index: 20;
+    color: ${colors.white};
+    margin: 3rem auto;
+    max-width: 20rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  a {
+    color: ${colors.pink};
+  }
 `;
 
 const Styled = {

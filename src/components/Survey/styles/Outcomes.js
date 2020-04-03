@@ -57,8 +57,10 @@ export default styled.div`
   }
 
   button {
+    width: 100%;
     max-width: 15rem;
     padding: 0.75rem;
+    margin: 0 1rem 1rem 0;
   }
 
   p {
@@ -67,7 +69,7 @@ export default styled.div`
   }
 
   .results {
-    display: flex;
+    display: block;
     flex-flow: column nowrap;
     justify-content: center;
     padding: 1.5rem;
@@ -80,17 +82,39 @@ export default styled.div`
     z-index: 20;
     overflow-y: auto;
 
-     @media (max-height: 750px) {
-      overflow-y: scroll;
-      display: block;
+    .social-wrap {
+      justify-self: flex-end;
+      padding: 4.5rem 0 1rem 0;
+      flex: 1;
+      align-items: flex-end;
+
+      h5 {
+        margin: 0;
+        font-size: 1rem;
+        opacity: 0.75;
+      }
+      
+      @media only screen and (min-height: 750px) and (min-width: ${breakpoints.values.md}px) {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 3rem;
+        right: 0;
+      }
     }
 
     @media only screen and (min-width: ${breakpoints.values.md}px) {
+      display: flex;
       padding: 3rem 30% 3rem 3rem;
     }
 
     @media only screen and (min-width: ${breakpoints.values.lg}px) {
       padding: 3rem 50% 3rem 3rem;
+    }
+
+    @media (max-height: 750px) {
+      overflow-y: scroll;
+      display: block;
     }
   }
 `;

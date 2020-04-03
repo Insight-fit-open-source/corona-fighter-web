@@ -25,7 +25,7 @@ export default styled.div`
     height: 70vh;
   }
 
-  @media only screen and (min-width: ${breakpoints.values.lg}px) {
+  @media only screen and (min-width: ${breakpoints.values.lg}px) and (min-height: 600px) {
     width: 70vw;
     height: 70vh;
   }

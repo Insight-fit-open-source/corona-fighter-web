@@ -16,7 +16,7 @@ export default {
   },
   soreThroat: {
     key: 'a sore throat',
-    title: 'a sore throat',
+    title: 'A sore throat',
   },
   shortnessOfBreath: {
     key: 'Unusual shortness of breath or difficulty breathing',

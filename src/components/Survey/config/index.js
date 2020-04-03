@@ -51,6 +51,22 @@ export default {
     content: '',
     layout: 'question',
     options: options.travel,
+    next: '/survey/tested',
+  },
+  tested: {
+    title:
+      'Have you travelled or come into contact with Covid19 in the past 14 days?',
+    content: '',
+    layout: 'question',
+    options: options.tested,
+    next: '/survey/behavior',
+  },
+  behavior: {
+    title:
+      'Where are you at the moment',
+    content: '',
+    layout: 'question',
+    options: options.behaviour,
     next: '/survey/outcome',
   },
   outcome: {
