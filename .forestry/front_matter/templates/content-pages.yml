@@ -15,6 +15,12 @@ fields:
     required: false
   label: intro
   description: lead in for the page
+- name: featured-image
+  type: file
+  config:
+    maxSize: 250
+  label: featured-image
+  description: appears below the intro content, before the main body.
 - name: pageBody
   type: textarea
   default: ''
@@ -30,6 +36,12 @@ fields:
 - name: content_section
   type: field_group_list
   fields:
+  - name: content_section_image
+    type: file
+    config:
+      maxSize: 250
+    label: Content Section Image
+    description: image appears above the section of content.
   - name: content
     type: textarea
     default: ''
