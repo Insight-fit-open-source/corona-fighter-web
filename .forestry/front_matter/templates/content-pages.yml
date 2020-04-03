@@ -23,6 +23,8 @@ fields:
     wysiwyg: true
     schema:
       format: markdown
+    min: '0'
+    max: '99999999'
   label: Page Body
   description: the main content area for the page
 pages:
