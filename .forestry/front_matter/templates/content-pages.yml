@@ -1,7 +1,7 @@
 ---
 label: content-page
 hide_body: false
-display_field: pageBody
+display_field: pageTitle
 fields:
 - name: intro
   type: text
