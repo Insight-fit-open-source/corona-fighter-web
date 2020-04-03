@@ -8,10 +8,10 @@ export default {
   },
   notHealthly: {
     key: 'notHealthy',
-    title: 'I feel sick',
+    title: 'Feeling sick',
   },
   sick: {
     key: 'sick',
-    title: 'I feel very sick',
+    title: 'Feeling very sick',
   },
 };
