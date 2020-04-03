@@ -28,6 +28,23 @@ export const SocialWrapper = styled.div`
     display: inline-block;
     margin: 0.75rem;
     padding: 0;
+    max-width: 3rem;
+    
+      ${props =>
+  props.left
+    ? `
+     margin: 0.75rem 0.75rem 0.75rem 0;
+     text-align: left;
+  `
+    : null}
+      
+        ${props =>
+  props.right
+    ? `
+     margin: 0.75rem 0  0.75rem 0.75rem;
+     text-align: right;
+  `
+    : null}
   }
   svg {
     fill: ${colors.blueDark};
