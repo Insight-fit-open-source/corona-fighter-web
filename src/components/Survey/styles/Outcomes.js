@@ -61,6 +61,8 @@ export default styled.div`
     max-width: 15rem;
     padding: 0.75rem;
     margin: 0 1rem 1rem 0;
+    position: relative;
+    z-index: 100;
   }
 
   p {

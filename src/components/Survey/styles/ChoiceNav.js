@@ -5,7 +5,7 @@ export default styled.div`
   align-items: center;
   justify-content: space-around;
   padding: 0;
-  width: 80%;
+  width: 100%;
 
   button {
     max-width: 12rem;
