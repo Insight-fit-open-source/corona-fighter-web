@@ -59,7 +59,7 @@ export class FirebaseForm extends React.PureComponent {
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
-                  <Field component={DatePicker} name='dob' label='Date' />
+                  <Field component={DatePicker} name='dob' label='Date of Birth' />
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <Field
@@ -111,9 +111,7 @@ export class FirebaseForm extends React.PureComponent {
                     ]}
                   />
                 </Grid>
-                <Grid item xs={12} md={12}></Grid>
                 {isSubmitting && <LinearProgress />}
-                <Grid item xs={12} md={4} lg={4}>
                   <Button
                     variant='contained'
                     color='primary'
@@ -121,7 +119,6 @@ export class FirebaseForm extends React.PureComponent {
                     onClick={submitForm}>
                     Submit
                   </Button>
-                </Grid>
               </Grid>
             </Form>
           )}

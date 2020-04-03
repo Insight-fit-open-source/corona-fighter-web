@@ -60,6 +60,7 @@ const Popover = props => {
               {data.not_ok_button_text}
             </Button>
           </Link>
+          <br/>
           <Button variant='outlined' color='secondary' onClick={handleClose}>
             {data.ok_button_text}
           </Button>

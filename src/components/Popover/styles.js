@@ -16,7 +16,7 @@ const PopoverContent = styled.div`
 const PopoverBody = styled.div`
   display: block;
   padding: 1.5rem;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -24,12 +24,13 @@ const PopoverBody = styled.div`
   z-index: 50;
   background: ${colors.blueDark};
   color: ${colors.white};
+  overflow: scroll;
 
-  @media only screen and (max-height: 600px) {
+  @media only screen and (min-width: ${breakpoints.values
+      .md}px) and (min-height: 600px) {
     display: flex;
     flex-flow: column;
-    overflow: scroll;
-    align-items: stretch;
+    align-items: flex-start;
     justify-content: center;
   }
 
@@ -75,9 +76,14 @@ const PopoverBody = styled.div`
   }
 
   button {
+    width: 100%;
     max-width: 20rem;
     padding: 0.75rem 0;
     margin-top: 1rem;
+    
+    @media only screen and (min-width: ${breakpoints.values.md}px) {
+      margin-top: 0;
+    }
   }
 `;
 
