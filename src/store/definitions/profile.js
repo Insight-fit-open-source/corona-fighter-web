@@ -7,10 +7,12 @@ const defaultState = {
   lastCheckin: '',
   // The screening history of the user
   medicalHistory: {},
+  personal: {},
   // When the user account was created
   createdAt: '',
   // When the user account was last updated
   updatedAt: '',
+  profileSyncInProcess: true,
 };
 
 const definition = {
@@ -18,10 +20,11 @@ const definition = {
     ...state,
     ...payload,
     lastCallFailed: false,
+    profileSyncInProcess: false,
   }),
   PROFILE_SYNC_FAILED: state => ({ ...state, lastCallFailed: true }),
   CHECKIN: state => ({ ...state }),
-  COMPLETE_ONBOARDING: state => ({ ...state }),
+
 };
 
 const { reducer, actions, constants } = duxedo({

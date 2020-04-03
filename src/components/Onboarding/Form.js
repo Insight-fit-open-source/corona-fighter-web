@@ -122,15 +122,6 @@ export class FirebaseForm extends React.PureComponent {
                     Submit
                   </Button>
                 </Grid>
-                <Grid item xs={12} md={4} lg={4}>
-                  <Button
-                    variant='outlined'
-                    color='primary'
-                    type='button'
-                    onClick={close}>
-                    Skip
-                  </Button>
-                </Grid>
               </Grid>
             </Form>
           )}
