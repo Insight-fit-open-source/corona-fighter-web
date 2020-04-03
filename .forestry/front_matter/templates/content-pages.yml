@@ -3,6 +3,12 @@ label: content-page
 hide_body: false
 display_field: pageBody
 fields:
+- name: intro
+  type: text
+  config:
+    required: false
+  label: intro
+  description: lead in for the page
 - name: pageTitle
   type: text
   config:
@@ -19,12 +25,6 @@ fields:
       format: markdown
   label: Page Body
   description: the main content area for the page
-- name: intro
-  type: text
-  config:
-    required: false
-  label: intro
-  description: lead in for the page
 pages:
 - forestry/data/Content Pages/how-to-help.json
 - forestry/data/Content Pages/test-page.json
