@@ -1,8 +1,14 @@
 ---
 label: content-page
 hide_body: false
-display_field: pageBody
+display_field: pageTitle
 fields:
+- name: intro
+  type: text
+  config:
+    required: false
+  label: intro
+  description: lead in for the page
 - name: pageTitle
   type: text
   config:
@@ -17,9 +23,29 @@ fields:
     wysiwyg: true
     schema:
       format: markdown
+    min: '0'
+    max: '99999999'
   label: Page Body
   description: the main content area for the page
+- name: content_section
+  type: field_group_list
+  fields:
+  - name: content
+    type: textarea
+    default: ''
+    config:
+      required: false
+      wysiwyg: true
+      schema:
+        format: markdown
+    label: content
+  config:
+    min: 
+    max: 
+    labelField: 
+  label: content section
 pages:
+- forestry/data/Content Pages/how-to-help.json
+- forestry/data/Content Pages/how-to-stay-safe.json
+- forestry/data/Content Pages/privacy-policy.json
 - forestry/data/Content Pages/test-page.json
-- forestry/data/Content Pages/test-page.json
-- forestry/data/test_page.json

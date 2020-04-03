@@ -1,22 +1,18 @@
 export default {
-  'Useful Links': {
-    link: '/content/[page]',
-    as: '/content/useful-links',
-  },
+  // 'Useful Links': {
+  //   link: '/content/[page]',
+  //   as: '/content/useful-links',
+  // },
   'How to Help': {
     link: '/content/[page]',
     as: '/content/how-to-help',
   },
-  'Where to get Help': {
+  'How to Stay Safe': {
     link: '/content/[page]',
-    as: '/content/where-to-get-help',
+    as: '/content/how-to-stay-safe',
   },
-  'General Guidelines': {
+  'Privacy Polidt': {
     link: '/content/[page]',
-    as: '/content/general-guidelines',
-  },
-  'Terms of Use': {
-    link: '/content/[page]',
-    as: '/content/terms-of-use',
+    as: '/content/privacy-policy',
   },
 };

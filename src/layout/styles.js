@@ -68,6 +68,14 @@ const BodyGeneral = styled.div`
       }
     }
   }
+  
+  .inner-content {
+      width: 100%;
+      
+      a {
+        color: ${colors.pink}!important;
+      }
+    }
 
   @media only screen and (min-width: ${breakpoints.values.md}px) {
     .pageHeader {
@@ -82,6 +90,10 @@ const BodyGeneral = styled.div`
       .hamburger {
         display: none;
       }
+    }
+    
+    .inner-content {
+      padding-right: 40%;
     }
   }
 `;
