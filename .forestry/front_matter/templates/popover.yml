@@ -30,5 +30,3 @@ fields:
     required: true
   label: Not Ok Button Text
   default: Let's check together
-pages:
-- forestry/data/popover.json

@@ -22,5 +22,3 @@ fields:
     schema:
       format: markdown
   label: Page Body
-pages:
-- forestry/data/landingPage.json

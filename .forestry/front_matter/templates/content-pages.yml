@@ -44,8 +44,3 @@ fields:
     max: 
     labelField: 
   label: content section
-pages:
-- forestry/data/Content Pages/how-to-help.json
-- forestry/data/Content Pages/how-to-stay-safe.json
-- forestry/data/Content Pages/privacy-policy.json
-- forestry/data/Content Pages/test-page.json
