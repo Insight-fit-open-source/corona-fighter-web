@@ -45,11 +45,8 @@ export class FirebaseForm extends React.PureComponent {
           }}
           validationSchema={schema}
           onSubmit={async (values, { setSubmitting, setStatus }) => {
-            console.log('on submit values!', values);
             try {
               const { firestore } = await FirebaseFactory.get();
-              console.log('on submit values!', values);
-
               await firestore
                 .collection(`profiles`)
                 .doc(userId)
