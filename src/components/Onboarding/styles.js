@@ -35,7 +35,7 @@ const OnBoardingContent = styled.div`
       font-size: 95%;
       margin-top: 0.3rem;
     }
-    
+
     .custom-label {
       font-size: 95%;
       opacity: 0.9;
@@ -50,7 +50,7 @@ const OnBoardingContent = styled.div`
       border: none;
       border-bottom: 1px solid ${colors.blueDark};
       color: v ${colors.blueDark};
-      position:relative;
+      position: relative;
 
       &:focus {
         box-shadow: none;
@@ -58,7 +58,7 @@ const OnBoardingContent = styled.div`
         border-bottom: 2px solid ${colors.pink};
       }
     }
-    
+
     .location-wrap {
       position: relative;
     }
@@ -99,12 +99,12 @@ const OnBoardingBody = styled.div`
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    padding: 3rem 40% 3rem 3rem;
+    padding: 3rem 25% 3rem 3rem;
     width: 100%;
   }
 
   @media only screen and (min-width: ${breakpoints.values.lg}px) {
-    padding: 3rem 50% 3rem 3rem;
+    padding: 3rem 45% 3rem 3rem;
     width: 100%;
   }
 
@@ -137,15 +137,18 @@ const OnBoardingBody = styled.div`
     margin-bottom: 1.5rem;
   }
 
-  button:first-of-type {
+  button {
     margin-top: 4.5rem;
+    margin: 4.5rem 0 3rem;
+    width: 100%;
   }
 
-  button {
-    width: 100%;
-    max-width: 20rem;
-    padding: 0.75rem 0;
-    margin-top: 1rem;
+  @media only screen and (min-width: ${breakpoints.values.md}px) {
+    button {
+      max-width: 20rem;
+      padding: 0.75rem 0;
+      margin: 1rem 0 1rem;
+    }
   }
 `;
 
