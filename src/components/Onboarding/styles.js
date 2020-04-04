@@ -13,12 +13,72 @@ const OnBoardingContent = styled.div`
   transition: transform 0.365s ease-in;
 
   .MuiFormControl-root.MuiTextField-root {
-      width: 100%;
+    width: 100%;
   }
-  
-  form button {
-    line-height: 3rem;
-    padding: 0 3rem;
+
+  form {
+    button {
+      line-height: 1.2;
+      padding: 0.75rem 3rem;
+    }
+
+    .MuiInput-root {
+      margin-bottom: 0;
+    }
+
+    .MuiFormControl-root {
+      width: 100%;
+    }
+
+    .custom-helper-text {
+      opacity: 0.4;
+      font-size: 95%;
+      margin-top: 0.3rem;
+    }
+    
+    .custom-label {
+      font-size: 95%;
+      opacity: 0.9;
+    }
+
+    input.location-search-input.form-control {
+      width: 100%;
+      height: 2.5rem;
+      line-height: 2.5rem;
+      font-size: 1rem;
+      background: none;
+      border: none;
+      border-bottom: 1px solid ${colors.blueDark};
+      color: v ${colors.blueDark};
+      position:relative;
+
+      &:focus {
+        box-shadow: none;
+        outline: none;
+        border-bottom: 2px solid ${colors.pink};
+      }
+    }
+    
+    .location-wrap {
+      position: relative;
+    }
+
+    .autocomplete-dropdown-container {
+      position: absolute;
+      top: 100%;
+      left: 0%;
+      width: 100%;
+      background: #fff;
+      font-size: 1rem;
+      line-height: 2.25rem;
+      color: ${colors.blueDark};
+      box-shadow: 0 2px 8px rgba(0, 0, 20, 0.2);
+      z-index: 20;
+
+      span {
+        padding: 0 0.75rem;
+      }
+    }
   }
 `;
 
@@ -34,7 +94,8 @@ const OnBoardingBody = styled.div`
   background: ${colors.greyXLight};
   overflow-y: scroll;
 
-  @media only screen and (min-width: ${breakpoints.values.md}px) and  (min-height: 600px) {
+  @media only screen and (min-width: ${breakpoints.values
+      .md}px) and (min-height: 600px) {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;

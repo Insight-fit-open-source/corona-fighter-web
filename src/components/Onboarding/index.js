@@ -5,6 +5,7 @@ import { Button, Typography } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import Logo from 'src/components/common/Logo';
 
+
 import WithAuth from 'src/app/lib/firebase/auth/WithAuth';
 import Form from './Form';
 import Styled from './styles';
