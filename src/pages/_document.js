@@ -10,6 +10,8 @@ export default class MyDocument extends Document {
     return (
       <html lang='en'>
         <Head>
+          <title>Corona Fighter</title>
+          <meta name="description" content="Join us to reduce pressure on medical facilities, reduce deaths and track the evolution of the Corona Virus in South Africa." />
           <meta name='theme-color' content={theme.palette.primary.main} />
           <link
             rel='apple-touch-icon'
