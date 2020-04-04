@@ -113,7 +113,7 @@ export class FirebaseForm extends React.PureComponent {
                   <Field
                     component={LocationField}
                     name='location'
-                    label='location'
+                    label='City, suburb or address'
                     errors={errors}
                   />
                 </Grid>
