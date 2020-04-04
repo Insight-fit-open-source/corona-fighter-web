@@ -1,15 +1,12 @@
 /* eslint-disable no-return-assign */
 import React, { Component } from 'react';
-import {
-  GoogleMap,
-  LoadScript,
-  Marker,
-  InfoWindow,
-} from '@react-google-maps/api';
+import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
+import { connect } from 'react-redux';
 import { Typography } from '@material-ui/core';
 import config from 'src/app/publicSettings';
 import loadTestingFacilities from 'src/app/helpers/loadTestingFacilities';
 import Style from './styles';
+import LoadGoogleApiDynamically from '../helpers/LoadGoogleApiDynamically';
 
 import MapHeader from './MapHeader';
 
@@ -27,7 +24,7 @@ const SA_BOUNDS = {
   west: 12.247802734374988,
 };
 
-class MyComponents extends Component {
+class TestingFacilityLocator extends Component {
   state = {
     center: { lat: -30.5595, lng: 22.9375 },
     zoom: 6,
@@ -39,6 +36,23 @@ class MyComponents extends Component {
   };
 
   async componentDidMount() {
+    const { profile } = this.props;
+    if (Object.keys(profile).length > 0) {
+      if (profile.personal && Object.keys(profile.personal).length > 0) {
+        if (
+          profile.personal.location &&
+          Object.keys(profile.personal.location).length > 0
+        ) {
+          const { coordinates } = profile.personal.location;
+          this.setState({
+            userLocation: coordinates,
+            center: coordinates,
+            zoom: 11,
+          });
+        }
+      }
+    }
+
     const data = await loadTestingFacilities();
     this.setState({
       locations: data.map((loc, index) => ({ ...loc, id: index + 1 })),
@@ -59,7 +73,7 @@ class MyComponents extends Component {
     } = this.state;
 
     return (
-      <LoadScript
+      <LoadGoogleApiDynamically
         libraries={libraries}
         id='script-loader'
         googleMapsApiKey={config.GOOGLE_API_KEY}>
@@ -104,7 +118,7 @@ class MyComponents extends Component {
                   />
                 ))}
 
-            {userLocation && (
+            {window.google && map && boundsLoaded && userLocation && (
               <Marker
                 position={{ lat: userLocation.lat, lng: userLocation.lng }}
                 icon={{
@@ -147,9 +161,13 @@ class MyComponents extends Component {
             ) : null}
           </GoogleMap>
         </Style.MapContainer>
-      </LoadScript>
+      </LoadGoogleApiDynamically>
     );
   }
 }
 
-export default MyComponents;
+const mapState = state => ({
+  profile: state.profile,
+});
+
+export default connect(mapState)(TestingFacilityLocator);
