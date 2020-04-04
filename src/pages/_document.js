@@ -2,7 +2,7 @@ import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet as StyledComponentSheets } from 'styled-components';
 import { ServerStyleSheets as MaterialUiServerStyleSheets } from '@material-ui/styles';
-
+import config from 'src/app/publicSettings';
 import theme from 'src/app/theme';
 
 export default class MyDocument extends Document {
@@ -52,6 +52,7 @@ export default class MyDocument extends Document {
           }
           `}
           </style>
+          <script src={`https://maps.googleapis.com/maps/api/js?key=${config.GOOGLE_API_KEY}&libraries=places`}></script>
         </Head>
         <body>
           <Main />
