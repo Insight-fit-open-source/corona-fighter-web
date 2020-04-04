@@ -50,13 +50,15 @@ export class FirebaseForm extends React.PureComponent {
               await firestore
                 .collection(`profiles`)
                 .doc(userId)
-                .update({
-                  personal: { ...values },
-                  onBoardingComplete: true,
-                  updatedAt: Date.now(),
-                });
+                .set(
+                  {
+                    personal: { ...values },
+                    onBoardingComplete: true,
+                    updatedAt: Date.now(),
+                  },
+                  { merge: true },
+                );
             } catch (error) {
-              console.log(e);
               setStatus(error.message);
               setSubmitting(false);
               console.log('Error completing onboarding:', error);
@@ -83,7 +85,10 @@ export class FirebaseForm extends React.PureComponent {
                 <Grid item xs={12} md={6}>
                   <Field
                     component={DatePicker}
-                    format='dd MM yyyy'
+                    disableFuture
+                    openTo='year'
+                    format='dd/MM/yyyy'
+                    views={['year', 'month', 'date']}
                     name='dob'
                     label='Date of Birth'
                     required
@@ -105,7 +110,12 @@ export class FirebaseForm extends React.PureComponent {
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
-                  <Field component={LocationField} name='location' label='location' errors={errors} />
+                  <Field
+                    component={LocationField}
+                    name='location'
+                    label='location'
+                    errors={errors}
+                  />
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <Field
@@ -118,7 +128,7 @@ export class FirebaseForm extends React.PureComponent {
                 <Grid item xs={12} md={12}>
                   <FormControl>
                     <label htmlFor='conditions-select' className='custom-label'>
-                      Select Any pre-existing conditions
+                      Please specify Any pre-existing conditions
                     </label>
                     <Field
                       classNmae={'conditions-select'}
@@ -132,14 +142,18 @@ export class FirebaseForm extends React.PureComponent {
                           value: 'high blood pressure',
                           label: 'High Blood Pressure',
                         },
+                        {
+                          value: 'diabetes',
+                          label: 'Diabetes',
+                        },
                         { value: 'cancer', label: 'Cancer' },
                         {
                           value: 'low immune system',
-                          label: 'immune System, TB, HIV etc',
+                          label: 'Low immune System, TB, HIV etc',
                         },
                         {
                           value: 'none',
-                          label: 'none',
+                          label: 'None',
                         },
                       ]}
                     />
