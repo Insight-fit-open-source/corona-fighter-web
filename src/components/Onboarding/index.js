@@ -5,7 +5,6 @@ import { Button, Typography } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import Logo from 'src/components/common/Logo';
 
-
 import WithAuth from 'src/app/lib/firebase/auth/WithAuth';
 import Form from './Form';
 import Styled from './styles';
@@ -13,6 +12,7 @@ import Styled from './styles';
 const OnBoarding = props => {
   const {
     isAuthenticated,
+    user,
     userId,
     onBoardingComplete,
     authInProcess,
@@ -26,7 +26,7 @@ const OnBoarding = props => {
 
   React.useEffect(() => {
     setOpen(
-        !profileSyncInProcess &&
+      !profileSyncInProcess &&
         !authInProcess &&
         isAuthenticated &&
         !onBoardingComplete,
@@ -48,7 +48,12 @@ const OnBoarding = props => {
             wouldn't force you and we promise to protect your information. Your
             honesty will help us help you, and help all South Africans.{' '}
           </Typography>
-          <Form close={closeDialog} userId={userId} />
+          <Form
+            close={closeDialog}
+            userId={userId}
+            isAuthenticated={isAuthenticated}
+            user={user}
+          />
         </Styled.OnBoardingBody>
       </Styled.OnBoardingContent>
     </Dialog>

@@ -30,15 +30,15 @@ const schema = Yup.object({
 
 export class FirebaseForm extends React.PureComponent {
   render() {
-    const { close, userId } = this.props;
+    const { close, userId, isAuthenticated, user } = this.props;
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Formik
           initialValues={{
-            preferredName: '',
+            preferredName: isAuthenticated && user.displayName ? user.displayName : '',
             dob: '',
-            email: '',
-            phone: '',
+            email: isAuthenticated && user.email ? user.email : '',
+            phone: isAuthenticated && user.phoneNumber ? user.phoneNumber : '',
             location: null,
             conditions: [],
             medicine: '',
@@ -122,13 +122,13 @@ export class FirebaseForm extends React.PureComponent {
                     component={TextField}
                     name='medicine'
                     helperText='Leave this blank, if it does no apply'
-                    label="Please Specify any medication you're on"
+                    label="Please specify any medication you're on"
                   />
                 </Grid>
                 <Grid item xs={12} md={12}>
                   <FormControl>
                     <label htmlFor='conditions-select' className='custom-label'>
-                      Please specify Any pre-existing conditions
+                      Please specify any pre-existing conditions
                     </label>
                     <Field
                       classNmae={'conditions-select'}

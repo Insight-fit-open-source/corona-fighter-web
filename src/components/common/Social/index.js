@@ -25,7 +25,7 @@ export default ({ invert, left, right, hideOnMobile }) => (
     <EmailShareButton
       url='http://testforcovid.co.za'
       subject='Start your COVID-19 symptom assessment now'
-      body='CoronaFighter is a tool and an initiative: a tool for you to track symptoms and an initiative to reduce pressure on medical facilities, reduce deaths and track the evolution of the disease in our country.'>
+      body='Please take the CoronaFighter survey to see if you need to get tested for COVID-19. It will also help you track your symptoms over time and provide you with valuable information if you need help.'>
       <Email />
     </EmailShareButton>
     <FacebookShareButton

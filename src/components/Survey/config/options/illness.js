@@ -20,6 +20,6 @@ export default {
   },
   none: {
     key: 'none',
-    title: 'None of the above',
+    title: 'None of these symptoms',
   },
 };
