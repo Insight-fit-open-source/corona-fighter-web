@@ -3,7 +3,7 @@ import { takeEvery, call, retry, select } from 'redux-saga/effects';
 import { constants } from 'src/store/definitions/profile';
 
 function* retryUpdate() {
-  const { rsf } = yield call([FirebaseFactory, 'get']);
+  const { rsf, analytics } = yield call([FirebaseFactory, 'get']);
   const { uid } = yield select(state => state.auth.user);
 
   if (!uid) {
@@ -17,6 +17,15 @@ function* retryUpdate() {
       'lastCheckin',
       Date.now().toString(),
     );
+
+    try {
+      analytics.logEvent('User checked in', {
+        userId: uid,
+        date: new Date(),
+      });
+    } catch (ae) {
+      console.log(ae);
+    }
   } catch (error) {
     throw new Error(error);
   }

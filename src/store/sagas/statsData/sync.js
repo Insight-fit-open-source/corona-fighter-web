@@ -15,7 +15,6 @@ export function* subscribe({ payload }) {
       successActionCreator: actions.cumulativeSynced,
       transform: doc => {
         const data = doc.data();
-        // console.log('syncdata', data);
         if (!data) {
           return {};
         }
@@ -27,7 +26,6 @@ export function* subscribe({ payload }) {
       successActionCreator: actions.dailySynced,
       transform: doc => {
         const data = doc.data();
-        // console.log('syncdata', data);
         if (!data) {
           return {};
         }

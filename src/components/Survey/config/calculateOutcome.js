@@ -1,8 +1,6 @@
 import _ from 'lodash';
 
 export default (selection, outcomes) => {
-  console.log('selection', selection);
-  console.log('outcomes', outcomes);
   const results = _.reduce(
     Object.keys(selection).map(key => {
       const result = { key };
@@ -28,7 +26,6 @@ export default (selection, outcomes) => {
     },
     {},
   );
-  console.log('results', results);
 
   const clear = !results['severe-symptoms'] && !results['typical-symptoms'] && !results['atypical-symptoms'];
 
