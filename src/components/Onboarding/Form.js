@@ -190,6 +190,7 @@ export class FirebaseForm extends React.PureComponent {
                     <Field
                       id='acceptedTerms'
                       name='acceptedTerms'
+                      type='checkbo'
                       disabled={authInProcess || isSubmitting}
                       margin='normal'
                       component={Checkbox}
