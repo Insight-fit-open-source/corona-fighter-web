@@ -32,7 +32,7 @@ export default class FirebaseFactory {
     const firestore = await firebase.firestore();
     const auth = await firebase.auth();
     const storage = await firebase.storage();
-    const analytics = await firebase.storage();
+    const analytics = await firebase.analytics();
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
@@ -40,3 +40,4 @@ export default class FirebaseFactory {
     return { firebase, rsf, functions, auth, analytics, firestore, storage };
   }
 }
+

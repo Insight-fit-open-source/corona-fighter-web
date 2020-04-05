@@ -46,7 +46,7 @@ export class FirebaseForm extends React.PureComponent {
           validationSchema={schema}
           onSubmit={async (values, { setSubmitting, setStatus }) => {
             try {
-              const { firestore } = await FirebaseFactory.get();
+              const { firestore, analytics } = await FirebaseFactory.get();
               await firestore
                 .collection(`profiles`)
                 .doc(userId)
@@ -58,6 +58,12 @@ export class FirebaseForm extends React.PureComponent {
                   },
                   { merge: true },
                 );
+
+              try {
+                analytics.logEvent('onboarding completed');
+              } catch (ae) {
+                console.log(ae);
+              }
             } catch (error) {
               setStatus(error.message);
               setSubmitting(false);

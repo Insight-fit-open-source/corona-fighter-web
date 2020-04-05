@@ -55,7 +55,7 @@ class FormikPlacesAutoComplete extends Component {
 
     const error = errors[name];
     const touch = touched[name];
-    console.log(error);
+
     return (
       <PlacesAutocomplete
         name={name}
