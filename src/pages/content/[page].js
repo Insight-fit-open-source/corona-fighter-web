@@ -31,9 +31,9 @@ export class Content extends React.PureComponent {
       content: this.routeMapping[page],
     }));
 
-      const script = document.createElement('script');
-      script.src = 'https://paperform.co/__embed';
-      document.body.appendChild(script);
+    const script = document.createElement('script');
+    script.src = 'https://paperform.co/__embed';
+    document.body.appendChild(script);
   }
 
   render() {

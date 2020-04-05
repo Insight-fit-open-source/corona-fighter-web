@@ -15,6 +15,13 @@ const OnBoardingContent = styled.div`
   .MuiFormControl-root.MuiTextField-root {
     width: 100%;
   }
+  
+  label.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-animated {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    line-height: 1.35;
+}
 
   form {
     button {
@@ -138,8 +145,7 @@ const OnBoardingBody = styled.div`
   }
 
   button {
-    margin-top: 4.5rem;
-    margin: 4.5rem 0 3rem;
+    margin: 1.5rem 0 0 0;
     width: 100%;
   }
 
@@ -147,7 +153,7 @@ const OnBoardingBody = styled.div`
     button {
       max-width: 20rem;
       padding: 0.75rem 0;
-      margin: 1rem 0 1rem;
+      margin: 1rem 1rem 3rem 0;
     }
   }
 `;
