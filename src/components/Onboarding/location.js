@@ -71,7 +71,7 @@ class FormikPlacesAutoComplete extends Component {
               {...getInputProps({
                 error: Boolean(error),
                 name: 'location',
-                label: 'location',
+                label: 'City, suburb or address',
                 required: true,
                 placeholder: 'Search Places ...',
                 className: `location-search-input form-control ${Boolean(
