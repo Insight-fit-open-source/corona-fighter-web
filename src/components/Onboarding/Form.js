@@ -122,13 +122,13 @@ export class FirebaseForm extends React.PureComponent {
                     component={TextField}
                     name='medicine'
                     helperText='Leave this blank, if it does no apply'
-                    label="Please Specify any medication you're on"
+                    label="Please specify any medication you're on"
                   />
                 </Grid>
                 <Grid item xs={12} md={12}>
                   <FormControl>
                     <label htmlFor='conditions-select' className='custom-label'>
-                      Please specify Any pre-existing conditions
+                      Please specify any pre-existing conditions
                     </label>
                     <Field
                       classNmae={'conditions-select'}
