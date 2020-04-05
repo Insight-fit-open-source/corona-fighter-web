@@ -8,12 +8,17 @@ import {
   InputLabel,
   FormControl,
 } from '@material-ui/core';
-import { TextField } from 'formik-material-ui';
+import { TextField, Checkbox } from 'formik-material-ui';
 import { DatePicker } from 'formik-material-ui-pickers';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+import ViewIcon from '@material-ui/icons/Visibility';
+import SubmitIcon from '@material-ui/icons/ChevronRight';
+
 import FirebaseFactory from 'src/app/lib/firebase';
 import * as Yup from 'yup';
+
+import PrivacyPopOver from 'src/components/common/PrivacyPopup';
 
 import LocationField from './location';
 import Select from './Select';
@@ -26,16 +31,28 @@ const schema = Yup.object({
   phone: Yup.string('Enter your phone number'),
   location: Yup.object().required('Just a suburb or area is fine'),
   medicine: Yup.string(),
+  acceptedTerms: Yup.bool(true).required(
+    'you must accept the terms and conditions',
+  ).default(false),
 });
 
 export class FirebaseForm extends React.PureComponent {
+  state = {
+    privacyVisible: false,
+  };
+
+  closePopup = () => {
+    this.setState({ privacyVisible: false });
+  };
+
   render() {
-    const { close, userId, isAuthenticated, user } = this.props;
+    const { close, userId, isAuthenticated, user, authInProcess } = this.props;
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Formik
           initialValues={{
-            preferredName: isAuthenticated && user.displayName ? user.displayName : '',
+            preferredName:
+              isAuthenticated && user.displayName ? user.displayName : '',
             dob: '',
             email: isAuthenticated && user.email ? user.email : '',
             phone: isAuthenticated && user.phoneNumber ? user.phoneNumber : '',
@@ -77,7 +94,7 @@ export class FirebaseForm extends React.PureComponent {
               close();
             }, 500);
           }}>
-          {({ submitForm, isSubmitting, errors }) => (
+          {({ submitForm, isSubmitting, errors, values }) => (
             <Form>
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
@@ -168,18 +185,44 @@ export class FirebaseForm extends React.PureComponent {
                     </span>
                   </FormControl>
                 </Grid>
+                <Grid item xs={12} md={12}>
+                  <InputLabel>
+                    <Field
+                      id='acceptedTerms'
+                      name='acceptedTerms'
+                      type='checkbo'
+                      disabled={authInProcess || isSubmitting}
+                      margin='normal'
+                      component={Checkbox}
+                    />
+                    In order to proceed and use the application, you must accept
+                    the terms of use described in the
+                    Privacy Policy.
+                  </InputLabel>
+                </Grid>
                 {isSubmitting && <LinearProgress />}
+                <Button
+                  variant='outlined'
+                  color='primary'
+                  disabled={isSubmitting}
+                  endIcon={<ViewIcon />}
+                  stylea={{ marginRight: '0.5rem' }}
+                  onClick={() => this.setState({ privacyVisible: true })}>
+                  View Privacy Policy
+                </Button>
                 <Button
                   variant='contained'
                   color='primary'
-                  disabled={isSubmitting}
+                  disabled={!values.acceptedTerms || isSubmitting}
+                  endIcon={<SubmitIcon />}
                   onClick={submitForm}>
-                  Submit
+                  Take The Survey
                 </Button>
               </Grid>
             </Form>
           )}
         </Formik>
+        <PrivacyPopOver open={this.state.privacyVisible} close={this.closePopup} />
       </MuiPickersUtilsProvider>
     );
   }
