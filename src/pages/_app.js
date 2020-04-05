@@ -1,8 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import App from 'next/app';
-import dynamic from 'next/dynamic';
-import { Store } from 'redux';
+
 import withRedux from 'next-redux-wrapper';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';

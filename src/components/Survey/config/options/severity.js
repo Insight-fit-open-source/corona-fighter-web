@@ -4,14 +4,14 @@ export default {
   },
   yes: {
     key: 'increase',
-    title: 'Yes',
+    title: "They're getting worse",
   },
   same: {
     key: 'same',
-    title: 'They are the same',
+    title: 'They are about the same',
   },
   no: {
     key: 'decrease',
-    title: 'They have improved',
+    title: 'They are not as bad as they were',
   },
 };

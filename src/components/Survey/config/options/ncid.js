@@ -4,7 +4,7 @@ export default {
   },
   none: {
     key: 'none',
-    title: 'None of the below',
+    title: 'None of the symptoms below',
   },
   coughing: {
     key: 'Coughing a lot and continuously',

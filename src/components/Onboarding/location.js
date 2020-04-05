@@ -55,7 +55,7 @@ class FormikPlacesAutoComplete extends Component {
 
     const error = errors[name];
     const touch = touched[name];
-
+    console.log(error);
     return (
       <PlacesAutocomplete
         name={name}
@@ -87,7 +87,7 @@ class FormikPlacesAutoComplete extends Component {
                   : 'suggestion-item';
                 // inline style for demonstration purpose
                 const style = suggestion.active
-                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                  ? { backgroundColor: '#bae8e8', cursor: 'pointer' }
                   : { backgroundColor: '#ffffff', cursor: 'pointer' };
                 return (
                   <div

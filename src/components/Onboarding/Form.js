@@ -30,15 +30,15 @@ const schema = Yup.object({
 
 export class FirebaseForm extends React.PureComponent {
   render() {
-    const { close, userId } = this.props;
+    const { close, userId, isAuthenticated, user } = this.props;
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Formik
           initialValues={{
-            preferredName: '',
+            preferredName: isAuthenticated && user.displayName ? user.displayName : '',
             dob: '',
-            email: '',
-            phone: '',
+            email: isAuthenticated && user.email ? user.email : '',
+            phone: isAuthenticated && user.phoneNumber ? user.phoneNumber : '',
             location: null,
             conditions: [],
             medicine: '',
