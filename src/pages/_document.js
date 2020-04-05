@@ -13,6 +13,7 @@ export default class MyDocument extends Document {
           <title>Corona Fighter</title>
           <meta name="description" content="Join us to reduce pressure on medical facilities, reduce deaths and track the evolution of the Corona Virus in South Africa." />
           <meta name='theme-color' content={theme.palette.primary.main} />
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
           <link
             rel='apple-touch-icon'
             sizes='180x180'
