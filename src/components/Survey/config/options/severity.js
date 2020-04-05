@@ -14,4 +14,8 @@ export default {
     key: 'decrease',
     title: 'They are not as bad as they were',
   },
+  notApplicable: {
+    key: 'not applicable',
+    title: 'Not applicable for me.',
+  },
 };

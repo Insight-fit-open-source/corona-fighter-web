@@ -86,7 +86,7 @@ export default styled.div`
 
     .social-wrap {
       justify-self: flex-end;
-      padding: 4.5rem 0 1rem 0;
+      padding: 1.5rem 0 1rem 0;
       flex: 1;
       align-items: flex-end;
 
