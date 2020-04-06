@@ -54,6 +54,9 @@ const Auth = () => {
               Privacy Policy
             </a>
           </small>
+          <small>
+            We will never sell your personal information or use it for commercial or marketing purposes. Collection of data is strictly for use by researchers, NGOs and governments in the fight against COVID-19.
+          </small>
         </p>
       </>
     </AuthLayout>

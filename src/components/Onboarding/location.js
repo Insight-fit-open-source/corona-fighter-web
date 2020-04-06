@@ -68,6 +68,7 @@ class FormikPlacesAutoComplete extends Component {
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div className='location-wrap'>
             <TextField
+              helperText='Help us understand where COVID-19 is impacting SA most'
               {...getInputProps({
                 error: Boolean(error),
                 name: 'location',
