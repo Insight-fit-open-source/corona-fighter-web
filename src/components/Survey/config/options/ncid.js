@@ -8,15 +8,15 @@ export default {
   },
   coughing: {
     key: 'a persistent cough',
-    title: 'A persistent cough',
+    title: 'The sudden onset of a persistent cough',
   },
   fever: {
     key: 'a fever, or high temperature',
-    title: 'A fever, or high temperature',
+    title: 'The sudden onset of a fever, or high temperature',
   },
   soreThroat: {
     key: 'a sore throat',
-    title: 'A sore throat',
+    title: 'The sudden onset of a sore throat',
   },
   shortnessOfBreath: {
     key: 'unusual shortness of breath or difficulty breathing',
