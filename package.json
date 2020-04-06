@@ -17,8 +17,8 @@
     "test:ui": "npx majestic --coverage",
     "lint": "tsc --noEmit && eslint ./src/**/*.ts*",
     "lint:fix": "tsc --noEmit && eslint ./src/**/*.ts* --fix",
-    "ci:deploy:staging": "now -A ./staging.now.json --prod --token=$NOW_TOKEN --scope=CoronaFighter --confirm",
-    "ci:deploy:production": "now -A ./production.now.json --prod --token=$NOW_TOKEN --scope=CoronaFighter --confirm"
+    "ci:deploy:staging": "now -A ./staging.now.json --prod --token=$NOW_TOKEN --scope=coronafighter --confirm",
+    "ci:deploy:production": "now -A ./production.now.json --prod --token=$NOW_TOKEN --scope=coronafighter --confirm"
   },
   "husky": {
     "hooks": {

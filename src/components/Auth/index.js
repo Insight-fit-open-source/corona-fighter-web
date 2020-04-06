@@ -16,6 +16,8 @@ const Auth = () => {
   const firebaseUiConfig = {
     signInFlow: 'redirect',
     credentialHelper: 'none',
+    tosUrl: '/content/privacy-policy',
+    privacyPolicyUrl: '/content/privacy-policy',
     signInOptions: [
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -48,12 +50,6 @@ const Auth = () => {
           firebaseAuth={firebase.auth()}
         />
         <p>
-          <small>
-            By accessing this site, you agree to the terms set out in our{' '}
-            <a href='http://app.testforcovid.co.za/content/privacy-policy' target='_blank'>
-              Privacy Policy
-            </a>
-          </small>
           <small>
             We will never sell your personal information or use it for commercial or marketing purposes. Collection of data is strictly for use by researchers, NGOs and governments in the fight against COVID-19.
           </small>
