@@ -34,6 +34,11 @@ export class Survey extends React.PureComponent {
 
   async componentWillUnmount() {
     const { analytics } = await FirebaseFactory.get();
+    try {
+      analytics.logEvent('survey completed');
+    } catch (ae) {
+      console.log(ae);
+    }
     this.props.stopSurvey();
   }
 
