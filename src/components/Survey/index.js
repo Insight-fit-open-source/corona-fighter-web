@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import FirebaseFactory from 'src/app/lib/firebase';
 import calculateOutcome from 'src/components/Survey/config/calculateOutcome';
 import { actions } from 'src/store/definitions/survey';
 import { actions as profileActions } from 'src/store/definitions/profile';
@@ -21,11 +22,18 @@ import {
 } from 'src/components/Survey/styles';
 
 export class Survey extends React.PureComponent {
-  componentDidMount() {
+  async componentDidMount() {
+    const { analytics } = await FirebaseFactory.get();
+    try {
+      analytics.logEvent('survey started');
+    } catch (ae) {
+      console.log(ae);
+    }
     return this.props.startSurvey();
   }
 
-  componentWillUnmount() {
+  async componentWillUnmount() {
+    const { analytics } = await FirebaseFactory.get();
     this.props.stopSurvey();
   }
 
