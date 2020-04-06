@@ -24,11 +24,6 @@ import LocationField from './location';
 import Select from './Select';
 
 const schema = Yup.object({
-  preferredName: Yup.string('How should we address you?').required(
-    'Even a pseudonym will do',
-  ),
-  email: Yup.string('Enter your email').email('Enter a valid email'),
-  phone: Yup.string('Enter your phone number'),
   location: Yup.object().required('Just a suburb or area is fine'),
   medicine: Yup.string(),
   acceptedTerms: Yup.bool(true).required(
@@ -51,11 +46,7 @@ export class FirebaseForm extends React.PureComponent {
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Formik
           initialValues={{
-            preferredName:
-              isAuthenticated && user.displayName ? user.displayName : '',
             dob: '',
-            email: isAuthenticated && user.email ? user.email : '',
-            phone: isAuthenticated && user.phoneNumber ? user.phoneNumber : '',
             location: null,
             conditions: [],
             medicine: '',
@@ -99,14 +90,6 @@ export class FirebaseForm extends React.PureComponent {
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
                   <Field
-                    component={TextField}
-                    name='preferredName'
-                    label='Preferred Name'
-                    required
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Field
                     component={DatePicker}
                     disableFuture
                     openTo='year'
@@ -115,21 +98,6 @@ export class FirebaseForm extends React.PureComponent {
                     name='dob'
                     label='Date of Birth'
                     required
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Field
-                    component={TextField}
-                    name='email'
-                    type='email'
-                    label='Email'
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Field
-                    component={TextField}
-                    name='phone'
-                    label='Phone Number'
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
