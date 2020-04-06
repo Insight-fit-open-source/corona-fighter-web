@@ -18,6 +18,10 @@ export default {
     key: 'I have worked at a hospital/clinic currently taking care of COVID-19 patients',
     title: 'I have worked at a hospital/clinic currently taking care of COVID-19 patients',
   },
+  essential: {
+    key: 'I am essential worker and travel to work every day.',
+    title: 'I am essential worker and travel to work every day.',
+  },
   none: {
     key: 'none',
     title: 'I have not travelled or come into contact with a COVID-19 positive patient',
