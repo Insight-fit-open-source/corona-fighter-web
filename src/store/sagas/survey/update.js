@@ -13,7 +13,7 @@ function* retryUpdate(payload) {
 
   const data = {};
   data[surveyStarted] = selected;
-
+  console.log(selected);
   try {
     yield call(rsf.firestore.setDocument, `surveyResponses/${uid}/`, data, {
       merge: true,
@@ -21,7 +21,11 @@ function* retryUpdate(payload) {
 
     yield put(actions.surveySyncSucceeded());
     try {
-      analytics.logEvent('Survey Question Answered', { ...selected });
+      if (selected && selected.outcome) {
+        analytics.logEvent('Survey Question Answered', { outcome: selected.title });
+      } else {
+        analytics.logEvent('Survey Question Answered', { ...selected });
+      }
     } catch (ae) {
       console.log(ae);
     }
