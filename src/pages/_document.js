@@ -30,6 +30,31 @@ export default class MyDocument extends Document {
             href='/favicon-16x16.png'
           />
           <link rel='manifest' href='/site.webmanifest' />
+
+          <meta name='application-name' content='CoronaFighter' />
+          <meta name='apple-mobile-web-app-capable' content='yes' />
+          <meta
+            name='apple-mobile-web-app-status-bar-style'
+            content='default'
+          />
+          <meta name='apple-mobile-web-app-title' content='CoronaFighter' />
+          <meta
+            name='description'
+            content='Help fight COVID-19 by tracking your symptoms daily'
+          />
+          <meta name='mobile-web-app-capable' content='yes' />
+          <meta
+            name='viewport'
+            content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover'
+          />
+
+          <meta name='twitter:card' content='summary' />
+          <meta name='twitter:url' content='https://testforcovid.co.za' />
+          <meta name='twitter:title' content='CoronaFighter' />
+          <meta
+            name='twitter:description'
+            content='Help fight COVID-19 by tracking your symptoms daily'
+          />
         </Head>
         <body>
           <Main />

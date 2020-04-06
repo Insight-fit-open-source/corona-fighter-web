@@ -1,14 +1,22 @@
 const withCSS = require('@zeit/next-css');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+const withPlugins = require('next-compose-plugins');
+const withPWA = require('next-pwa');
 
-module.exports = withCSS({
-  webpack: (config, options) => {
+const nextConfiguration = {
+  webpack: config => {
     if (config.resolve.plugins) {
       config.resolve.plugins.push(new TsconfigPathsPlugin());
     } else {
       // eslint-disable-next-line no-param-reassign
       config.resolve.plugins = [new TsconfigPathsPlugin()];
     }
+
+    // eslint-disable-next-line no-param-reassign
+    config.optimization.minimize = true;
 
     config.module.rules.push({
       test: /\.svg$/,
@@ -28,4 +36,20 @@ module.exports = withCSS({
     APP_ID: process.env.APP_ID,
     MEASUREMENT_ID: process.env.MEASUREMENT_ID,
   },
-});
+};
+
+module.exports = withPlugins(
+  [
+    withBundleAnalyzer,
+    withCSS,
+    [
+      withPWA,
+      {
+        pwa: {
+          dest: 'public',
+        },
+      },
+    ],
+  ],
+  nextConfiguration,
+);

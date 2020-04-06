@@ -31,10 +31,9 @@ export default class FirebaseFactory {
     const firestore = await firebase.firestore();
     const auth = await firebase.auth();
     const storage = await firebase.storage();
+    const messaging = await firebase.messaging();
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore
     const rsf = await new ReduxSagaFirebase(firebase);
-    return { firebase, rsf, functions, auth, firestore, storage };
+    return { firebase, rsf, functions, auth, firestore, storage, messaging };
   }
 }
