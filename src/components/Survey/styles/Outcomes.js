@@ -11,8 +11,8 @@ export default styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  overflow-x: auto;
+  height: 100%;
+  overflow: hidden;
   padding: 1.5rem;
   z-index: 5;
   transform: ${props =>
@@ -24,7 +24,7 @@ export default styled.div`
     line-height: 1.2;
     margin-bottom: 3rem;
     position: relative;
-    text-transform: capitalize;
+    text-transform: none;
 
     &:after {
       content: '';
@@ -57,8 +57,12 @@ export default styled.div`
   }
 
   button {
+    width: 100%;
     max-width: 15rem;
     padding: 0.75rem;
+    margin: 0 1rem 1rem 0;
+    position: relative;
+    z-index: 100;
   }
 
   p {
@@ -67,7 +71,7 @@ export default styled.div`
   }
 
   .results {
-    display: flex;
+    display: block;
     flex-flow: column nowrap;
     justify-content: center;
     padding: 1.5rem;
@@ -78,14 +82,42 @@ export default styled.div`
     height: 100%;
     height: 100%;
     z-index: 20;
+    overflow-y: auto;
 
-    @media only screen and (min-width: ${breakpoints.values.sm}px) {
-      padding: 3rem;
-      width: 70%;
+    .social-wrap {
+      justify-self: flex-end;
+      padding: 1.5rem 0 1rem 0;
+      flex: 1;
+      align-items: flex-end;
+
+      h5 {
+        margin: 0;
+        font-size: 1rem;
+        opacity: 0.75;
+      }
+
+      @media only screen and (min-height: 750px) and (min-width: ${breakpoints
+          .values.md}px) {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 3rem;
+        right: 0;
+      }
     }
 
     @media only screen and (min-width: ${breakpoints.values.md}px) {
-      width: 50%;
+      display: flex;
+      padding: 3rem 30% 3rem 3rem;
+    }
+
+    @media only screen and (min-width: ${breakpoints.values.lg}px) {
+      padding: 3rem 50% 3rem 3rem;
+    }
+
+    @media (max-height: 750px) {
+      overflow-y: scroll;
+      display: block;
     }
   }
 `;

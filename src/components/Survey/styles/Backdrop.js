@@ -8,7 +8,7 @@ export default styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background-color: ${colors.blueDark};
   transform: ${props =>
     props.layoutActive ? 'translate3d(0%, 0%, 0)' : 'translate3d(0%, 35%, 0)'};
@@ -27,13 +27,17 @@ export default styled.div`
     background: ${colors.blueDark};
     color: ${colors.white};
 
-    @media only screen and (min-width: ${breakpoints.values.sm}px) {
-      padding: 3rem;
-      width: 70%;
+    @media (max-height: 750px) {
+      overflow-y: scroll;
+      display: block;
     }
 
     @media only screen and (min-width: ${breakpoints.values.md}px) {
-      width: 50%;
+      padding: 3rem 30% 3rem 3rem;
+    }
+
+    @media only screen and (min-width: ${breakpoints.values.lg}px) {
+      padding: 3rem 50% 3rem 3rem;
     }
 
     h1 {
@@ -68,6 +72,7 @@ export default styled.div`
       max-width: 15rem;
       padding: 0.75rem 0;
       margin-top: 4.5rem;
+      width: 100%;
     }
   }
 

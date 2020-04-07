@@ -4,17 +4,18 @@ export default {
   },
   yes: {
     key: 'increase',
-    title: 'yes',
-    desc: 'yes',
+    title: "They're getting worse",
   },
   same: {
     key: 'same',
-    title: 'they are the same',
-    desc: 'they are the same',
+    title: 'They are about the same',
   },
   no: {
     key: 'decrease',
-    title: 'they have improved',
-    desc: 'they have improved',
+    title: 'They are not as bad as they were',
+  },
+  notApplicable: {
+    key: 'not applicable',
+    title: 'Not applicable for me.',
   },
 };

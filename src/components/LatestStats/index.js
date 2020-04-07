@@ -5,8 +5,9 @@ import Charts from './Charts';
 
 const LatestStats = () => (
   <>
-    <Stats />
-    <Charts />
+    <Stats>
+      <Charts />
+    </Stats>
   </>
 );
 

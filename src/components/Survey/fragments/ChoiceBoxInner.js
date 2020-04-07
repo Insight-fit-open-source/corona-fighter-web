@@ -19,7 +19,7 @@ const OptionsWrap = ({ step, title, nextLink, children, hasSelection }) => (
       <Link href={`/survey/[step]`} as={`${nextLink}`}>
         <Button
           variant='contained'
-          color='secondary'
+          color='primary'
           disabled={!hasSelection(step)}
           endIcon={<ArrowRightIcon />}>
           Next
@@ -30,8 +30,11 @@ const OptionsWrap = ({ step, title, nextLink, children, hasSelection }) => (
 );
 
 const mapState = state => ({
-  hasSelection: (step) =>
-    Boolean(_.isArray(state.survey.selected[step]) && state.survey.selected[step].length > 0),
+  hasSelection: step =>
+    Boolean(
+      _.isArray(state.survey.selected[step]) &&
+        state.survey.selected[step].length > 0,
+    ),
 });
 
 export default connect(mapState)(OptionsWrap);

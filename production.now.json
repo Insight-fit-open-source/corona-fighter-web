@@ -1,5 +1,5 @@
 {
-  "scope": "sigmadigital",
+  "scope": "coronafighter",
   "github": {
     "enabled": false,
     "autoAlias": true,
@@ -7,7 +7,7 @@
     "autoJobCancelation": true
   },
   "version": 2,
-  "alias": [ "coronasepush-web.now.sh" ],
+  "alias": ["app.testforcovid.co.za"],
   "build": {
     "env": {
       "API_KEY": "@prod-api-key",

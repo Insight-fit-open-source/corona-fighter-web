@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import colors from 'src/app/theme/colors';
+import breakpoints from 'src/app/theme/breakpoints';
 import sizes from 'src/app/theme/sizes';
 
 const fadeIn = keyframes`
@@ -57,10 +58,21 @@ export default styled.div`
     }
   }
 
-  &:hover {
-    border: 1px solid ${colors.pink};
+  @media only screen and (min-width: ${breakpoints.values.md}px) {
+    &:hover {
+      border: 1px solid ${colors.blueLight};
+      background-color: rgba(186, 232, 232, 0.25);
+
+      .reveal-description {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &:active {
+    border: none;
     .reveal-description {
-      opacity: 0.8;
+      opacity: 0;
     }
   }
 
@@ -68,13 +80,14 @@ export default styled.div`
     selected &&
     `
     opacity: 1;
-    color: ${colors.pink};
-    border: 1px solid ${colors.pink};
+    color: ${colors.blueDark};
+    background-color: ${colors.blueLight};
+    border: 1px solid ${colors.blueLight};
     box-shadow: 0px 5px 10px rgba(60, 30, 40, 0.15);
     transform: scale(1.08);
 
     svg {
-      fill: ${colors.pink};
+      fill: ${colors.blueDark};
     }
   `}
 `;

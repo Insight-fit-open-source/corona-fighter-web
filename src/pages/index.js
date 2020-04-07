@@ -1,24 +1,33 @@
 import React from 'react';
 import Link from 'next/link';
 import Admin from 'src/layout/Admin';
-import data from 'forestry/data/landingPage.json';
-import Popover from 'src/components/Popover';
+import { Button } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
+
 import IsProtectedPage from 'src/app/lib/firebase/auth/IsProtectedPage';
-import WithAuth from 'src/app/lib/firebase/auth/WithAuth';
 import Symptoms from 'src/components/Symptoms';
 
-export const Home = ({ isAuthenticated }) => {
+export const Home = () => {
   return (
     <>
-      {isAuthenticated && <Popover />}
       <Admin pageTitle='My Symptoms'>
-        <Link href='/survey/[step]' as='/survey/welcome'>
-          <a>Take The Symptoms Survey</a>
-        </Link>
+        <Alert
+          severity='success'
+          action={
+            <Link href='/survey/[step]' as='/survey/welcome'>
+              <Button color='inherit' size='small'>
+                Take the Survey
+              </Button>
+            </Link>
+          }>
+          <span className='hide-on-mobile'>
+            Take the symptoms survey daily and Help Fight COVID19.
+          </span>
+        </Alert>
         <Symptoms />
       </Admin>
     </>
   );
 };
 
-export default IsProtectedPage(WithAuth(Home));
+export default IsProtectedPage(Home);

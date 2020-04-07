@@ -1,22 +1,22 @@
 export default {
-  'Useful Links': {
+  'Should I Get Tested?': {
     link: '/content/[page]',
-    as: '/content/useful-links',
+    as: '/content/should-you-test',
   },
   'How to Help': {
     link: '/content/[page]',
     as: '/content/how-to-help',
   },
-  'Where to get Help': {
+  'How to Stay Safe': {
     link: '/content/[page]',
-    as: '/content/where-to-get-help',
+    as: '/content/how-to-stay-safe',
   },
-  'General Guidelines': {
+  'Get Involved': {
     link: '/content/[page]',
-    as: '/content/general-guidelines',
+    as: '/content/get-involved',
   },
-  'Terms of Use': {
+  'Privacy Policy': {
     link: '/content/[page]',
-    as: '/content/terms-of-use',
+    as: '/content/privacy-policy',
   },
 };

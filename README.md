@@ -1,4 +1,6 @@
-# Corona Se Push
+# Corona Fighter
+
+CoronaFighter is a tool and an initiative: a tool for you to track symptoms and an initiative to reduce pressure on medical facilities, reduce deaths and track the evolution of the disease in South Africa.
 
 ## Development
 

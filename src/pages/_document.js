@@ -2,7 +2,7 @@ import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet as StyledComponentSheets } from 'styled-components';
 import { ServerStyleSheets as MaterialUiServerStyleSheets } from '@material-ui/styles';
-
+import config from 'src/app/publicSettings';
 import theme from 'src/app/theme';
 
 export default class MyDocument extends Document {
@@ -10,7 +10,30 @@ export default class MyDocument extends Document {
     return (
       <html lang='en'>
         <Head>
-          {/* PWA primary color */}
+          <title>Corona Fighter</title>
+          <meta
+            name='description'
+            content='Join us to reduce pressure on medical facilities, reduce deaths and track the evolution of the Corona Virus in South Africa.'
+          />
+          <meta name='application-name' content='Corona Fighter' />
+          <meta name='apple-mobile-web-app-capable' content='yes' />
+          <meta
+            name='apple-mobile-web-app-status-bar-style'
+            content='default'
+          />
+          <meta name='apple-mobile-web-app-title' content='Corona Fighter' />
+          <meta name='mobile-web-app-capable' content='yes' />
+          <meta name='twitter:card' content='summary' />
+          <meta name='twitter:url' content='https://testforcovid.co.za' />
+          <meta name='twitter:title' content='CoronaFighter' />
+          <meta
+            name='twitter:description'
+            content='Join us to reduce pressure on medical facilities, reduce deaths and track the evolution of the Corona Virus in South Africa.'
+          />
+          <meta
+            name='viewport'
+            content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, maximum-scale=1, viewport-fit=cover'
+          />
           <meta name='theme-color' content={theme.palette.primary.main} />
           <link
             rel='apple-touch-icon'
@@ -30,30 +53,31 @@ export default class MyDocument extends Document {
             href='/favicon-16x16.png'
           />
           <link rel='manifest' href='/site.webmanifest' />
+          <style>
+            {`html {
+                font-size: 12px;
+              }
+              @media  (min-height: 450px) {
+                html {
+                  font-size: 14px;
+                }
+              }
 
-          <meta name='application-name' content='CoronaFighter' />
-          <meta name='apple-mobile-web-app-capable' content='yes' />
-          <meta
-            name='apple-mobile-web-app-status-bar-style'
-            content='default'
-          />
-          <meta name='apple-mobile-web-app-title' content='CoronaFighter' />
-          <meta
-            name='description'
-            content='Help fight COVID-19 by tracking your symptoms daily'
-          />
-          <meta name='mobile-web-app-capable' content='yes' />
-          <meta
-            name='viewport'
-            content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover'
-          />
+              @media  (min-height: 650px) {
+                html {
+                  font-size: 16px;
+                }
+              }
 
-          <meta name='twitter:card' content='summary' />
-          <meta name='twitter:url' content='https://testforcovid.co.za' />
-          <meta name='twitter:title' content='CoronaFighter' />
-          <meta
-            name='twitter:description'
-            content='Help fight COVID-19 by tracking your symptoms daily'
+              @media (min-height: 650px), (min-width: 1140px) {
+                html {
+                  font-size: 16px;
+                }
+              }
+          `}
+          </style>
+          <script
+            src={`https://maps.googleapis.com/maps/api/js?key=${config.GOOGLE_API_KEY}&libraries=places`}
           />
         </Head>
         <body>

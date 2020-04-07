@@ -10,6 +10,12 @@ const Wrap = styled.div`
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+
+  .hide-on-mobile {
+    @media only screen and (max-width: ${breakpoints.values.sm}px) {
+      display: none;
+    }
+  }
 `;
 
 const BodyWrap = styled.div`
@@ -29,7 +35,7 @@ const Body = styled.div`
 const BodyGeneral = styled.div`
   position: relative;
   flex: 1;
-  padding: 5rem 1.5rem 3rem;
+  padding: ${({ isMap }) => (isMap ? '4rem 0 0' : '6rem 1.5rem 3rem')};
   overflow-y: auto;
 
   .pageHeader {
@@ -39,6 +45,7 @@ const BodyGeneral = styled.div`
     align-items: center;
     justify-content: flex-start;
     position: fixed;
+    z-index: 25;
     top: 0;
     left: 0;
     width: 100%;
@@ -48,7 +55,8 @@ const BodyGeneral = styled.div`
       0 5px 18px ${rgba(colors.blueDark, 0.07)};
 
     h4 {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
+      line-height: 1.15;
     }
 
     .hamburger {
@@ -59,6 +67,18 @@ const BodyGeneral = styled.div`
       svg {
         fill: ${colors.blueDark};
       }
+    }
+  }
+
+  .inner-content {
+    width: 100%;
+
+    a {
+      color: ${colors.pink}!important;
+    }
+
+    img {
+      max-width: 100%;
     }
   }
 
@@ -77,11 +97,16 @@ const BodyGeneral = styled.div`
       }
     }
   }
+
+  @media only screen and (min-width: ${breakpoints.values.lg}px) {
+    .inner-content {
+      padding-right: 40%;
+    }
+  }
 `;
 
 const AuthBody = styled.div`
   position: relative;
-  z-index: 10;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -91,6 +116,21 @@ const AuthBody = styled.div`
   background-color: ${colors.blueDark};
   overflow-x: hidden;
   overflow-y: auto;
+
+  small {
+    display: block;
+    position: relative;
+    z-index: 20;
+    color: ${colors.white};
+    margin: 3rem auto;
+    max-width: 20rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  a {
+    color: ${colors.pink};
+  }
 `;
 
 const Styled = {

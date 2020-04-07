@@ -11,4 +11,8 @@ export default {
     link: '/care-locator',
     as: '/care-locator',
   },
+  'Take The Survey': {
+    link: '/survey/[step]',
+    as: '/survey/welcome',
+  },
 };

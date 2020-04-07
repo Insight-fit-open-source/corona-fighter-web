@@ -14,11 +14,9 @@ const PopoverContent = styled.div`
 `;
 
 const PopoverBody = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
+  display: block;
   padding: 1.5rem;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -26,24 +24,33 @@ const PopoverBody = styled.div`
   z-index: 50;
   background: ${colors.blueDark};
   color: ${colors.white};
+  overflow: scroll;
+
+  @media only screen and (min-width: ${breakpoints.values
+      .md}px) and (min-height: 600px) {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
 
   @media only screen and (min-width: ${breakpoints.values.sm}px) {
-    padding: 3rem;
-    width: 70%;
+    padding: 3rem 40% 3rem 3rem;
   }
 
   @media only screen and (min-width: ${breakpoints.values.md}px) {
-    width: 50%;
+    padding: 3rem 50% 3rem 3rem;
   }
 
   h1 {
-    margin-bottom: 3rem;
+    margin: 3rem 0;
     position: relative;
     font-size: calc(1.5rem + 2.5vw);
     line-height: 1;
 
     @media only screen and (min-width: ${breakpoints.values.md}px) {
       font-size: 3rem;
+      margin: 0.7.5rem 0 3rem 0;
     }
 
     &:after {
@@ -69,9 +76,14 @@ const PopoverBody = styled.div`
   }
 
   button {
+    width: 100%;
     max-width: 20rem;
     padding: 0.75rem 0;
     margin-top: 1rem;
+
+    @media only screen and (min-width: ${breakpoints.values.md}px) {
+      margin-top: 0;
+    }
   }
 `;
 

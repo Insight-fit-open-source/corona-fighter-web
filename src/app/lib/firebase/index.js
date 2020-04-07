@@ -12,6 +12,7 @@ export default class FirebaseFactory {
     await import('firebase/firestore');
     await import('firebase/storage');
     await import('firebase/messaging');
+    await import('firebase/analytics');
 
     // firebase is stateful so we have to prevent reinitialization
     if (!firebase.apps.length) {
@@ -33,8 +34,18 @@ export default class FirebaseFactory {
     const auth = await firebase.auth();
     const storage = await firebase.storage();
     const messaging = await firebase.messaging();
+    const analytics = await firebase.analytics();
 
     const rsf = await new ReduxSagaFirebase(firebase);
-    return { firebase, rsf, functions, auth, firestore, storage, messaging };
+    return {
+      firebase,
+      rsf,
+      functions,
+      auth,
+      analytics,
+      firestore,
+      storage,
+      messaging,
+    };
   }
 }

@@ -1,13 +1,18 @@
 import React from 'react';
 
 import VirusBg from 'src/components/common/VirusBg';
+import Base from './Base';
 import Styled from './styles';
 
 const AuthLayout = ({ children }) => (
-  <Styled.Wrap>
-    <Styled.AuthBody>{children}</Styled.AuthBody>
-    <VirusBg />
-  </Styled.Wrap>
+  <Base>
+    <Styled.Wrap>
+      <Styled.AuthBody>
+        <VirusBg />
+        {children}
+      </Styled.AuthBody>
+    </Styled.Wrap>
+  </Base>
 );
 
 export default AuthLayout;

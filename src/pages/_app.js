@@ -1,6 +1,8 @@
 import React from 'react';
+import Router from 'next/router';
 import { Provider } from 'react-redux';
 import App from 'next/app';
+
 import withRedux from 'next-redux-wrapper';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
@@ -42,6 +44,16 @@ class MyApp extends App {
         .catch(err => console.log({ err }));
     };
     getMessagingPermission();
+
+    Router.onRouteChangeComplete = async url => {
+      console.log(url);
+      try {
+        const { analytics } = await FirebaseFactory.get();
+        await analytics.logEvent('page_location', {
+          url,
+        });
+      } catch (e) {}
+    };
   }
 
   render() {

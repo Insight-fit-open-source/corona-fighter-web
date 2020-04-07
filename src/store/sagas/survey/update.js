@@ -3,7 +3,7 @@ import { takeEvery, call, put, retry, select } from 'redux-saga/effects';
 import { actions, constants } from 'src/store/definitions/survey';
 
 function* retryUpdate(payload) {
-  const { rsf } = yield call([FirebaseFactory, 'get']);
+  const { rsf, analytics } = yield call([FirebaseFactory, 'get']);
   const { uid } = yield select(state => state.auth.user);
   const { surveyStarted, selected } = yield select(state => state.survey);
 
@@ -13,13 +13,24 @@ function* retryUpdate(payload) {
 
   const data = {};
   data[surveyStarted] = selected;
-
+  console.log(selected);
   try {
     yield call(rsf.firestore.setDocument, `surveyResponses/${uid}/`, data, {
       merge: true,
     });
 
     yield put(actions.surveySyncSucceeded());
+    try {
+      if (selected && selected.outcome) {
+        analytics.logEvent('Survey Question Answered', {
+          outcome: selected.title,
+        });
+      } else {
+        analytics.logEvent('Survey Question Answered', { ...selected });
+      }
+    } catch (ae) {
+      console.log(ae);
+    }
   } catch (error) {
     yield put(actions.surveySyncFailed());
     throw new Error(error);

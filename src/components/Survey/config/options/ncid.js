@@ -4,26 +4,22 @@ export default {
   },
   none: {
     key: 'none',
-    title: 'None of the below',
+    title: 'None of the symptoms below',
   },
   coughing: {
-    key: 'Coughing a lot and continuously',
-    title: 'Coughing a lot and continuously',
-    desc: 'Coughing a lot and continuously',
+    key: 'a persistent cough',
+    title: 'The sudden onset of a persistent cough',
   },
   fever: {
-    key: 'A Fever, or high temperature',
-    title: 'A Fever, or high temperature',
-    desc: 'A Fever, or high temperature',
+    key: 'a fever, or high temperature',
+    title: 'The sudden onset of a fever, or high temperature',
   },
   soreThroat: {
     key: 'a sore throat',
-    title: 'a sore throat',
-    desc: 'a sore throat',
+    title: 'The sudden onset of a sore throat',
   },
   shortnessOfBreath: {
-    key: 'Unusual shortness of breath or difficulty breathing',
+    key: 'unusual shortness of breath or difficulty breathing',
     title: 'Unusual shortness of breath or difficulty breathing',
-    desc: 'Unusual shortness of breath or difficulty breathing',
   },
 };

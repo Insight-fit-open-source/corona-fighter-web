@@ -5,39 +5,48 @@ import { connect } from 'react-redux';
 import { Button, Typography } from '@material-ui/core';
 import ButtonIcon from '@material-ui/icons/ChevronRight';
 import Dialog from '@material-ui/core/Dialog';
-import Slide from '@material-ui/core/Slide';
 
 import moment from 'moment';
 import WithAuth from 'src/app/lib/firebase/auth/WithAuth';
 import { actions } from 'src/store/definitions/profile';
-import data from 'forestry/data/popover.json';
+import data from 'src/app/forestry/data/popover.json';
 import VirusBg from 'src/components/common/VirusBg';
 import Styled from './styles';
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction='up' ref={ref} {...props} />;
-});
-
 const Popover = props => {
-  const { checkin, isAuthenticated, lastCheckin, onBoardingComplete } = props;
-
-  const showPopover =
-    isAuthenticated &&
-    moment().subtract(6, 'hours') > moment(+lastCheckin) &&
-    onBoardingComplete;
-  const [open, setOpen] = React.useState(Boolean(showPopover));
+  const {
+    checkin,
+    isAuthenticated,
+    authInProcess,
+    lastCheckin,
+    onBoardingComplete,
+    profileSyncInProcess,
+  } = props;
+  const [open, setOpen] = React.useState(Boolean(false));
 
   const handleClose = () => {
     checkin();
     setOpen(false);
   };
 
+  React.useEffect(() => {
+    setOpen(
+      !profileSyncInProcess &&
+        !authInProcess &&
+        isAuthenticated &&
+        onBoardingComplete &&
+        moment().subtract(6, 'hours') > moment.unix(+lastCheckin),
+    );
+  }, [
+    profileSyncInProcess,
+    onBoardingComplete,
+    authInProcess,
+    isAuthenticated,
+    lastCheckin,
+  ]);
+
   return (
-    <Dialog
-      fullScreen
-      open={open}
-      onClose={handleClose}
-      TransitionComponent={Transition}>
+    <Dialog fullScreen open={open} onClose={handleClose}>
       <VirusBg styles={{ zIndex: 100 }} />
       <Styled.PopoverContent>
         <Styled.PopoverBody>
@@ -51,6 +60,7 @@ const Popover = props => {
               {data.not_ok_button_text}
             </Button>
           </Link>
+          <br />
           <Button variant='outlined' color='secondary' onClick={handleClose}>
             {data.ok_button_text}
           </Button>
@@ -63,6 +73,7 @@ const Popover = props => {
 const mapState = state => ({
   lastCheckin: state.profile.lastCheckin,
   onBoardingComplete: state.profile.onBoardingComplete,
+  profileSyncInProcess: state.profile.profileSyncInProcess,
 });
 
 const mapDispatch = dispatch => ({
