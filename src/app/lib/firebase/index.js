@@ -11,6 +11,7 @@ export default class FirebaseFactory {
     await import('firebase/auth');
     await import('firebase/firestore');
     await import('firebase/storage');
+    await import('firebase/messaging');
 
     // firebase is stateful so we have to prevent reinitialization
     if (!firebase.apps.length) {

@@ -1,14 +1,13 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import App from 'next/app';
-import dynamic from 'next/dynamic';
-import { Store } from 'redux';
 import withRedux from 'next-redux-wrapper';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import { StylesProvider, CssBaseline } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core/styles';
 
+import FirebaseFactory from 'src/app/lib/firebase';
 import { actions as authActions } from 'src/store/definitions/auth';
 import theme from 'src/app/theme';
 
@@ -32,6 +31,17 @@ class MyApp extends App {
       jssStyles.parentNode.removeChild(jssStyles);
 
     store.dispatch(authActions.clientSessionStarted());
+    const getMessagingPermission = async () => {
+      const { messaging } = await FirebaseFactory.get();
+      messaging
+        .requestPermission()
+        .then(() => messaging.getToken())
+        .then(token => {
+          store.dispatch(authActions.messagingTokenReceived({ token }));
+        })
+        .catch(err => console.log({ err }));
+    };
+    getMessagingPermission();
   }
 
   render() {

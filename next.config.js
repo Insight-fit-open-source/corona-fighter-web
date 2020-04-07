@@ -38,18 +38,30 @@ const nextConfiguration = {
   },
 };
 
-module.exports = withPlugins(
+const plugins = [
+  withBundleAnalyzer,
+  withCSS,
   [
-    withBundleAnalyzer,
-    withCSS,
-    [
-      withPWA,
-      {
-        pwa: {
-          dest: 'public',
-        },
+    withPWA,
+    {
+      pwa: {
+        dest: 'public',
+        importScripts: ['firebase-messaging-sw.js'],
       },
-    ],
+    },
   ],
-  nextConfiguration,
-);
+];
+
+if (process.env.NODE_ENV === 'production') {
+  plugins.push([
+    withPWA,
+    {
+      pwa: {
+        dest: 'public',
+        importScripts: ['firebase-messaging-sw.js'],
+      },
+    },
+  ]);
+}
+
+module.exports = withPlugins(plugins, nextConfiguration);
