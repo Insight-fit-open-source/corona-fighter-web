@@ -13,8 +13,9 @@ export default styled.div`
   width: 100%;
   min-height: 40%;
   margin-bottom: 1.5rem;
-  
-  @media only screen and (min-width: ${breakpoints.values.md}px) and (min-height: 650px) {
+
+  @media only screen and (min-width: ${breakpoints.values
+      .md}px) and (min-height: 650px) {
     width: 80%;
     grid-template-columns: ${({ step }) => grids[step] || 'auto'};
     height: 100%;

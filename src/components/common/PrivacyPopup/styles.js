@@ -56,9 +56,9 @@ const CloseButton = styled.button`
   background: none;
   border: none;
   width: initial;
-  max-width: 3.5rem!important;
-  height: 3.5rem!important;
-  margin: 0!important;
+  max-width: 3.5rem !important;
+  height: 3.5rem !important;
+  margin: 0 !important;
   position: relative;
   top: 3px;
 `;

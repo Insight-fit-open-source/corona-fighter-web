@@ -80,7 +80,7 @@ const PopoverBody = styled.div`
     max-width: 20rem;
     padding: 0.75rem 0;
     margin-top: 1rem;
-    
+
     @media only screen and (min-width: ${breakpoints.values.md}px) {
       margin-top: 0;
     }

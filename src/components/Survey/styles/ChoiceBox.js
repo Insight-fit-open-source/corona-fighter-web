@@ -19,7 +19,7 @@ export default styled.div`
   @media only screen and (min-width: ${breakpoints.values
       .md}px) and (min-height: 666px) {
     padding: ${sizes.space(1)};
-        min-height: inherit;
+    min-height: inherit;
     height: 100%;
   }
 

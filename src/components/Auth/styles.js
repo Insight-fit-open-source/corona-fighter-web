@@ -43,7 +43,6 @@ const TitleWrap = styled.div`
     line-height: 1.5;
     display: none;
     max-width: 30rem;
-   
 
     @media only screen and (min-height: 540px) {
       display: block;

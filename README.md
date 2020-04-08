@@ -1,4 +1,5 @@
 # Corona Fighter
+
 CoronaFighter is a tool and an initiative: a tool for you to track symptoms and an initiative to reduce pressure on medical facilities, reduce deaths and track the evolution of the disease in South Africa.
 
 ## Development
@@ -24,5 +25,3 @@ See:
 the setup for this is a little complex, here is a fairly well put together guide on how this all fits together:
 
 - [Next, Jest and Typescript guide on Medium.com](https://medium.com/@kjaer/setting-up-jest-and-enzyme-for-typescript-next-js-apps-ce383167643)
-
-

@@ -26,9 +26,9 @@ import Select from './Select';
 const schema = Yup.object({
   location: Yup.object().required('Just a suburb or area is fine'),
   medicine: Yup.string(),
-  acceptedTerms: Yup.bool(true).required(
-    'you must accept the terms and conditions',
-  ).default(false),
+  acceptedTerms: Yup.bool(true)
+    .required('you must accept the terms and conditions')
+    .default(false),
 });
 
 export class FirebaseForm extends React.PureComponent {
@@ -164,8 +164,7 @@ export class FirebaseForm extends React.PureComponent {
                       component={Checkbox}
                     />
                     In order to proceed and use the application, you must accept
-                    the terms of use described in the
-                    Privacy Policy.
+                    the terms of use described in the Privacy Policy.
                   </InputLabel>
                 </Grid>
                 {isSubmitting && <LinearProgress />}
@@ -190,7 +189,10 @@ export class FirebaseForm extends React.PureComponent {
             </Form>
           )}
         </Formik>
-        <PrivacyPopOver open={this.state.privacyVisible} close={this.closePopup} />
+        <PrivacyPopOver
+          open={this.state.privacyVisible}
+          close={this.closePopup}
+        />
       </MuiPickersUtilsProvider>
     );
   }

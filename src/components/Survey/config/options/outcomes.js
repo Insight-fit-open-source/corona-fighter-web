@@ -26,7 +26,8 @@ export default {
     severity: 'normal',
   },
   outcome4: {
-    title: 'Despite possible contact, you do not need COVID-19 testing currently',
+    title:
+      'Despite possible contact, you do not need COVID-19 testing currently',
     testStatus:
       'No, You will most likely be turned away if you attempt to be tested.',
     body:
@@ -35,14 +36,16 @@ export default {
   },
   outcome5: {
     title: 'The NICD does not recommend testing for now',
-    testStatus: 'No. Its likely you will be turned away if you attempt to be tested.',
+    testStatus:
+      'No. Its likely you will be turned away if you attempt to be tested.',
     body:
       'You are displaying one or more symptoms sometimes seen in COVID-19. However, your symptoms are not considered typical and could be caused by something else. Complete our survey daily to keep track of your symptoms. You should seek medical care if your symptoms worsen. Please note, this is not a diagnosis.',
     severity: 'warn',
   },
   outcome6: {
     title: 'You do not need COVID-19 testing currently.',
-    testStatus: 'No. Its likely you will be turned away if you attempt to be tested.',
+    testStatus:
+      'No. Its likely you will be turned away if you attempt to be tested.',
     body:
       'You are displaying one or more symptoms sometimes seen in COVID-19. Even though you may have a possible positive contact or have travelled to a high risk area, your symptoms are not considered typical of the disease and are more likely caused by something else.There is no need for panic, but, you do need to self-quarantine for 2 weeks. You might need to be tested should you develop symptoms; use our symptom tracker daily to report symptoms. Please note, this is not a diagnosis.',
     severity: 'warn',

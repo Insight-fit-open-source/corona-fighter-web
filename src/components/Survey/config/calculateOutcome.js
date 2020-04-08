@@ -27,14 +27,21 @@ export default (selection, outcomes) => {
     {},
   );
 
-  const clear = !results['severe-symptoms'] && !results['typical-symptoms'] && !results['atypical-symptoms'];
+  const clear =
+    !results['severe-symptoms'] &&
+    !results['typical-symptoms'] &&
+    !results['atypical-symptoms'];
 
   // FIXME: This seems like a bad approach.
   if (results['severe-symptoms']) return outcomes.outcome1;
-  if (results['typical-symptoms'] && results['travel-contact']) return outcomes.outcome2;
+  if (results['typical-symptoms'] && results['travel-contact'])
+    return outcomes.outcome2;
   if (clear && !results['travel-contact']) return outcomes.outcome3;
   if (clear && results['travel-contact']) return outcomes.outcome4;
-  if (results['typical-symptoms'] && !results['travel-contact']) return outcomes.outcome7;
-  if (results['atypical-symptoms'] && !results['travel-contact']) return outcomes.outcome5;
-  if (results['atypical-symptoms'] && results['travel-contact']) return outcomes.outcome6;
+  if (results['typical-symptoms'] && !results['travel-contact'])
+    return outcomes.outcome7;
+  if (results['atypical-symptoms'] && !results['travel-contact'])
+    return outcomes.outcome5;
+  if (results['atypical-symptoms'] && results['travel-contact'])
+    return outcomes.outcome6;
 };

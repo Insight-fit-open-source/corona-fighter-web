@@ -22,7 +22,9 @@ function* retryUpdate(payload) {
     yield put(actions.surveySyncSucceeded());
     try {
       if (selected && selected.outcome) {
-        analytics.logEvent('Survey Question Answered', { outcome: selected.title });
+        analytics.logEvent('Survey Question Answered', {
+          outcome: selected.title,
+        });
       } else {
         analytics.logEvent('Survey Question Answered', { ...selected });
       }

@@ -24,7 +24,6 @@ const definition = {
   }),
   PROFILE_SYNC_FAILED: state => ({ ...state, lastCallFailed: true }),
   CHECKIN: state => ({ ...state }),
-
 };
 
 const { reducer, actions, constants } = duxedo({

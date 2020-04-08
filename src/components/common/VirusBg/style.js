@@ -27,7 +27,7 @@ export default styled.div`
   z-index: 0;
   height: 40vw;
   pointer-events: none;
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
 
   svg {
     width: auto;
@@ -42,7 +42,7 @@ export default styled.div`
     bottom: -8%;
   }
 
-   @media only screen and (min-width: 960px) {
+  @media only screen and (min-width: 960px) {
     bottom: -18%;
   }
 `;
