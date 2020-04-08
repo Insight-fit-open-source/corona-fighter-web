@@ -30,7 +30,7 @@ const NotificationSnackbar = ({
   return (
     <Styled.Container>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity='success'>
+        <Alert onClose={handleClose} severity='info'>
           {message}
         </Alert>
       </Snackbar>
