@@ -22,4 +22,4 @@ firebase.initializeApp({
 
 // Retrieve an instance of Firebase Messaging so that it can handle background
 // messages.
-const messaging = firebase.messaging();
+const messaging = firebase.messaging.isSupported() ? firebase.messaging() : Promise.reject();
