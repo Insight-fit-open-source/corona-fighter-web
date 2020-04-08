@@ -25,7 +25,7 @@ export default {
     next: '/survey/typical-symptoms',
   },
   'typical-symptoms': {
-    title: 'Have you had a sudden onset of any of the following symptoms?',
+    title: 'Have you had a **sudden onset** of any of the following symptoms?',
     content: '',
     layout: 'question',
     options: options.ncid,
