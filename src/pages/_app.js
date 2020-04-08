@@ -33,20 +33,23 @@ class MyApp extends App {
       jssStyles.parentNode.removeChild(jssStyles);
 
     store.dispatch(authActions.clientSessionStarted());
+
     const getMessagingPermission = async () => {
       const { messaging } = await FirebaseFactory.get();
-      messaging
-        .requestPermission()
-        .then(() => messaging.getToken())
-        .then(token => {
-          store.dispatch(authActions.messagingTokenReceived({ token }));
-        })
-        .catch(err => console.log({ err }));
+      if (messaging) {
+        messaging
+          .requestPermission()
+          .then(() => messaging.getToken())
+          .then(token => {
+            store.dispatch(authActions.messagingTokenReceived({ token }));
+          })
+          .catch(err => console.log({ err }));
+      }
     };
+
     getMessagingPermission();
 
     Router.onRouteChangeComplete = async url => {
-      console.log(url);
       try {
         const { analytics } = await FirebaseFactory.get();
         await analytics.logEvent('page_location', {
