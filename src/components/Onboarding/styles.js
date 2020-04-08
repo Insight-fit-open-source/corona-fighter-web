@@ -15,13 +15,13 @@ const OnBoardingContent = styled.div`
   .MuiFormControl-root.MuiTextField-root {
     width: 100%;
   }
-  
+
   label.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-animated {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     line-height: 1.35;
-}
+  }
 
   form {
     button {

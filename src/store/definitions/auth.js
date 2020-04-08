@@ -7,6 +7,7 @@ const defaultState = {
   user: null,
   userToken: null,
   authInProcess: true,
+  messagingToken: '',
 };
 
 const definition = {
@@ -15,6 +16,7 @@ const definition = {
   SIGN_OUT_SUCCESS: helpers.signOutSuccess,
   SIGN_OUT_FAILURE: helpers.signOutFailure,
   AUTH_STATE_CHANGED: helpers.authStateChanged,
+  MESSAGING_TOKEN_RECEIVED: helpers.messagingTokenReceived,
 };
 
 const { reducer, actions, constants } = duxedo({

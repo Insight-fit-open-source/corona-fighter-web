@@ -6,7 +6,7 @@ import Charts from './Charts';
 const LatestStats = () => (
   <>
     <Stats>
-    <Charts />
+      <Charts />
     </Stats>
   </>
 );

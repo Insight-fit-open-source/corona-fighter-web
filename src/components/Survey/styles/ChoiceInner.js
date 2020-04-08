@@ -21,14 +21,14 @@ export default styled.div`
 
   @media only screen and (min-width: ${breakpoints.values.sm}px) {
     h4 {
-          font-size: 1.56rem;
-        line-height: 2.25rem;
+      font-size: 1.56rem;
+      line-height: 2.25rem;
     }
   }
   @media only screen and (min-width: ${breakpoints.values.md}px) {
     display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: space-between;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
   }
 `;

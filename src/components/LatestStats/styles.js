@@ -12,11 +12,12 @@ const StatsBox = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  h3, h4 {
+  h3,
+  h4 {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin: 0!important;
+    margin: 0 !important;
   }
 `;
 

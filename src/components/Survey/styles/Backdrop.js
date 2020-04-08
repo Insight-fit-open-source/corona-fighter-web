@@ -27,7 +27,7 @@ export default styled.div`
     background: ${colors.blueDark};
     color: ${colors.white};
 
-     @media (max-height: 750px) {
+    @media (max-height: 750px) {
       overflow-y: scroll;
       display: block;
     }

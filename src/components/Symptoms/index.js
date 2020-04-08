@@ -34,22 +34,24 @@ export const Symptoms = ({
               surveyResults[key].outcome && surveyResults[key].outcome.body ? (
                 <Item key={key} severity={surveyResults[key].outcome.severity}>
                   <ExpansionPanel>
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} className={surveyResults[key].outcome.severity}>
+                    <ExpansionPanelSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      className={surveyResults[key].outcome.severity}>
                       <Typography variant='body1'>
                         {surveyResults[key].outcome.title}
-                        <small>
-                          {moment.unix(key / 1000).fromNow()}
-                        </small>
+                        <small>{moment.unix(key / 1000).fromNow()}</small>
                       </Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
                       <div className='panel-inner'>
                         <Typography variant='body1'>
-                          <strong>Should I get tested?</strong><br/>
+                          <strong>Should I get tested?</strong>
+                          <br />
                           {surveyResults[key].outcome.testStatus}
                         </Typography>
                         <Typography variant='body1'>
-                          <strong>General Guidance:</strong><br/>
+                          <strong>General Guidance:</strong>
+                          <br />
                           {surveyResults[key].outcome.body}
                         </Typography>
                       </div>

@@ -29,22 +29,22 @@ export const SocialWrapper = styled.div`
     margin: 0.75rem;
     padding: 0;
     max-width: 3rem;
-    
-      ${props =>
-  props.left
-    ? `
+
+    ${props =>
+      props.left
+        ? `
      margin: 0.75rem 0.75rem 0.75rem 0;
      text-align: left;
   `
-    : null}
-      
-        ${props =>
-  props.right
-    ? `
+        : null}
+
+    ${props =>
+      props.right
+        ? `
      margin: 0.75rem 0  0.75rem 0.75rem;
      text-align: right;
   `
-    : null}
+        : null}
   }
   svg {
     fill: ${colors.blueDark};

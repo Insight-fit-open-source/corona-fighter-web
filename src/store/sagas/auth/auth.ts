@@ -1,4 +1,4 @@
-import { call, take, takeLatest, put, spawn } from 'redux-saga/effects';
+import { call, take, takeLatest, put, spawn, select } from 'redux-saga/effects';
 
 import FirebaseFactory from 'src/app/lib/firebase';
 import { actions, constants } from 'src/store/definitions/auth';
@@ -8,13 +8,21 @@ function getUserToken(user) {
 }
 
 function* workerAuthState(chanEvent) {
+  const { rsf } = yield call([FirebaseFactory, 'get']);
   const { user } = chanEvent;
+  const { messagingToken } = yield select(state => state.auth);
 
   yield put(actions.authStateChanged({ user, authInProcess: true }));
   if (user) {
     const userToken = yield call(getUserToken, user);
     yield put(
       actions.authStateChanged({ user, userToken, authInProcess: false }),
+    );
+    yield call(
+      rsf.firestore.updateDocument,
+      `profiles/${user.uid}`,
+      'messagingToken',
+      messagingToken,
     );
   } else {
     yield put(

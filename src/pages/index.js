@@ -20,7 +20,9 @@ export const Home = () => {
               </Button>
             </Link>
           }>
-          <span className='hide-on-mobile'>Take the symptoms survey daily and Help Fight COVID19.</span>
+          <span className='hide-on-mobile'>
+            Take the symptoms survey daily and Help Fight COVID19.
+          </span>
         </Alert>
         <Symptoms />
       </Admin>

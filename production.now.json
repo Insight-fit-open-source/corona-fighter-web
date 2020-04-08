@@ -7,7 +7,7 @@
     "autoJobCancelation": true
   },
   "version": 2,
-  "alias": [ "app.testforcovid.co.za" ],
+  "alias": ["app.testforcovid.co.za"],
   "build": {
     "env": {
       "API_KEY": "@prod-api-key",

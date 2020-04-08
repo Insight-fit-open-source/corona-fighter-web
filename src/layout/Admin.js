@@ -45,6 +45,4 @@ const mapDispatch = dispatch => ({
   closeMenu: () => dispatch(actions.setMenuState({ menuIsOpen: false })),
 });
 
-export default compose(
-  connect(mapState, mapDispatch),
-)(GeneralSettingsLayout);
+export default compose(connect(mapState, mapDispatch))(GeneralSettingsLayout);

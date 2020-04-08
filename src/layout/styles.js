@@ -97,8 +97,8 @@ const BodyGeneral = styled.div`
       }
     }
   }
-  
-    @media only screen and (min-width: ${breakpoints.values.lg}px) {
+
+  @media only screen and (min-width: ${breakpoints.values.lg}px) {
     .inner-content {
       padding-right: 40%;
     }

@@ -95,8 +95,9 @@ export default styled.div`
         font-size: 1rem;
         opacity: 0.75;
       }
-      
-      @media only screen and (min-height: 750px) and (min-width: ${breakpoints.values.md}px) {
+
+      @media only screen and (min-height: 750px) and (min-width: ${breakpoints
+          .values.md}px) {
         display: block;
         position: fixed;
         bottom: 0;

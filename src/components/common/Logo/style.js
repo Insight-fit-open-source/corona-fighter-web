@@ -9,7 +9,7 @@ export default styled.div`
     position: relative;
     margin: 0 auto;
   }
-  
+
   &:hover {
     cursor: pointer;
   }

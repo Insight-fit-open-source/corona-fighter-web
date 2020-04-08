@@ -96,11 +96,11 @@ const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
             <Typography variant='body1'>{outcome.body}</Typography>
             <Typography variant='h4'>should you test?</Typography>
             <Typography variant='body1'>{outcome.testStatus}</Typography>
-            <div className='next'>
-              {whatsNext[outcome.severity]()}
-            </div>
-            <div className="social-wrap">
-              <Typography variant='h5'>Share this tool with your loved ones and help fight COVID19.</Typography>
+            <div className='next'>{whatsNext[outcome.severity]()}</div>
+            <div className='social-wrap'>
+              <Typography variant='h5'>
+                Share this tool with your loved ones and help fight COVID19.
+              </Typography>
               <Social invert={true} left={true} />
             </div>
           </div>
