@@ -33,8 +33,13 @@ export default class FirebaseFactory {
     const firestore = await firebase.firestore();
     const auth = await firebase.auth();
     const storage = await firebase.storage();
-    const messaging = await firebase.messaging();
     const analytics = await firebase.analytics();
+    let messaging = null;
+
+    if (firebase.messaging.isSupported()) {
+      messaging = await firebase.messaging();
+    }
+
 
     const rsf = await new ReduxSagaFirebase(firebase);
     return {
