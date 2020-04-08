@@ -8,6 +8,7 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import { CssBaseline } from '@material-ui/core';
 import { ThemeProvider, StylesProvider } from '@material-ui/core/styles';
+import Notification from 'src/components/Notification';
 
 import FirebaseFactory from 'src/app/lib/firebase';
 import { actions as authActions } from 'src/store/definitions/auth';
@@ -27,6 +28,15 @@ class MyApp extends App {
     };
   }
 
+  state = {
+    openNotification: false,
+    message: '',
+  };
+
+  handleCloseNotification = () => {
+    this.setState({ openNotification: false, message: '' });
+  };
+
   componentDidMount() {
     const { store } = this.props;
     const jssStyles = document.querySelector('#jss-server-side');
@@ -45,7 +55,10 @@ class MyApp extends App {
         .catch(err => console.log({ err }));
 
       messaging.onMessage(payload => {
-        console.log('Notification:', payload);
+        this.setState({
+          openNotification: true,
+          message: payload.notification.body,
+        });
       });
     };
     getMessagingPermission();
@@ -63,12 +76,19 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps, store, router } = this.props;
+    const { message, openNotification } = this.state;
+
     return (
       <StylesProvider injectFirst>
         <Provider store={store}>
           <ThemeProvider theme={theme}>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <CssBaseline />
+              <Notification
+                message={message}
+                openNotification={openNotification}
+                handleCloseNotification={this.handleCloseNotification}
+              />
               <Component {...pageProps} key={router.route} />
             </MuiPickersUtilsProvider>
           </ThemeProvider>
