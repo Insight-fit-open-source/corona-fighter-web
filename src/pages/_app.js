@@ -44,27 +44,30 @@ class MyApp extends App {
       jssStyles.parentNode.removeChild(jssStyles);
 
     store.dispatch(authActions.clientSessionStarted());
+
     const getMessagingPermission = async () => {
       const { messaging } = await FirebaseFactory.get();
-      messaging
-        .requestPermission()
-        .then(() => messaging.getToken())
-        .then(token => {
-          store.dispatch(profileActions.messagingTokenReceived({ token }));
-        })
-        .catch(err => console.log({ err }));
+      if (messaging) {
+        messaging
+          .requestPermission()
+          .then(() => messaging.getToken())
+          .then(token => {
+            store.dispatch(profileActions.messagingTokenReceived({ token }));
+          })
+          .catch(err => console.log({ err }));
 
-      messaging.onMessage(payload => {
-        this.setState({
-          openNotification: true,
-          message: payload.notification.body,
+        messaging.onMessage(payload => {
+          this.setState({
+            openNotification: true,
+            message: payload.notification.body,
+          });
         });
-      });
+      }
     };
+
     getMessagingPermission();
 
     Router.onRouteChangeComplete = async url => {
-      console.log(url);
       try {
         const { analytics } = await FirebaseFactory.get();
         await analytics.logEvent('page_location', {
