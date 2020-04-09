@@ -57,3 +57,5 @@ Thumbs.db
 /junit.xml
 
 .now
+/public/sw.js
+/public/sw.js.map
