@@ -10,7 +10,7 @@ function getUserToken(user) {
 function* workerAuthState(chanEvent) {
   const { rsf } = yield call([FirebaseFactory, 'get']);
   const { user } = chanEvent;
-  const { messagingToken } = yield select(state => state.auth);
+  const { messagingToken } = yield select(state => state.profile);
 
   yield put(actions.authStateChanged({ user, authInProcess: true }));
   if (user) {

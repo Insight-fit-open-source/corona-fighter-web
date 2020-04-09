@@ -40,7 +40,6 @@ export default class FirebaseFactory {
       messaging = await firebase.messaging();
     }
 
-
     const rsf = await new ReduxSagaFirebase(firebase);
     return {
       firebase,

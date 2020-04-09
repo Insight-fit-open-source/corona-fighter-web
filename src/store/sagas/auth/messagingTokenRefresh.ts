@@ -1,6 +1,6 @@
 import { call, select, take, put } from 'redux-saga/effects';
 import FirebaseFactory from 'src/app/lib/firebase';
-import { actions } from 'src/store/definitions/auth';
+import { actions } from 'src/store/definitions/profile';
 
 export default function* root() {
   try {
@@ -9,7 +9,6 @@ export default function* root() {
     const channel = rsf.messaging.tokenRefreshChannel();
     while (true) {
       const token = yield take(channel);
-      console.log('token:', token);
 
       if (user) {
         const userId = user.uid;

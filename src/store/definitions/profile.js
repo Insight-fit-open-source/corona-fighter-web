@@ -13,6 +13,7 @@ const defaultState = {
   // When the user account was last updated
   updatedAt: '',
   profileSyncInProcess: true,
+  messagingToken: '',
 };
 
 const definition = {
@@ -24,6 +25,10 @@ const definition = {
   }),
   PROFILE_SYNC_FAILED: state => ({ ...state, lastCallFailed: true }),
   CHECKIN: state => ({ ...state }),
+  MESSAGING_TOKEN_RECEIVED: (state, { payload }) => ({
+    ...state,
+    messagingToken: payload.token,
+  }),
 };
 
 const { reducer, actions, constants } = duxedo({
