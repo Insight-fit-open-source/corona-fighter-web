@@ -49,14 +49,3 @@ export const authStateChanged = (state: AuthState, { payload }): AuthState => ({
   userToken: payload.userToken,
   authInProcess: payload.authInProcess,
 });
-
-/**
- * saves the firebase cloud messaging token
- */
-export const messagingTokenReceived = (
-  state: AuthState,
-  { payload },
-): AuthState => ({
-  ...state,
-  messagingToken: payload.token,
-});

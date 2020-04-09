@@ -7,7 +7,7 @@ const withPlugins = require('next-compose-plugins');
 const withPWA = require('next-pwa');
 
 const nextConfiguration = {
-  webpack: config => {
+  webpack: (config, { dev }) => {
     if (config.resolve.plugins) {
       config.resolve.plugins.push(new TsconfigPathsPlugin());
     } else {
@@ -16,7 +16,7 @@ const nextConfiguration = {
     }
 
     // eslint-disable-next-line no-param-reassign
-    config.optimization.minimize = true;
+    if (!dev) config.optimization.minimize = true;
 
     config.module.rules.push({
       test: /\.svg$/,
@@ -38,19 +38,7 @@ const nextConfiguration = {
   },
 };
 
-const plugins = [
-  withBundleAnalyzer,
-  withCSS,
-  [
-    withPWA,
-    {
-      pwa: {
-        dest: 'public',
-        importScripts: ['firebase-messaging-sw.js'],
-      },
-    },
-  ],
-];
+const plugins = [withBundleAnalyzer, withCSS];
 
 if (process.env.NODE_ENV === 'production') {
   plugins.push([
