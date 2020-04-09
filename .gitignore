@@ -57,5 +57,7 @@ Thumbs.db
 /junit.xml
 
 .now
-/public/sw.js
-/public/sw.js.map
+
+# service worker
+/public/sw.js*
+/public/workbox*
