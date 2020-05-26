@@ -4,6 +4,7 @@ import feeling from './feeling';
 import illness from './illness';
 import mildModerateSevere from './mildModerateSevere';
 import ncid from './ncid';
+import oath from './oath';
 import outcomes from './outcomes';
 import severity from './severity';
 import tested from './tested';
@@ -22,4 +23,5 @@ export default {
   outcomes,
   yesNo,
   mildModerateSevere,
+  oath,
 };

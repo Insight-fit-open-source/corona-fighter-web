@@ -15,7 +15,16 @@ export default {
     content: '',
     layout: 'question',
     options: options.feeling,
+    next: '/survey/confirmation',
+  },
+  confirmation: {
+    title:
+      'Are you sure that you do not have any fever, sore throat, coughing or shortness of breath?',
+    content: '',
+    layout: 'question',
+    options: options.yesNo,
     next: '/survey/fever',
+    nextOverrides: { yes: '/survey/oath', no: '/survey/fever' },
   },
   fever: {
     title:
@@ -90,52 +99,16 @@ export default {
     content: '',
     layout: 'question',
     options: options.additional,
+    next: '/survey/oath',
+  },
+  oath: {
+    title:
+      'Please confirm that the information you shared is accurate and true to the best of your knowledge.',
+    content: '',
+    layout: 'question',
+    options: options.oath,
     next: '/survey/outcome',
   },
-  // 'severe-symptoms': {
-  //   title: 'Do you have any of these severe symptoms like:',
-  //   content: '',
-  //   layout: 'question',
-  //   options: options.illness,
-  //   next: '/survey/typical-symptoms',
-  // },
-  // 'typical-symptoms': {
-  //   title: 'Have you had a **sudden onset** of any of the following symptoms?',
-  //   content: '',
-  //   layout: 'question',
-  //   options: options.ncid,
-  //   next: '/survey/atypical-symptoms',
-  // },
-
-  // severity: {
-  //   title: 'How are your symptoms changing over time?',
-  //   content: '',
-  //   layout: 'question',
-  //   options: options.severity,
-  //   next: '/survey/travel-contact',
-  // },
-  // 'travel-contact': {
-  //   title:
-  //     'Have you travelled or come into contact with COVID-19 in the past 14 days?',
-  //   content: '',
-  //   layout: 'question',
-  //   options: options.travel,
-  //   next: '/survey/tested',
-  // },
-  // tested: {
-  //   title: 'Have you had a test for COVID-19?',
-  //   content: '',
-  //   layout: 'question',
-  //   options: options.tested,
-  //   next: '/survey/behavior',
-  // },
-  // behavior: {
-  //   title: 'Where are you at the moment',
-  //   content: '',
-  //   layout: 'question',
-  //   options: options.behaviour,
-  //   next: '/survey/outcome',
-  // },
   outcome: {
     title: 'Your Results',
     layout: 'outcome',
