@@ -37,6 +37,10 @@ const OnBoardingContent = styled.div`
       width: 100%;
     }
 
+    .custom-switch{
+      align-items: center !important;
+    }
+
     .radio-group {
       // .MuiRadio-colorSecondary.Mui-checked {
       //   color: ${colors.pink};

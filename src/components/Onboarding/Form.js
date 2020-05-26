@@ -20,8 +20,6 @@ import PrivacyPopOver from 'src/components/common/PrivacyPopup';
 import * as Yup from 'yup';
 
 const schema = Yup.object({
-  location: Yup.object().required('Just a suburb or area is fine'),
-  medicine: Yup.string(),
   acceptedTerms: Yup.bool(true)
     .required('you must accept the terms and conditions')
     .default(false),
@@ -42,10 +40,11 @@ export class FirebaseForm extends React.PureComponent {
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Formik
           initialValues={{
-            ageGroupAnswer: '0',
-            preexistingConditions: '0',
-            previouslyDiagnosed: '0',
+            ageGroupAnswer: 'under18',
+            preexistingConditions: 'yes',
+            previouslyDiagnosed: 'yes',
             acceptedTerms: false,
+            invitations: ['Firstrand National Bank', 'ABSA', 'Standard Bank'],
           }}
           validationSchema={schema}
           onSubmit={async (values, { setSubmitting, setStatus }) => {
@@ -102,19 +101,19 @@ export class FirebaseForm extends React.PureComponent {
                         disabled={isSubmitting}
                       />
                       <FormControlLabel
-                        value='1'
+                        value='18-39'
                         control={<Radio disabled={isSubmitting} />}
                         label='18-39'
                         disabled={isSubmitting}
                       />
                       <FormControlLabel
-                        value='2'
+                        value='40-60'
                         control={<Radio disabled={isSubmitting} />}
                         label='40-60'
                         disabled={isSubmitting}
                       />
                       <FormControlLabel
-                        value='3'
+                        value='over60'
                         control={<Radio disabled={isSubmitting} />}
                         label='Over 60'
                         disabled={isSubmitting}
@@ -136,19 +135,19 @@ export class FirebaseForm extends React.PureComponent {
                       component={RadioGroup}
                       name='preexistingConditions'>
                       <FormControlLabel
-                        value='0'
+                        value='yes'
                         control={<Radio disabled={isSubmitting} />}
                         label='Yes'
                         disabled={isSubmitting}
                       />
                       <FormControlLabel
-                        value='1'
+                        value='unsure'
                         control={<Radio disabled={isSubmitting} />}
                         label='Unsure'
                         disabled={isSubmitting}
                       />
                       <FormControlLabel
-                        value='2'
+                        value='no'
                         control={<Radio disabled={isSubmitting} />}
                         label='No'
                         disabled={isSubmitting}
@@ -169,13 +168,13 @@ export class FirebaseForm extends React.PureComponent {
                       component={RadioGroup}
                       name='previouslyDiagnosed'>
                       <FormControlLabel
-                        value='0'
+                        value='yes'
                         control={<Radio disabled={isSubmitting} />}
                         label='Yes'
                         disabled={isSubmitting}
                       />
                       <FormControlLabel
-                        value='1'
+                        value='no'
                         control={<Radio disabled={isSubmitting} />}
                         label='No'
                         disabled={isSubmitting}
@@ -187,18 +186,12 @@ export class FirebaseForm extends React.PureComponent {
                   <label htmlFor='invitations' className='custom-label'>
                     The following organisations have invited you.
                   </label>
-                  <InputLabel>
-                    <Field component={Switch} name='switch' />
-                    Standard Bank
-                  </InputLabel>
-                  <InputLabel>
-                    <Field component={Switch} name='switch' />
-                    ABSA
-                  </InputLabel>
-                  <InputLabel>
-                    <Field component={Switch} name='switch' />
-                    First National Bank
-                  </InputLabel>
+                  {values.invitations.map(x => (
+                    <InputLabel className='custom-switch'>
+                      <Field component={<Switch checked />} name='switch' />
+                      {x}
+                    </InputLabel>
+                  ))}
                 </Grid>
                 <Grid item xs={12} md={12}>
                   <InputLabel>
