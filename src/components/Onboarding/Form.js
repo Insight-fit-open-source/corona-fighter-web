@@ -12,7 +12,7 @@ import SubmitIcon from '@material-ui/icons/ChevronRight';
 import ViewIcon from '@material-ui/icons/Visibility';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { Field, Form, Formik } from 'formik';
-import { Checkbox, RadioGroup, Switch } from 'formik-material-ui';
+import { Checkbox, RadioGroup } from 'formik-material-ui';
 import Router from 'next/router';
 import React from 'react';
 import FirebaseFactory from 'src/app/lib/firebase';
@@ -182,17 +182,17 @@ export class FirebaseForm extends React.PureComponent {
                     </Field>
                   </FormControl>
                 </Grid>
-                <Grid item xs={12} md={12}>
+                {/* <Grid item xs={12} md={12}>
                   <label htmlFor='invitations' className='custom-label'>
                     The following organisations have invited you.
                   </label>
-                  {values.invitations.map(x => (
+                  {values.invitations.map((x,index) => (
                     <InputLabel className='custom-switch'>
-                      <Field component={<Switch checked />} name='switch' />
+                      <Field component={Switch} name='switch-' />
                       {x}
                     </InputLabel>
                   ))}
-                </Grid>
+                </Grid> */}
                 <Grid item xs={12} md={12}>
                   <InputLabel>
                     <Field

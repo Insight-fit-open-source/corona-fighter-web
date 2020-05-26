@@ -1,14 +1,13 @@
-import React from 'react';
-import Link from 'next/link';
-import { connect } from 'react-redux';
 import { Button, Typography } from '@material-ui/core';
 import ArrowRightIcon from '@material-ui/icons/ChevronRight';
 import { AnimatePresence, motion } from 'framer-motion';
-
-import Social from 'src/components/common/Social';
+import Link from 'next/link';
+import React from 'react';
+import { connect } from 'react-redux';
 import Logo from 'src/components/common/Logo';
-import { actions } from 'src/store/definitions/survey';
+import Social from 'src/components/common/Social';
 import VirusBg from 'src/components/common/VirusBg';
+import { actions } from 'src/store/definitions/survey';
 
 const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
   if (!active) return null;
@@ -68,14 +67,14 @@ const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
             How To Help
           </Button>
         </Link>
-        <Link href='/latest-stats' as='/latest-stats'>
+        {/* <Link href='/latest-stats' as='/latest-stats'>
           <Button
             variant='outlined'
             color='secondary'
             endIcon={<ArrowRightIcon />}>
             Latest Stats
           </Button>
-        </Link>
+        </Link> */}
       </>
     ),
   };
@@ -101,7 +100,7 @@ const OutcomesContent = ({ active, outcome = {}, setOutcome }) => {
               <Typography variant='h5'>
                 Share this tool with your loved ones and help fight COVID19.
               </Typography>
-              <Social invert={true} left={true} />
+              <Social invert left />
             </div>
           </div>
           <VirusBg />

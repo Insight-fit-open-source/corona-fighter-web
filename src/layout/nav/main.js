@@ -3,10 +3,10 @@ export default {
     link: '/',
     as: '/',
   },
-  'Latest Stats': {
-    link: '/latest-stats',
-    as: '/latest-stats',
-  },
+  // 'Latest Stats': {
+  //   link: '/latest-stats',
+  //   as: '/latest-stats',
+  // },
   'Care Locator': {
     link: '/care-locator',
     as: '/care-locator',
