@@ -39,6 +39,7 @@ export default {
     layout: 'question',
     options: options.yesNo,
     next: '/survey/cough-severity',
+    nextOverrides: { yes: '/survey/cough-severity', no: '/survey/throat' },
   },
   'cough-severity': {
     title: 'How severe is your cough?',
@@ -53,6 +54,10 @@ export default {
     layout: 'question',
     options: options.yesNo,
     next: '/survey/throat-severity',
+    nextOverrides: {
+      yes: '/survey/throat-severity',
+      no: '/survey/breathlessness',
+    },
   },
   'throat-severity': {
     title: 'How severe is your sore throat?',
@@ -68,6 +73,10 @@ export default {
     layout: 'question',
     options: options.yesNo,
     next: '/survey/breathlessness-severity',
+    nextOverrides: {
+      yes: '/survey/breathlessness-severity',
+      no: '/survey/atypical-symptoms',
+    },
   },
   'breathlessness-severity': {
     title: 'How severe is your breathlessness?',
