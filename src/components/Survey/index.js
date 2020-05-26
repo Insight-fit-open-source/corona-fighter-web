@@ -1,25 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import FirebaseFactory from 'src/app/lib/firebase';
-import calculateOutcome from 'src/components/Survey/config/calculateOutcome';
-import { actions } from 'src/store/definitions/survey';
-import { actions as profileActions } from 'src/store/definitions/profile';
 import steps from 'src/components/Survey/config';
+import calculateOutcome from 'src/components/Survey/config/calculateOutcome';
 import {
+  BackdropContent,
   ChoiceBoxInner,
   Options,
-  BackdropContent,
   OutcomeContent,
 } from 'src/components/Survey/fragments';
-
 import {
-  LayoutBlock,
   Backdrop,
-  ChoiceBoxWrap,
-  Outcomes,
   ChoiceBox,
+  ChoiceBoxWrap,
+  LayoutBlock,
+  Outcomes,
 } from 'src/components/Survey/styles';
+import { actions as profileActions } from 'src/store/definitions/profile';
+import { actions } from 'src/store/definitions/survey';
 
 export class Survey extends React.PureComponent {
   async componentDidMount() {
@@ -77,7 +75,10 @@ export class Survey extends React.PureComponent {
             <ChoiceBoxInner
               step={step}
               title={steps[step] ? steps[step].title : ''}
-              nextLink={steps[step] ? steps[step].next : ''}>
+              nextLink={steps[step] ? steps[step].next : ''}
+              nextLinkOverrides={
+                steps[step] ? steps[step].nextOverrides : undefined
+              }>
               {steps[step] ? (
                 <Options items={steps[step].options} step={step} />
               ) : null}

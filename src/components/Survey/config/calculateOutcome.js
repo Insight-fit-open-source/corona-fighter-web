@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 export default (selection, outcomes) => {
+  console.log('selection:', selection);
   const results = _.reduce(
     Object.keys(selection).map(key => {
       const result = { key };
@@ -27,12 +28,14 @@ export default (selection, outcomes) => {
     {},
   );
 
+  console.log(results);
   const clear =
     !results['severe-symptoms'] &&
     !results['typical-symptoms'] &&
     !results['atypical-symptoms'];
 
   // FIXME: This seems like a bad approach.
+  // console.log(results);
   if (results['severe-symptoms']) return outcomes.outcome1;
   if (results['typical-symptoms'] && results['travel-contact'])
     return outcomes.outcome2;

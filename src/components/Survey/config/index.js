@@ -24,6 +24,7 @@ export default {
     layout: 'question',
     options: options.yesNo,
     next: '/survey/fever-severity',
+    nextOverrides: { yes: '/survey/fever-severity', no: '/survey/cough' },
   },
   'fever-severity': {
     title: 'How severe is your fever?',
