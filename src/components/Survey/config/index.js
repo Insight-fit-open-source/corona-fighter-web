@@ -15,20 +15,88 @@ export default {
     content: '',
     layout: 'question',
     options: options.feeling,
-    next: '/survey/severe-symptoms',
+    next: '/survey/fever',
+    nextOverrides: {
+      healthy: '/survey/confirmation',
+      notHealthly: '/survey/fever',
+      sick: '/survey/fever',
+    },
   },
-  'severe-symptoms': {
-    title: 'Do you have any of these severe symptoms like:',
+  confirmation: {
+    title:
+      'Are you sure that you do not have any fever, sore throat, coughing or shortness of breath?',
     content: '',
     layout: 'question',
-    options: options.illness,
-    next: '/survey/typical-symptoms',
+    options: options.yesNo,
+    next: '/survey/fever',
+    nextOverrides: { yes: '/survey/oath', no: '/survey/fever' },
   },
-  'typical-symptoms': {
-    title: 'Have you had a **sudden onset** of any of the following symptoms?',
+  fever: {
+    title:
+      'Do you have or have you recently had a fever? (feeling very hot or cold, shivering or chills, sweats)?',
     content: '',
     layout: 'question',
-    options: options.ncid,
+    options: options.yesNo,
+    next: '/survey/fever-severity',
+    nextOverrides: { yes: '/survey/fever-severity', no: '/survey/cough' },
+  },
+  'fever-severity': {
+    title: 'How severe is your fever?',
+    content: '',
+    layout: 'question',
+    options: options.mildModerateSevere,
+    next: '/survey/cough',
+  },
+  cough: {
+    title: 'Do you have a *cough* that started recently?',
+    content: '',
+    layout: 'question',
+    options: options.yesNo,
+    next: '/survey/cough-severity',
+    nextOverrides: { yes: '/survey/cough-severity', no: '/survey/throat' },
+  },
+  'cough-severity': {
+    title: 'How severe is your cough?',
+    content: '',
+    layout: 'question',
+    options: options.mildModerateSevere,
+    next: '/survey/throat',
+  },
+  throat: {
+    title: 'Do you have a *sore throat* or pain when swallowing?',
+    content: '',
+    layout: 'question',
+    options: options.yesNo,
+    next: '/survey/throat-severity',
+    nextOverrides: {
+      yes: '/survey/throat-severity',
+      no: '/survey/breathlessness',
+    },
+  },
+  'throat-severity': {
+    title: 'How severe is your sore throat?',
+    content: '',
+    layout: 'question',
+    options: options.mildModerateSevere,
+    next: '/survey/breathlessness',
+  },
+  breathlessness: {
+    title:
+      'Have you recently developed any *breathlessness* or difficulty in breathing?',
+    content: '',
+    layout: 'question',
+    options: options.yesNo,
+    next: '/survey/breathlessness-severity',
+    nextOverrides: {
+      yes: '/survey/breathlessness-severity',
+      no: '/survey/atypical-symptoms',
+    },
+  },
+  'breathlessness-severity': {
+    title: 'How severe is your breathlessness?',
+    content: '',
+    layout: 'question',
+    options: options.mildModerateSevere,
     next: '/survey/atypical-symptoms',
   },
   'atypical-symptoms': {
@@ -36,36 +104,16 @@ export default {
     content: '',
     layout: 'question',
     options: options.additional,
-    next: '/survey/severity',
+    next: '/survey/oath',
   },
-  severity: {
-    title: 'How are your symptoms changing over time?',
-    content: '',
-    layout: 'question',
-    options: options.severity,
-    next: '/survey/travel-contact',
-  },
-  'travel-contact': {
+  oath: {
     title:
-      'Have you travelled or come into contact with COVID-19 in the past 14 days?',
+      'Please confirm that the information you shared is accurate and true to the best of your knowledge.',
     content: '',
     layout: 'question',
-    options: options.travel,
-    next: '/survey/tested',
-  },
-  tested: {
-    title: 'Have you had a test for COVID-19?',
-    content: '',
-    layout: 'question',
-    options: options.tested,
-    next: '/survey/behavior',
-  },
-  behavior: {
-    title: 'Where are you at the moment',
-    content: '',
-    layout: 'question',
-    options: options.behaviour,
+    options: options.oath,
     next: '/survey/outcome',
+    buttonTextOverride: 'Confirm',
   },
   outcome: {
     title: 'Your Results',
