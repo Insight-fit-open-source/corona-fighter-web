@@ -15,7 +15,12 @@ export default {
     content: '',
     layout: 'question',
     options: options.feeling,
-    next: '/survey/confirmation',
+    next: '/survey/fever',
+    nextOverrides: {
+      healthy: '/survey/confirmation',
+      notHealthly: '/survey/fever',
+      sick: '/survey/fever',
+    },
   },
   confirmation: {
     title:
