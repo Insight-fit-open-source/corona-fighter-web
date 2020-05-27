@@ -18,7 +18,6 @@ import React from 'react';
 import FirebaseFactory from 'src/app/lib/firebase';
 import PrivacyPopOver from 'src/components/common/PrivacyPopup';
 import * as Yup from 'yup';
-
 const schema = Yup.object({
   acceptedTerms: Yup.bool(true)
     .required('you must accept the terms and conditions')
