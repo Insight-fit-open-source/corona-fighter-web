@@ -3,7 +3,6 @@ import FirebaseFactory from 'src/app/lib/firebase';
 import { actions } from 'src/store/definitions/profile';
 
 export function* subscribe({ payload }) {
-  return;
   const { rsf } = yield call([FirebaseFactory, 'get']);
   const { user, authInProcess } = payload;
   if (authInProcess || !user) {
@@ -13,7 +12,7 @@ export function* subscribe({ payload }) {
   try {
     const userId = user.uid;
 
-    yield fork(rsf.firestore.syncDocument, `profiles/${userId}`, {
+    yield fork(rsf.firestore.syncDocument, `invitations/${userId}`, {
       successActionCreator: actions.profileSynced,
       transform: doc => {
         const data = doc.data();
@@ -30,5 +29,5 @@ export function* subscribe({ payload }) {
 }
 
 export default function* root() {
-  yield takeEvery(constants.ORGANISATION_SYNC_REQUESTED, subscribe);
+  yield takeEvery(constants.ORGANISATION_DETAILS_SYNC_REQUESTED, subscribe);
 }

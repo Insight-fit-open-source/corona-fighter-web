@@ -1,25 +1,22 @@
-import React from 'react';
-import Router from 'next/router';
-import { Formik, Form, Field } from 'formik';
+import DateFnsUtils from '@date-io/date-fns';
 import {
   Button,
-  LinearProgress,
+  FormControl,
   Grid,
   InputLabel,
-  FormControl,
+  LinearProgress,
 } from '@material-ui/core';
-import { TextField, Checkbox } from 'formik-material-ui';
-import { DatePicker } from 'formik-material-ui-pickers';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
-import ViewIcon from '@material-ui/icons/Visibility';
 import SubmitIcon from '@material-ui/icons/ChevronRight';
-
+import ViewIcon from '@material-ui/icons/Visibility';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { Field, Form, Formik } from 'formik';
+import { Checkbox, TextField } from 'formik-material-ui';
+import { DatePicker } from 'formik-material-ui-pickers';
+import Router from 'next/router';
+import React from 'react';
 import FirebaseFactory from 'src/app/lib/firebase';
-import * as Yup from 'yup';
-
 import PrivacyPopOver from 'src/components/common/PrivacyPopup';
-
+import * as Yup from 'yup';
 import LocationField from './location';
 import Select from './Select';
 

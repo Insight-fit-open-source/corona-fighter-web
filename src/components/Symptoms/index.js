@@ -1,18 +1,17 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import _ from 'lodash';
 import {
   ExpansionPanel,
-  ExpansionPanelSummary,
   ExpansionPanelDetails,
+  ExpansionPanelSummary,
   Typography,
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import _ from 'lodash';
 import moment from 'moment';
-
+import React from 'react';
+import { connect } from 'react-redux';
+import { actions as orgactions } from 'src/store/definitions/organisation';
 import { actions } from 'src/store/definitions/survey';
-
-import { Wrapper, Item } from './styles';
+import { Item, Wrapper } from './styles';
 
 export const Symptoms = ({
   requestSync,
@@ -72,6 +71,10 @@ const mapState = state => ({
 });
 const mapDispatch = dispatch => ({
   requestSync: () => dispatch(actions.surveySyncRequested()),
+  testSync: () => {
+    console.log('testing syncing: ', orgactions);
+    dispatch(orgactions.organisationDetailsSyncRequested());
+  },
 });
 
 export default connect(mapState, mapDispatch)(Symptoms);
