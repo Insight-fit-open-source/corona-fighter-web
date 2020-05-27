@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import colors from 'src/app/theme/colors';
 import breakpoints from 'src/app/theme/breakpoints';
+import colors from 'src/app/theme/colors';
+import styled from 'styled-components';
 
 const OnBoardingContent = styled.div`
   display: block;
@@ -35,6 +35,21 @@ const OnBoardingContent = styled.div`
 
     .MuiFormControl-root {
       width: 100%;
+    }
+
+    .custom-switch{
+      align-items: center !important;
+    }
+
+    .radio-group {
+      // .MuiRadio-colorSecondary.Mui-checked {
+      //   color: ${colors.pink};
+      // }
+
+      .MuiFormControlLabel-label {
+        font-size: 95%;
+        opacity: 0.9;
+      }
     }
 
     .custom-helper-text {

@@ -1,31 +1,25 @@
-import React from 'react';
-import Router from 'next/router';
-import { Formik, Form, Field } from 'formik';
+import DateFnsUtils from '@date-io/date-fns';
 import {
   Button,
-  LinearProgress,
+  FormControl,
+  FormControlLabel,
   Grid,
   InputLabel,
-  FormControl,
+  LinearProgress,
+  Radio,
 } from '@material-ui/core';
-import { TextField, Checkbox } from 'formik-material-ui';
-import { DatePicker } from 'formik-material-ui-pickers';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
-import ViewIcon from '@material-ui/icons/Visibility';
 import SubmitIcon from '@material-ui/icons/ChevronRight';
-
+import ViewIcon from '@material-ui/icons/Visibility';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { Field, Form, Formik } from 'formik';
+import { Checkbox, RadioGroup } from 'formik-material-ui';
+import Router from 'next/router';
+import React from 'react';
 import FirebaseFactory from 'src/app/lib/firebase';
+import PrivacyPopOver from 'src/components/common/PrivacyPopup';
 import * as Yup from 'yup';
 
-import PrivacyPopOver from 'src/components/common/PrivacyPopup';
-
-import LocationField from './location';
-import Select from './Select';
-
 const schema = Yup.object({
-  location: Yup.object().required('Just a suburb or area is fine'),
-  medicine: Yup.string(),
   acceptedTerms: Yup.bool(true)
     .required('you must accept the terms and conditions')
     .default(false),
@@ -46,10 +40,11 @@ export class FirebaseForm extends React.PureComponent {
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Formik
           initialValues={{
-            dob: '',
-            location: null,
-            conditions: [],
-            medicine: '',
+            ageGroupAnswer: 'under18',
+            preexistingConditions: 'yes',
+            previouslyDiagnosed: 'yes',
+            acceptedTerms: false,
+            invitations: ['Firstrand National Bank', 'ABSA', 'Standard Bank'],
           }}
           validationSchema={schema}
           onSubmit={async (values, { setSubmitting, setStatus }) => {
@@ -89,76 +84,121 @@ export class FirebaseForm extends React.PureComponent {
             <Form>
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
-                  <Field
-                    component={DatePicker}
-                    disableFuture
-                    openTo='year'
-                    format='dd/MM/yyyy'
-                    views={['year', 'month', 'date']}
-                    name='dob'
-                    label='Date of Birth'
-                    required
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Field
-                    component={LocationField}
-                    name='location'
-                    label='City, suburb or address'
-                    errors={errors}
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Field
-                    component={TextField}
-                    name='medicine'
-                    helperText='Leave this blank, if it does no apply'
-                    label="Please specify any medication you're on"
-                  />
-                </Grid>
-                <Grid item xs={12} md={12}>
                   <FormControl>
-                    <label htmlFor='conditions-select' className='custom-label'>
-                      Please specify any pre-existing conditions
+                    <label
+                      htmlFor='age-group-question'
+                      className='custom-label'>
+                      How old are you?
                     </label>
                     <Field
-                      classNmae={'conditions-select'}
-                      component={Select}
-                      name='conditions'
-                      isMulti={true}
-                      options={[
-                        { value: 'heart disease', label: 'Heart Disease' },
-                        { value: 'lung disease', label: 'Lung Disease' },
-                        {
-                          value: 'high blood pressure',
-                          label: 'High Blood Pressure',
-                        },
-                        {
-                          value: 'diabetes',
-                          label: 'Diabetes',
-                        },
-                        { value: 'cancer', label: 'Cancer' },
-                        {
-                          value: 'low immune system',
-                          label: 'Low immune System, TB, HIV etc',
-                        },
-                        {
-                          value: 'none',
-                          label: 'None',
-                        },
-                      ]}
-                    />
-                    <span className='custom-helper-text'>
-                      Leave this blank, if they do no apply
-                    </span>
+                      className='age-group-question radio-group'
+                      component={RadioGroup}
+                      name='ageGroupAnswer'>
+                      <FormControlLabel
+                        value='under18'
+                        control={<Radio disabled={isSubmitting} />}
+                        label='< 18'
+                        disabled={isSubmitting}
+                      />
+                      <FormControlLabel
+                        value='18-39'
+                        control={<Radio disabled={isSubmitting} />}
+                        label='18-39'
+                        disabled={isSubmitting}
+                      />
+                      <FormControlLabel
+                        value='40-60'
+                        control={<Radio disabled={isSubmitting} />}
+                        label='40-60'
+                        disabled={isSubmitting}
+                      />
+                      <FormControlLabel
+                        value='over60'
+                        control={<Radio disabled={isSubmitting} />}
+                        label='Over 60'
+                        disabled={isSubmitting}
+                      />
+                    </Field>
                   </FormControl>
                 </Grid>
+                <Grid item xs={12} md={6}>
+                  <FormControl>
+                    <label
+                      htmlFor='preexisting-conditions-question'
+                      className='custom-label'>
+                      Do you have any pre-existing medical condition we should
+                      be aware of? (Examples: lung disease, heart disease,
+                      diabetes with complications, TB, HIV)
+                    </label>
+                    <Field
+                      className='preexisting-conditions-question radio-group'
+                      component={RadioGroup}
+                      name='preexistingConditions'>
+                      <FormControlLabel
+                        value='yes'
+                        control={<Radio disabled={isSubmitting} />}
+                        label='Yes'
+                        disabled={isSubmitting}
+                      />
+                      <FormControlLabel
+                        value='unsure'
+                        control={<Radio disabled={isSubmitting} />}
+                        label='Unsure'
+                        disabled={isSubmitting}
+                      />
+                      <FormControlLabel
+                        value='no'
+                        control={<Radio disabled={isSubmitting} />}
+                        label='No'
+                        disabled={isSubmitting}
+                      />
+                    </Field>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <FormControl>
+                    <label
+                      htmlFor='previously-diagnosed-question'
+                      className='custom-label'>
+                      Have you previously been diagnosed with or tested positive
+                      for COVID-19?
+                    </label>
+                    <Field
+                      className='previously-diagnosed-question radio-group'
+                      component={RadioGroup}
+                      name='previouslyDiagnosed'>
+                      <FormControlLabel
+                        value='yes'
+                        control={<Radio disabled={isSubmitting} />}
+                        label='Yes'
+                        disabled={isSubmitting}
+                      />
+                      <FormControlLabel
+                        value='no'
+                        control={<Radio disabled={isSubmitting} />}
+                        label='No'
+                        disabled={isSubmitting}
+                      />
+                    </Field>
+                  </FormControl>
+                </Grid>
+                {/* <Grid item xs={12} md={12}>
+                  <label htmlFor='invitations' className='custom-label'>
+                    The following organisations have invited you.
+                  </label>
+                  {values.invitations.map((x,index) => (
+                    <InputLabel className='custom-switch'>
+                      <Field component={Switch} name='switch-' />
+                      {x}
+                    </InputLabel>
+                  ))}
+                </Grid> */}
                 <Grid item xs={12} md={12}>
                   <InputLabel>
                     <Field
                       id='acceptedTerms'
                       name='acceptedTerms'
-                      type='checkbo'
+                      type='checkbox'
                       disabled={authInProcess || isSubmitting}
                       margin='normal'
                       component={Checkbox}
@@ -176,6 +216,14 @@ export class FirebaseForm extends React.PureComponent {
                   stylea={{ marginRight: '0.5rem' }}
                   onClick={() => this.setState({ privacyVisible: true })}>
                   View Privacy Policy
+                </Button>
+                <Button
+                  variant='contained'
+                  color='primary'
+                  disabled={!values.acceptedTerms || isSubmitting}
+                  endIcon={<SubmitIcon />}
+                  onClick={submitForm}>
+                  Setup My Organisation
                 </Button>
                 <Button
                   variant='contained'
