@@ -1,14 +1,22 @@
-import React from 'react';
-import Link from 'next/link';
-import _ from 'lodash';
-import ReactMarkdown from 'react-markdown';
 import { Button, Typography } from '@material-ui/core';
 import ArrowRightIcon from '@material-ui/icons/ChevronRight';
+import _ from 'lodash';
+import Link from 'next/link';
+import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import { connect } from 'react-redux';
-
 import { ChoiceInner, ChoiceNav } from 'src/components/Survey/styles';
 
-const OptionsWrap = ({ step, title, nextLink, children, hasSelection }) => (
+const OptionsWrap = ({
+  step,
+  title,
+  nextLink,
+  nextLinkOverrides,
+  children,
+  hasSelection,
+  selectionValue,
+  buttonTextOverride,
+}) => (
   <ChoiceInner>
     <Typography
       variant='h4'
@@ -17,15 +25,29 @@ const OptionsWrap = ({ step, title, nextLink, children, hasSelection }) => (
     </Typography>
     {children}
     <ChoiceNav>
-      <Link href='/survey/[step]' as={`${nextLink}`}>
-        <Button
-          variant='contained'
-          color='primary'
-          disabled={!hasSelection(step)}
-          endIcon={<ArrowRightIcon />}>
-          Next
-        </Button>
-      </Link>
+      {!!nextLinkOverrides && !!nextLinkOverrides[selectionValue(step)] ? (
+        <Link
+          href='/survey/[step]'
+          as={`${nextLinkOverrides[selectionValue(step)]}`}>
+          <Button
+            variant='contained'
+            color='primary'
+            disabled={!hasSelection(step)}
+            endIcon={<ArrowRightIcon />}>
+            {buttonTextOverride || 'Next'}
+          </Button>
+        </Link>
+      ) : (
+        <Link href='/survey/[step]' as={`${nextLink}`}>
+          <Button
+            variant='contained'
+            color='primary'
+            disabled={!hasSelection(step)}
+            endIcon={<ArrowRightIcon />}>
+            {buttonTextOverride || 'Next'}
+          </Button>
+        </Link>
+      )}
     </ChoiceNav>
   </ChoiceInner>
 );
@@ -36,6 +58,10 @@ const mapState = state => ({
       _.isArray(state.survey.selected[step]) &&
         state.survey.selected[step].length > 0,
     ),
+  selectionValue: step =>
+    !!state.survey.selected[step] && state.survey.selected[step].length > 0
+      ? state.survey.selected[step][0]
+      : '', // RR: if the array has 0 els dont break , if has nothing return empty otherwise 0
 });
 
 export default connect(mapState)(OptionsWrap);

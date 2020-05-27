@@ -1,12 +1,15 @@
+import additional from './additional';
+import behaviour from './behaviour';
 import feeling from './feeling';
 import illness from './illness';
+import mildModerateSevere from './mildModerateSevere';
 import ncid from './ncid';
-import additional from './additional';
-import severity from './severity';
-import travel from './travel';
-import tested from './tested';
-import behaviour from './behaviour';
+import oath from './oath';
 import outcomes from './outcomes';
+import severity from './severity';
+import tested from './tested';
+import travel from './travel';
+import yesNo from './yesNo';
 
 export default {
   feeling,
@@ -18,4 +21,7 @@ export default {
   tested,
   behaviour,
   outcomes,
+  yesNo,
+  mildModerateSevere,
+  oath,
 };

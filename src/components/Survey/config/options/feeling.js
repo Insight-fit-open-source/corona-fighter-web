@@ -4,14 +4,14 @@ export default {
   },
   healthy: {
     key: 'healthy',
-    title: 'Healthy & Normal',
+    title: 'Perfectly healthy',
   },
   notHealthly: {
-    key: 'notHealthy',
-    title: 'Feeling sick',
+    key: 'littleSick',
+    title: 'A little sick',
   },
   sick: {
-    key: 'sick',
-    title: 'Feeling very sick',
+    key: 'verysick',
+    title: 'Very sick',
   },
 };

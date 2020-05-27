@@ -1,7 +1,7 @@
-import styled, { keyframes } from 'styled-components';
-import colors from 'src/app/theme/colors';
 import breakpoints from 'src/app/theme/breakpoints';
+import colors from 'src/app/theme/colors';
 import sizes from 'src/app/theme/sizes';
+import styled, { keyframes } from 'styled-components';
 
 const fadeIn = keyframes`
   0% { opacity: 0; }
@@ -24,6 +24,7 @@ export default styled.div`
   transform: scale(1.05);
   transition: transform 165ms ease-in;
   opacity: 0.75;
+  max-height: 7rem;
 
   h5 {
     font-weight: 300;
