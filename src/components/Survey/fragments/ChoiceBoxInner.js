@@ -15,6 +15,7 @@ const OptionsWrap = ({
   children,
   hasSelection,
   selectionValue,
+  buttonTextOverride,
 }) => (
   <ChoiceInner>
     <Typography
@@ -33,7 +34,7 @@ const OptionsWrap = ({
             color='primary'
             disabled={!hasSelection(step)}
             endIcon={<ArrowRightIcon />}>
-            Next
+            {buttonTextOverride || 'Next'}
           </Button>
         </Link>
       ) : (
@@ -43,7 +44,7 @@ const OptionsWrap = ({
             color='primary'
             disabled={!hasSelection(step)}
             endIcon={<ArrowRightIcon />}>
-            Next
+            {buttonTextOverride || 'Next'}
           </Button>
         </Link>
       )}

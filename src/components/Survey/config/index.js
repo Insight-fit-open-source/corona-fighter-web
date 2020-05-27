@@ -113,6 +113,7 @@ export default {
     layout: 'question',
     options: options.oath,
     next: '/survey/outcome',
+    buttonTextOverride: 'Confirm',
   },
   outcome: {
     title: 'Your Results',

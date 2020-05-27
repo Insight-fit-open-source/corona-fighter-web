@@ -78,6 +78,9 @@ export class Survey extends React.PureComponent {
               nextLink={steps[step] ? steps[step].next : ''}
               nextLinkOverrides={
                 steps[step] ? steps[step].nextOverrides : undefined
+              }
+              buttonTextOverride={
+                steps[step] ? steps[step].buttonTextOverride : ''
               }>
               {steps[step] ? (
                 <Options items={steps[step].options} step={step} />
