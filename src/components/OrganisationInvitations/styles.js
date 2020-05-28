@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
     }
   }
 
-  .MuiButtonBase-root {
+  .invite-button {
     margin-bottom: 2rem;
   }
 `;

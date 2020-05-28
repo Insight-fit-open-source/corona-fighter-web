@@ -87,14 +87,16 @@ export class FirebaseForm extends React.PureComponent {
               <Grid item xs={12} md={8} />
 
               {isSubmitting && <LinearProgress />}
-              <Button
-                variant='contained'
-                color='primary'
-                disabled={isSubmitting}
-                endIcon={<SubmitIcon />}
-                onClick={submitForm}>
-                Save
-              </Button>
+              <Grid item xs={12}>
+                <Button
+                  variant='contained'
+                  color='primary'
+                  disabled={isSubmitting}
+                  endIcon={<SubmitIcon />}
+                  onClick={submitForm}>
+                  Save
+                </Button>
+              </Grid>
             </Grid>
           </Form>
         )}

@@ -34,7 +34,8 @@ export const OrganisationInvitations = ({
         variant='contained'
         color='primary'
         endIcon={<SubmitIcon />}
-        onClick={openModal}>
+        onClick={openModal}
+        className='invite-button'>
         Invite a user
       </Button>
 
