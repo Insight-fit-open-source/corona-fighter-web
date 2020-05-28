@@ -14,6 +14,7 @@ import moment from 'moment';
 import React from 'react';
 import { connect } from 'react-redux';
 import { actions } from 'src/store/definitions/survey';
+import { InviteForm } from './InviteForm';
 import { Item, Wrapper } from './styles';
 
 function rand() {
@@ -21,13 +22,14 @@ function rand() {
 }
 
 function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+  const top = 50;
+  const left = 50;
 
   return {
     top: `${top}%`,
     left: `${left}%`,
     transform: `translate(-${top}%, -${left}%)`,
+    outline: '0',
   };
 }
 
@@ -36,7 +38,7 @@ const useStyles = makeStyles(theme => ({
     position: 'absolute',
     width: 400,
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    borderRadius: '10px',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
@@ -66,11 +68,12 @@ export const OrganisationInvitations = ({
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2 id='simple-modal-title'>Text in a modal</h2>
+      <h2 id='simple-modal-title'>Invite users</h2>
       <p id='simple-modal-description'>
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+        Invite people to take the survey through your organisation. Enter email
+        addresses of people you would like to invite.
       </p>
-      {/* <SimpleModal /> */}
+      <InviteForm />
     </div>
   );
 
