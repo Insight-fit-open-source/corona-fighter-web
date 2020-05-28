@@ -1,9 +1,11 @@
 import {
+  Button,
   ExpansionPanel,
   ExpansionPanelDetails,
   ExpansionPanelSummary,
   Typography,
 } from '@material-ui/core';
+import SubmitIcon from '@material-ui/icons/ChevronRight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import _ from 'lodash';
 import moment from 'moment';
@@ -21,9 +23,21 @@ export const OrganisationInvitations = ({
     requestSync();
   }, [requestSync]);
 
+  const openModal = () => {
+    // open modal
+  };
+
   return (
     <Wrapper>
       <h3>Invitations</h3>
+      <Button
+        variant='contained'
+        color='primary'
+        endIcon={<SubmitIcon />}
+        onClick={openModal}>
+        Invite a user
+      </Button>
+
       {surveyResultsCount
         ? _(surveyResults)
             .keys()

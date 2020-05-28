@@ -11,7 +11,9 @@ export const MyOrganisation = () => {
     <Admin pageTitle='Setup your organisation'>
       <Alert severity='info'>
         <span className='hide-on-mobile'>
-          Update your organisation's details and manage your invitations.
+          Here you can setup your orgnisation and invite users to take the
+          survey. Once a user completes a survey, it will be send to the email
+          address you have set.
         </span>
       </Alert>
       <OrganisationDetails />

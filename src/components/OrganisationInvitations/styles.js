@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import colors from 'src/app/theme/colors';
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   max-width: 100%;
@@ -23,6 +23,10 @@ export const Wrapper = styled.div`
     p {
       margin-bottom: 0.75rem;
     }
+  }
+
+  .MuiButtonBase-root {
+    margin-bottom: 2rem;
   }
 `;
 export const Item = styled.div`
