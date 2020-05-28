@@ -49,14 +49,14 @@ const useStyles = makeStyles(theme => ({
   customTabs: {
     backgroundColor: 'white',
     boxShadow: 'none',
-    borderBottom: '1px solid lightgray',
+    // borderBottom: '1px solid lightgray',
   },
   appbar: {
     marginTop: '2rem',
   },
   tabContent: {
     backgroundColor: 'white',
-    boxShadow: 'box-shadow: 0 0 12px 0 rgba(53,64,82,.05);',
+    boxShadow: '0 0 12px 0 rgba(53,64,82,.05);',
   },
 }));
 
@@ -82,25 +82,26 @@ export const Home = () => {
           Take the symptoms survey daily and Help Fight COVID19.
         </span>
       </Alert>
-
-      <AppBar position='static' className={classes.appbar}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label='simple tabs example'
-          indicatorColor='primary'
-          textColor='primary'
-          className={classes.customTabs}>
-          <Tab label='My History' {...a11yProps(0)} />
-          <Tab label='Organisation History' {...a11yProps(1)} />
-        </Tabs>
-      </AppBar>
-      <TabPanel className={classes.tabContent} value={value} index={0}>
-        <Symptoms />
-      </TabPanel>
-      <TabPanel className={classes.tabContent} value={value} index={1}>
-        Item Two
-      </TabPanel>
+      <div className={classes.tabContent}>
+        <AppBar position='static' className={classes.appbar}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label='simple tabs example'
+            indicatorColor='primary'
+            textColor='primary'
+            className={classes.customTabs}>
+            <Tab label='My History' {...a11yProps(0)} />
+            <Tab label='Organisation History' {...a11yProps(1)} />
+          </Tabs>
+        </AppBar>
+        <TabPanel value={value} index={0}>
+          <Symptoms />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <OrganisationHistory />
+        </TabPanel>
+      </div>
     </Admin>
   );
 };
