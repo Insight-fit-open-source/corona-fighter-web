@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { actions } from 'src/store/definitions/organisation';
 import Form from './Form';
+import { FormWrap } from './styles';
 
 const OrganisationDetails = props => {
   const {
@@ -20,13 +21,16 @@ const OrganisationDetails = props => {
   }, [requestSync]);
 
   return (
-    <Form
-      name={name}
-      email={email}
-      userId={userId}
-      user={user}
-      updateDetails={updateDetails}
-    />
+    <FormWrap>
+      <h3>Details</h3>
+      <Form
+        name={name}
+        email={email}
+        userId={userId}
+        user={user}
+        updateDetails={updateDetails}
+      />
+    </FormWrap>
   );
 };
 

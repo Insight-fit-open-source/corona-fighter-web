@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { actions } from 'src/store/definitions/survey';
 import { Item, Wrapper } from './styles';
 
-export const Invitations = ({
+export const OrganisationInvitations = ({
   requestSync,
   surveyResults,
   surveyResultsCount,
@@ -23,6 +23,7 @@ export const Invitations = ({
 
   return (
     <Wrapper>
+      <h3>Invitations</h3>
       {surveyResultsCount
         ? _(surveyResults)
             .keys()
@@ -72,4 +73,4 @@ const mapDispatch = dispatch => ({
   requestSync: () => dispatch(actions.surveySyncRequested()),
 });
 
-export default connect(mapState, mapDispatch)(Invitations);
+export default connect(mapState, mapDispatch)(OrganisationInvitations);

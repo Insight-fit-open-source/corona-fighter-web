@@ -68,7 +68,7 @@ export class FirebaseForm extends React.PureComponent {
         {({ submitForm, isSubmitting, errors, values }) => (
           <Form>
             <Grid container spacing={3}>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={2}>
                 <Field
                   component={TextField}
                   name='name'
@@ -76,14 +76,15 @@ export class FirebaseForm extends React.PureComponent {
                   label='Organisation name'
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={2}>
                 <Field
                   component={TextField}
                   name='email'
                   helperText=''
-                  label='Email name'
+                  label='Organisation email'
                 />
               </Grid>
+              <Grid item xs={12} md={8} />
 
               {isSubmitting && <LinearProgress />}
               <Button

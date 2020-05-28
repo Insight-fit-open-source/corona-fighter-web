@@ -1,6 +1,10 @@
-import styled from 'styled-components';
-import colors from 'src/app/theme/colors';
 import breakpoints from 'src/app/theme/breakpoints';
+import colors from 'src/app/theme/colors';
+import styled from 'styled-components';
+
+export const FormWrap = styled.div`
+  margin-top: 2rem;
+`;
 
 const OnBoardingContent = styled.div`
   display: block;
@@ -161,4 +165,5 @@ const OnBoardingBody = styled.div`
 export default {
   OnBoardingContent,
   OnBoardingBody,
+  FormWrap,
 };
