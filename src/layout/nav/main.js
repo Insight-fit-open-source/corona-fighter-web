@@ -1,5 +1,5 @@
 export default {
-  'My Symptoms': {
+  'Survey History': {
     link: '/',
     as: '/',
   },

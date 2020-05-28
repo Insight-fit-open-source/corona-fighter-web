@@ -1,5 +1,4 @@
 import { Button, Grid, LinearProgress } from '@material-ui/core';
-import SubmitIcon from '@material-ui/icons/ChevronRight';
 import { Field, Form, Formik } from 'formik';
 import { TextField } from 'formik-material-ui';
 import React from 'react';
@@ -25,7 +24,6 @@ export class InviteForm extends React.PureComponent {
         validationSchema={schema}
         onSubmit={async (values, { setSubmitting, setStatus }) => {
           console.log('VALUES: ', values);
-          updateDetails(values);
           // try {
           //   const { firestore, analytics } = await FirebaseFactory.get();
           //   await firestore
@@ -84,7 +82,6 @@ export class InviteForm extends React.PureComponent {
                   variant='contained'
                   color='primary'
                   disabled={isSubmitting}
-                  endIcon={<SubmitIcon />}
                   onClick={submitForm}>
                   Invite
                 </Button>

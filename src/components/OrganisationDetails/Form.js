@@ -1,5 +1,4 @@
 import { Button, Grid, LinearProgress } from '@material-ui/core';
-import SubmitIcon from '@material-ui/icons/ChevronRight';
 import { Field, Form, Formik } from 'formik';
 import { TextField } from 'formik-material-ui';
 import React from 'react';
@@ -92,7 +91,6 @@ export class FirebaseForm extends React.PureComponent {
                   variant='contained'
                   color='primary'
                   disabled={isSubmitting}
-                  endIcon={<SubmitIcon />}
                   onClick={submitForm}>
                   Save
                 </Button>

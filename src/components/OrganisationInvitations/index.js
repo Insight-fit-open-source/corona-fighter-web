@@ -7,7 +7,6 @@ import {
   Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import SubmitIcon from '@material-ui/icons/ChevronRight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import _ from 'lodash';
 import moment from 'moment';
@@ -30,6 +29,7 @@ function getModalStyle() {
     left: `${left}%`,
     transform: `translate(-${top}%, -${left}%)`,
     outline: '0',
+    position: 'relative',
   };
 }
 
@@ -41,6 +41,11 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '10px',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+  },
+  closeButton: {
+    position: 'absolute',
+    top: '1rem',
+    right: '1rem',
   },
 }));
 
@@ -68,10 +73,14 @@ export const OrganisationInvitations = ({
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2 id='simple-modal-title'>Invite users</h2>
+      <h2 id='simple-modal-title'>Invite User</h2>
+      <span className={classes.closeButton} onClick={handleClose}>
+        X
+      </span>
+
       <p id='simple-modal-description'>
-        Invite people to take the survey through your organisation. Enter email
-        addresses of people you would like to invite.
+        Invite people to take the survey through your organisation. Enter the
+        name and email address of someone you would like to invite.
       </p>
       <InviteForm />
     </div>
@@ -83,7 +92,6 @@ export const OrganisationInvitations = ({
       <Button
         variant='contained'
         color='primary'
-        endIcon={<SubmitIcon />}
         onClick={handleOpen}
         className='invite-button'>
         Invite a user
