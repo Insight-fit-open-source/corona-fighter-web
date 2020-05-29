@@ -36,8 +36,7 @@ export class InviteForm extends React.PureComponent {
         enableReinitialize
         validationSchema={schema}
         onSubmit={async (values, { setSubmitting, setStatus }) => {
-          console.log('VALUES: ', values);
-          this.acceptInvitation(values);
+          await this.acceptInvitation(values);
           close();
         }}>
         {({ submitForm, isSubmitting, errors, values }) => (

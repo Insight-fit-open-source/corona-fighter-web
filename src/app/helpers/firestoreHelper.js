@@ -46,6 +46,26 @@ export default class FirestoreHelper {
     }
   }
 
+  static async RemoveUserInvitation(userId, invitationCode) {
+    try {
+      const { firestore } = await FirebaseFactory.get();
+      const collection = await firestore
+        .collection('invitations')
+        .where('userId', '==', userId)
+        .where('invitationCode', '==', invitationCode)
+        .get();
+
+      const batch = firestore.batch();
+      collection.docs.forEach(doc => {
+        batch.delete(doc.ref);
+      });
+
+      await batch.commit();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   static async AddOrganisationInvitation(organisationId, userName, email) {
     try {
       const invites = await this.GetOrganisationInvitations(organisationId);
@@ -86,12 +106,29 @@ export default class FirestoreHelper {
 
     if (invitations.docs && invitations.docs.length > 0) {
       const organisations = await firestore.collection('profiles').get();
+      const organisationsData = organisations.docs
+        .filter(x => x.get('organisation') != null)
+        .map(x => {
+          return {
+            id: x.id,
+            name: x.get('organisation').name,
+            email: x.get('organisation').email,
+          };
+        });
 
       const userInvitations = invitations.docs.map(x => {
-        const organisationDocs = organisations.docs.filter(
-          y => y.id == x.get('organisationId'),
-        );
-        const organisation = organisationDocs[0].get('organisation');
+        let organisationData = { email: '', name: '' };
+
+        console.log('organisationsData:', organisationsData);
+
+        for (let i = 0; i < organisationsData.length; i++) {
+          const organisation = organisationsData[i];
+          if (organisation.id == x.get('organisationId')) {
+            organisationData = organisation;
+            break;
+          }
+        }
+
         return {
           dateSent: x.get('dateSent'),
           invitationAccepted: x.get('invitationAccepted'),
@@ -99,8 +136,8 @@ export default class FirestoreHelper {
           organisationId: x.get('organisationId'),
           userEmailAddress: x.get('userEmailAddress'),
           userId: x.get('userId'),
-          organisationEmailAddress: organisation.email,
-          organisationName: organisation.name,
+          organisationEmailAddress: organisationData.email,
+          organisationName: organisationData.name,
         };
       });
       return userInvitations;

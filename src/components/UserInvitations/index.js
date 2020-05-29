@@ -51,12 +51,10 @@ export const UserInvitations = ({ userId }) => {
   const reRender = () => setRandom(Math.random());
 
   React.useEffect(() => {
-    console.log('RENDER!');
     loadInvitations();
   }, [random]);
 
   const loadInvitations = async () => {
-    console.log('LOADING User invitations');
     const invs = await FirestoreHelper.GetUserInvitations(userId);
     setInvitations(invs);
   };
