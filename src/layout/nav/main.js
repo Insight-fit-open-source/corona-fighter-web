@@ -7,6 +7,10 @@ export default {
     link: '/my-organisation',
     as: '/my-organisation',
   },
+  'My Profile': {
+    link: '/profile',
+    as: '/profile',
+  },
   // // 'Latest Stats': {
   // //   link: '/latest-stats',
   // //   as: '/latest-stats',

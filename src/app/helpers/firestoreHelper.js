@@ -1,22 +1,186 @@
+import * as randomatic from 'randomatic';
+import { default as EmailHelper } from 'src/app/helpers/emailHelper';
 import FirebaseFactory from 'src/app/lib/firebase';
 
 export default class FirestoreHelper {
-  static async GetOrganisationInvitations(userId) {
+  static async GetOrganisationInvitations(organisationId) {
+    try {
+      const { firestore } = await FirebaseFactory.get();
+      const collection = await firestore
+        .collection('invitations')
+        .where('organisationId', '==', organisationId)
+        .get();
+      const invitations = collection.docs.map(x => {
+        return {
+          dateSent: x.get('dateSent'),
+          invitationAccepted: x.get('invitationAccepted'),
+          invitationCode: x.get('invitationCode'),
+          organisationId: x.get('organisationId'),
+          userEmailAddress: x.get('userEmailAddress'),
+          userId: x.get('userId'),
+        };
+      });
+      return invitations;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  static async RemoveOrganisationInvitation(organisationId, invitationCode) {
+    try {
+      const { firestore } = await FirebaseFactory.get();
+      const collection = await firestore
+        .collection('invitations')
+        .where('organisationId', '==', organisationId)
+        .where('invitationCode', '==', invitationCode)
+        .get();
+
+      const batch = firestore.batch();
+      collection.docs.forEach(doc => {
+        batch.delete(doc.ref);
+      });
+
+      await batch.commit();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  static async RemoveUserInvitation(userId, invitationCode) {
+    try {
+      const { firestore } = await FirebaseFactory.get();
+      const collection = await firestore
+        .collection('invitations')
+        .where('userId', '==', userId)
+        .where('invitationCode', '==', invitationCode)
+        .get();
+
+      const batch = firestore.batch();
+      collection.docs.forEach(doc => {
+        batch.delete(doc.ref);
+      });
+
+      await batch.commit();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  static async AddOrganisationInvitation(organisationId, userName, email) {
+    try {
+      const invites = await this.GetOrganisationInvitations(organisationId);
+      if (invites.filter(x => x.userEmailAddress == email).length > 0) return;
+
+      const { firestore } = await FirebaseFactory.get();
+
+      const code = randomatic('A0', 8);
+
+      const addDoc = await firestore.collection('invitations').add({
+        dateSent: Date.now(),
+        invitationAccepted: false,
+        invitationCode: code,
+        organisationId,
+        userEmailAddress: email,
+        userId: '',
+        userName,
+      });
+
+      const doc = await firestore
+        .collection(`profiles`)
+        .doc(organisationId)
+        .get();
+      const orgName = doc.get('organisation').name;
+
+      await EmailHelper.sendInvitation(email, userName, code, orgName);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  static async GetUserInvitations(userId) {
+    const { firestore } = await FirebaseFactory.get();
+    const invitations = await firestore
+      .collection('invitations')
+      .where('userId', '==', userId)
+      .get();
+
+    if (invitations.docs && invitations.docs.length > 0) {
+      const organisations = await firestore.collection('profiles').get();
+      const organisationsData = organisations.docs
+        .filter(x => x.get('organisation') != null)
+        .map(x => {
+          return {
+            id: x.id,
+            name: x.get('organisation').name,
+            email: x.get('organisation').email,
+          };
+        });
+
+      const userInvitations = invitations.docs.map(x => {
+        let organisationData = { email: '', name: '' };
+
+        console.log('organisationsData:', organisationsData);
+
+        for (let i = 0; i < organisationsData.length; i++) {
+          const organisation = organisationsData[i];
+          if (organisation.id == x.get('organisationId')) {
+            organisationData = organisation;
+            break;
+          }
+        }
+
+        return {
+          dateSent: x.get('dateSent'),
+          invitationAccepted: x.get('invitationAccepted'),
+          invitationCode: x.get('invitationCode'),
+          organisationId: x.get('organisationId'),
+          userEmailAddress: x.get('userEmailAddress'),
+          userId: x.get('userId'),
+          organisationEmailAddress: organisationData.email,
+          organisationName: organisationData.name,
+          userName: x.get('userName'),
+        };
+      });
+      return userInvitations;
+    }
+    return [];
+  }
+
+  static async AcceptOrganisationInvitation(userId, code) {
     const { firestore } = await FirebaseFactory.get();
     const collection = await firestore
       .collection('invitations')
-      .where('organisationId', '==', userId)
+      .where('invitationCode', '==', code)
+      .where('userId', '==', '')
       .get();
-    const invitations = collection.docs.map(x => {
-      return {
-        dateSent: x.get('dateSent'),
-        invitationAccepted: x.get('invitationAccepted'),
-        invitationCode: x.get('invitationCode'),
-        organisationId: x.get('organisationId'),
-        userEmailAddress: x.get('userEmailAddress'),
-        userId: x.get('userId'),
-      };
-    });
-    return invitations;
+
+    if (collection.docs && collection.docs.length > 0) {
+      const docId = collection.docs[0];
+
+      firestore
+        .collection('invitations')
+        .doc(docId.id)
+        .set(
+          {
+            invitationAccepted: true,
+            userId,
+          },
+          { merge: true },
+        );
+    }
+  }
+
+  static async HasOrganisation(userId) {
+    const { firestore } = await FirebaseFactory.get();
+    const doc = await firestore
+      .collection(`profiles`)
+      .doc(userId)
+      .get();
+
+    const orgName = doc.get('organisationName');
+    if (orgName && orgName.length > 0) {
+      return true;
+    }
+    return false;
   }
 }

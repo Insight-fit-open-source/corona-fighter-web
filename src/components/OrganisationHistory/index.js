@@ -13,21 +13,19 @@ import { Item, Wrapper } from './styles';
 
 export class OrganisationHistory extends React.Component {
   constructor(props) {
-    console.log('PROPS :', props);
     super(props);
     this.state = { ...props, surveys: [] };
   }
 
   async getData() {
+    console.log('ORG PROPS', this.props);
     try {
       const { rsf, firestore } = await FirebaseFactory.get();
       const invitations = await firestore
         .collection('invitations')
-        .where('organisationId', '==', 'EvKC65yQf7YwBlkzK0nwATarz463')
+        .where('organisationId', '==', this.props.userId)
         .where('invitationAccepted', '==', true)
         .get();
-
-      console.log('SNASPHOT:', invitations.docs);
 
       const users = invitations.docs.map(x => {
         return {
@@ -49,7 +47,6 @@ export class OrganisationHistory extends React.Component {
       const surveys = results.docs.map(doc => {
         const docData = doc.data();
         const user = users.filter(x => x.id == doc.id)[0];
-        console.log('USER:', user);
 
         return Object.keys(docData).map((key, index) => {
           return {
@@ -62,7 +59,6 @@ export class OrganisationHistory extends React.Component {
       });
 
       const merged = [].concat.apply([], surveys);
-      console.log('HISTORY:', merged);
       this.setState({ surveys: merged.filter(x => !!x.outcome) });
     } catch (error) {
       console.log(error);

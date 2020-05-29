@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const OrganisationInvitations = ({ userId }) => {
+export const UserInvitations = ({ userId }) => {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -55,7 +55,7 @@ export const OrganisationInvitations = ({ userId }) => {
   }, [random]);
 
   const loadInvitations = async () => {
-    const invs = await FirestoreHelper.GetOrganisationInvitations(userId);
+    const invs = await FirestoreHelper.GetUserInvitations(userId);
     setInvitations(invs);
   };
 
@@ -69,20 +69,19 @@ export const OrganisationInvitations = ({ userId }) => {
   };
 
   const removeInvitation = async function(invitationCode) {
-    await FirestoreHelper.RemoveOrganisationInvitation(userId, invitationCode);
+    await FirestoreHelper.RemoveUserInvitation(userId, invitationCode);
     reRender();
   };
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2 id='simple-modal-title'>Invite User</h2>
+      <h2 id='simple-modal-title'>Enter invite code</h2>
       <span className={classes.closeButton} onClick={handleClose}>
         X
       </span>
 
       <p id='simple-modal-description'>
-        Invite people to take the survey through your organisation. Enter the
-        name and email address of someone you would like to invite.
+        Provide an input code to accept an invitation from an organisation
       </p>
       <InviteForm userId={userId} close={handleClose} />
     </div>
@@ -90,13 +89,13 @@ export const OrganisationInvitations = ({ userId }) => {
 
   return (
     <Wrapper>
-      <h3>Invitations</h3>
+      <h3>Organisations</h3>
       <Button
         variant='contained'
         color='primary'
         onClick={handleOpen}
         className='invite-button'>
-        Invite a user
+        Enter invite code
       </Button>
 
       <Modal
@@ -114,7 +113,7 @@ export const OrganisationInvitations = ({ userId }) => {
               <ExpansionPanelSummary
                 className={invite.invitationAccepted ? 'normal' : 'warn'}>
                 <Typography variant='body1'>
-                  {invite.userEmailAddress}
+                  {invite.organisationName} - {invite.organisationEmailAddress}
                   {/* <small>{moment.unix(invite.dateSent.seconds).format("dddd, MMMM Do YYYY, h:mm:ss a")}</small> */}
                   <small>
                     {invite.invitationAccepted
@@ -140,4 +139,4 @@ export const OrganisationInvitations = ({ userId }) => {
   );
 };
 
-export default OrganisationInvitations;
+export default UserInvitations;

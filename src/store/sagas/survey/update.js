@@ -1,5 +1,6 @@
+import { call, put, retry, select, takeEvery } from 'redux-saga/effects';
+import { default as EmailHelper } from 'src/app/helpers/emailHelper';
 import FirebaseFactory from 'src/app/lib/firebase';
-import { takeEvery, call, put, retry, select } from 'redux-saga/effects';
 import { actions, constants } from 'src/store/definitions/survey';
 
 function* retryUpdate(payload) {
@@ -20,6 +21,14 @@ function* retryUpdate(payload) {
     });
 
     yield put(actions.surveySyncSucceeded());
+    if (selected && selected.outcome && selected.outcome.title)
+      yield call(
+        [EmailHelper, 'sendSurveyResult'],
+        uid,
+        selected.outcome.title,
+        selected.outcome.body,
+        selected.outcome.testStatus,
+      );
     try {
       if (selected && selected.outcome) {
         analytics.logEvent('Survey Question Answered', {
