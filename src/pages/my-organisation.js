@@ -6,7 +6,7 @@ import OrganisationDetails from 'src/components/OrganisationDetails';
 import OrganisationInvitations from 'src/components/OrganisationInvitations';
 import Admin from 'src/layout/Admin';
 
-export const MyOrganisation = () => {
+export const MyOrganisation = props => {
   return (
     <Admin pageTitle='Setup your organisation'>
       <Alert severity='info'>
@@ -18,7 +18,7 @@ export const MyOrganisation = () => {
       </Alert>
       <OrganisationDetails />
 
-      <OrganisationInvitations />
+      <OrganisationInvitations {...props} />
     </Admin>
   );
 };

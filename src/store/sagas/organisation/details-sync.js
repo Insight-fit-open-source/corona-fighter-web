@@ -7,7 +7,6 @@ export function* subscribe() {
   const { user, authInProcess } = yield select(state => state.auth);
 
   if (authInProcess || !user) {
-    console.log('auth stuff');
     return;
   }
 
