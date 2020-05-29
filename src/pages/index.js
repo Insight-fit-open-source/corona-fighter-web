@@ -7,6 +7,7 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { default as React } from 'react';
 import IsProtectedPage from 'src/app/lib/firebase/auth/IsProtectedPage';
+import OrganisationHistory from 'src/components/OrganisationHistory';
 import Symptoms from 'src/components/Symptoms';
 import Admin from 'src/layout/Admin';
 
@@ -53,6 +54,7 @@ const useStyles = makeStyles(theme => ({
   },
   appbar: {
     marginTop: '2rem',
+    boxShadow: 'none',
   },
   tabContent: {
     backgroundColor: 'white',
@@ -60,7 +62,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const Home = () => {
+export const Home = props => {
+  console.log('HOME PROPS:', props);
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -99,7 +102,7 @@ export const Home = () => {
           <Symptoms />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <OrganisationHistory />
+          <OrganisationHistory {...props} />
         </TabPanel>
       </div>
     </Admin>
