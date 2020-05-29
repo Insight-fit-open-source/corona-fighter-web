@@ -29,10 +29,7 @@ export default (selection, outcomes) => {
   );
 
   const severeSymptoms =
-    results.breathlessness ||
-    results.cough ||
-    results.breathlessness ||
-    results.breathlessness;
+    results.breathlessness || results.cough || results.throat || results.fever;
   const atypicalSymptoms = results['atypical-symptoms'];
 
   if (severeSymptoms) return outcomes.severeOutcome;

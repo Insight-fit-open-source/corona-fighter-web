@@ -37,24 +37,36 @@ Your CoronaFighter team`;
     }
   }
 
-  static async sendSurveyResult(userId, title, body, testStatus) {
+  static async sendSurveyResult(userId, title, resultBody, testStatus) {
+    console.log('SENDING');
     try {
       const userInvites = await FirestoreHelper.GetUserInvitations(userId);
-      const { functions } = await FirebaseFactory.get();
+      const { functions, firestore } = await FirebaseFactory.get();
       const sendEmail = functions.httpsCallable('system-emailTrigger');
-      const body = `Hi ${userName}
+      userInvites.forEach(async invite => {
+        const doc = await firestore
+          .collection(`profiles`)
+          .doc(invite.organisationId)
+          .get();
+        const orgEmail = doc.get('organisation').email;
+        try {
+          const body = `${invite.userName} has just completed their symptom survey.
+Here are their results:
 
-You have been invited to join ${orgName} on CoronaFighter. Join them to do a daily COVID-19 survey.
-
-Your invitation code is ${code}.
-Go to https://app.testforcovid.co.za/ and enter your invitation code to join.
+${title}\r\n
+${resultBody}\r\n
+${testStatus}\r\n
 
 Kind regards
 Your CoronaFighter team`;
-      const result = await sendEmail({
-        to: userEmail,
-        subject: 'CoronaFighter invitation',
-        body,
+          const result = await sendEmail({
+            to: orgEmail,
+            subject: 'CoronaFighter Survey Submission',
+            body,
+          });
+        } catch (err) {
+          console.log(err);
+        }
       });
     } catch (error) {
       console.log(error);

@@ -101,6 +101,7 @@ export default class FirestoreHelper {
           userId: x.get('userId'),
           organisationEmailAddress: organisation.email,
           organisationName: organisation.name,
+          userName: x.get('userName'),
         };
       });
       return userInvitations;
