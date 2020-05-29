@@ -41,7 +41,7 @@ export class InviteForm extends React.PureComponent {
         validationSchema={schema}
         onSubmit={async (values, { setSubmitting, setStatus }) => {
           console.log('VALUES: ', values);
-          this.addInvitation(values);
+          await this.addInvitation(values);
           close();
           // try {
           //   const { firestore, analytics } = await FirebaseFactory.get();

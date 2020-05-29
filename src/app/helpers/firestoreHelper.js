@@ -48,6 +48,9 @@ export default class FirestoreHelper {
 
   static async AddOrganisationInvitation(organisationId, userName, email) {
     try {
+      const invites = await this.GetOrganisationInvitations(organisationId);
+      if (invites.filter(x => x.userEmailAddress == email).length > 0) return;
+
       const { firestore } = await FirebaseFactory.get();
 
       const code = randomatic('A0', 8);
@@ -62,14 +65,13 @@ export default class FirestoreHelper {
         userName,
       });
 
-      const organisation = await firestore.collection('profiles');
+      const doc = await firestore
+        .collection(`profiles`)
+        .doc(organisationId)
+        .get();
+      const orgName = doc.get('organisation').name;
 
-      await EmailHelper.sendInvitation(email, userName, code);
-      await EmailHelper.test(
-        ['jacques@86degrees.com'],
-        'TEST MESSAGE',
-        'THIS IS A TEST',
-      );
+      await EmailHelper.sendInvitation(email, userName, code, orgName);
     } catch (error) {
       console.log(error);
     }
@@ -134,7 +136,7 @@ export default class FirestoreHelper {
     const { firestore } = await FirebaseFactory.get();
     const doc = await firestore
       .collection(`profiles`)
-      .doc('userId')
+      .doc(userId)
       .get();
 
     const orgName = doc.get('organisationName');
