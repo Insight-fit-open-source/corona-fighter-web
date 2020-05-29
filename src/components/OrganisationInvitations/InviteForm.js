@@ -2,6 +2,7 @@ import { Button, Grid, LinearProgress } from '@material-ui/core';
 import { Field, Form, Formik } from 'formik';
 import { TextField } from 'formik-material-ui';
 import React from 'react';
+import FirestoreHelper from 'src/app/helpers/firestoreHelper';
 import * as Yup from 'yup';
 
 const schema = Yup.object({
@@ -12,6 +13,14 @@ const schema = Yup.object({
 });
 
 export class InviteForm extends React.PureComponent {
+  async addInvitation(values) {
+    const test = await FirestoreHelper.AddOrganisationInvitation(
+      this.props.userId,
+      values.name,
+      values.email,
+    );
+  }
+
   render() {
     const {
       name,
@@ -32,7 +41,7 @@ export class InviteForm extends React.PureComponent {
         validationSchema={schema}
         onSubmit={async (values, { setSubmitting, setStatus }) => {
           console.log('VALUES: ', values);
-          addInvitation(values);
+          this.addInvitation(values);
           close();
           // try {
           //   const { firestore, analytics } = await FirebaseFactory.get();

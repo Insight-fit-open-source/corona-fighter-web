@@ -42,17 +42,21 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const OrganisationInvitations = ({ userId }) => {
-  React.useEffect(() => {
-    testLoadData();
-  }, []);
-
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
   const [invitations, setInvitations] = React.useState([]);
+  const [random, setRandom] = React.useState(Math.random());
+  const reRender = () => setRandom(Math.random());
 
-  const testLoadData = async () => {
+  React.useEffect(() => {
+    console.log('RENDER!');
+    loadInvitations();
+  }, [random]);
+
+  const loadInvitations = async () => {
+    console.log('LOADING');
     const invs = await FirestoreHelper.GetOrganisationInvitations(userId);
     setInvitations(invs);
   };
@@ -63,10 +67,12 @@ export const OrganisationInvitations = ({ userId }) => {
 
   const handleClose = () => {
     setOpen(false);
+    reRender();
   };
 
-  const removeInvitation = function(userId) {
-    console.log('TEST', userId);
+  const removeInvitation = async function(invitationCode) {
+    await FirestoreHelper.RemoveOrganisationInvitation(userId, invitationCode);
+    reRender();
   };
 
   const body = (
@@ -80,7 +86,7 @@ export const OrganisationInvitations = ({ userId }) => {
         Invite people to take the survey through your organisation. Enter the
         name and email address of someone you would like to invite.
       </p>
-      <InviteForm />
+      <InviteForm userId={userId} close={handleClose} />
     </div>
   );
 
@@ -103,7 +109,6 @@ export const OrganisationInvitations = ({ userId }) => {
         {body}
       </Modal>
 
-      {console.log(invitations[0])}
       {_(invitations)
         .map(invite => (
           <Item key={invite.invitationCode}>
@@ -125,7 +130,7 @@ export const OrganisationInvitations = ({ userId }) => {
                   variant='outlined'
                   color='primary'
                   style={{ marginLeft: 'auto', marginRight: '5px' }}
-                  onClick={e => removeInvitation(invite.userEmailAddress)}>
+                  onClick={e => removeInvitation(invite.invitationCode)}>
                   Remove
                 </Button>
               </ExpansionPanelSummary>
