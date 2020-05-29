@@ -18,6 +18,7 @@ import React from 'react';
 import FirebaseFactory from 'src/app/lib/firebase';
 import PrivacyPopOver from 'src/components/common/PrivacyPopup';
 import * as Yup from 'yup';
+
 const schema = Yup.object({
   acceptedTerms: Yup.bool(true)
     .required('you must accept the terms and conditions')
@@ -44,6 +45,7 @@ export class FirebaseForm extends React.PureComponent {
             previouslyDiagnosed: 'yes',
             acceptedTerms: false,
             invitations: ['Firstrand National Bank', 'ABSA', 'Standard Bank'],
+            gotoOrg: false,
           }}
           validationSchema={schema}
           onSubmit={async (values, { setSubmitting, setStatus }) => {
@@ -74,7 +76,9 @@ export class FirebaseForm extends React.PureComponent {
             }
 
             setSubmitting(false);
-            Router.push('/survey/[step]', '/survey/welcome');
+            values.gotoOrg
+              ? Router.push('/my-organisation')
+              : Router.push('/survey/[step]', '/survey/welcome');
             setTimeout(() => {
               close();
             }, 500);
@@ -221,7 +225,10 @@ export class FirebaseForm extends React.PureComponent {
                   color='primary'
                   disabled={!values.acceptedTerms || isSubmitting}
                   endIcon={<SubmitIcon />}
-                  onClick={submitForm}>
+                  onClick={() => {
+                    values.gotoOrg = true;
+                    submitForm();
+                  }}>
                   Setup My Organisation
                 </Button>
                 <Button
