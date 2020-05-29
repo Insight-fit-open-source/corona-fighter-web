@@ -2,6 +2,7 @@ import { Alert } from '@material-ui/lab';
 import React from 'react';
 import IsProtectedPage from 'src/app/lib/firebase/auth/IsProtectedPage';
 import WithAuth from 'src/app/lib/firebase/auth/WithAuth';
+import UserInvitations from 'src/components/UserInvitations';
 import Admin from 'src/layout/Admin';
 
 export const Profile = props => {
@@ -13,7 +14,7 @@ export const Profile = props => {
           an invite code below to accept an invitation
         </span>
       </Alert>
-      {/* { <UserInvitations {...props} /> } */}
+      <UserInvitations {...props} />
     </Admin>
   );
 };

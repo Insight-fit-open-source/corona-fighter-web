@@ -53,6 +53,75 @@ export default class FirestoreHelper {
     });
   }
 
+  static async GetUserInvitations(userId) {
+    const { firestore } = await FirebaseFactory.get();
+    const invitations = await firestore
+      .collection('invitations')
+      .where('userId', '==', userId)
+      .get();
+
+    console.log('USER INVITATIONS:', invitations.docs);
+
+    if (invitations.docs && invitations.docs.length > 0) {
+      const organisations = await firestore
+        .collection('profiles')
+        // .doc('g12UdB28IHQIUzdzAXVqK0mMlvo2')
+        // .where(
+        //   firestore.FieldPath.documentId(),
+        //   'in',
+        //   invitations.docs.map(x => x.get('organisationId')),
+        // )
+        .get();
+
+      console.log('ORGANISATIONS:', organisations.docs);
+
+      const userInvitations = invitations.docs.map(x => {
+        const organisationDocs = organisations.docs.filter(
+          y => y.id == x.get('organisationId'),
+        );
+        console.log('ORGANISATIONS FILTERED:', organisationDocs);
+        const organisation = organisationDocs[0].get('organisation');
+        return {
+          dateSent: x.get('dateSent'),
+          invitationAccepted: x.get('invitationAccepted'),
+          invitationCode: x.get('invitationCode'),
+          organisationId: x.get('organisationId'),
+          userEmailAddress: x.get('userEmailAddress'),
+          userId: x.get('userId'),
+          organisationEmailAddress: organisation.email,
+          organisationName: organisation.name,
+        };
+      });
+      return userInvitations;
+    }
+    return [];
+  }
+
+  static async AcceptOrganisationInvitation(userId, code) {
+    console.log('CODE:', code);
+    const { firestore } = await FirebaseFactory.get();
+    const collection = await firestore
+      .collection('invitations')
+      .where('invitationCode', '==', code)
+      .where('userId', '==', '')
+      .get();
+
+    if (collection.docs && collection.docs.length > 0) {
+      const docId = collection.docs[0];
+
+      firestore
+        .collection('invitations')
+        .doc(docId.id)
+        .set(
+          {
+            invitationAccepted: true,
+            userId,
+          },
+          { merge: true },
+        );
+    }
+  }
+
   static async HasOrganisation(userId) {
     const { firestore } = await FirebaseFactory.get();
     const doc = await firestore
