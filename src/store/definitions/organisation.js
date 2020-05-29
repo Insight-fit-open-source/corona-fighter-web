@@ -27,7 +27,7 @@ const definition = {
   }),
 
   ORGANISATION_INVITATIONS_SYNC_REQUESTED: state => ({ ...state }),
-  ORGANISATION_INVITATIONS_SUCCEEDED: (state, { payload }) => ({
+  ORGANISATION_INVITATIONS_SYNC_SUCCEEDED: (state, { payload }) => ({
     ...state,
     invitations: { ...payload },
     lastCallFailed: false,
@@ -37,16 +37,15 @@ const definition = {
     lastCallFailed: true,
   }),
   ORGANISATION_DETAILS_UPDATED: (state, { payload }) => {
-    console.log('UPDATE PAYLOAD: ', payload);
     const x = {
       ...state,
       name: payload.name,
       email: payload.email,
     };
-    console.log('RETURN:', x);
     return x;
   },
-
+  ORGANISATION_INVITATION_ADDED: state => ({ ...state }),
+  ORGANISATION_INVITATION_REMOVED: state => ({ ...state }),
   // ORGANISATION_DETAILS_SYNC_REQUESTED: state => ({ ...state }),
   // ORGANISATION_DETAILS_SYNC_SUCCEEDED: (state, { payload }) => {
   //   return {

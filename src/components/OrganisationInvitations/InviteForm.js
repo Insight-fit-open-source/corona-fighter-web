@@ -13,7 +13,15 @@ const schema = Yup.object({
 
 export class InviteForm extends React.PureComponent {
   render() {
-    const { name, email, userId, isAuthenticated, user } = this.props;
+    const {
+      name,
+      email,
+      userId,
+      isAuthenticated,
+      user,
+      close,
+      addInvitation,
+    } = this.props;
     return (
       <Formik
         initialValues={{
@@ -24,6 +32,8 @@ export class InviteForm extends React.PureComponent {
         validationSchema={schema}
         onSubmit={async (values, { setSubmitting, setStatus }) => {
           console.log('VALUES: ', values);
+          addInvitation(values);
+          close();
           // try {
           //   const { firestore, analytics } = await FirebaseFactory.get();
           //   await firestore
