@@ -58,9 +58,6 @@ export const UserInvitations = ({ userId }) => {
   const loadInvitations = async () => {
     console.log('LOADING User invitations');
     const invs = await FirestoreHelper.GetUserInvitations(userId);
-
-    const organisations = await FirestoreHelper.Get;
-
     setInvitations(invs);
   };
 
