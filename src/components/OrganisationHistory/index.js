@@ -18,11 +18,12 @@ export class OrganisationHistory extends React.Component {
   }
 
   async getData() {
+    console.log('ORG PROPS', this.props);
     try {
       const { rsf, firestore } = await FirebaseFactory.get();
       const invitations = await firestore
         .collection('invitations')
-        .where('organisationId', '==', 'EvKC65yQf7YwBlkzK0nwATarz463')
+        .where('organisationId', '==', this.props.userId)
         .where('invitationAccepted', '==', true)
         .get();
 
