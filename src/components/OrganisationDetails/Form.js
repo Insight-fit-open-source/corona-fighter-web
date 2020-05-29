@@ -30,39 +30,7 @@ export class FirebaseForm extends React.PureComponent {
         enableReinitialize
         validationSchema={schema}
         onSubmit={async (values, { setSubmitting, setStatus }) => {
-          console.log('VALUES: ', values);
           updateDetails(values);
-          // try {
-          //   const { firestore, analytics } = await FirebaseFactory.get();
-          //   await firestore
-          //     .collection(`profiles`)
-          //     .doc(userId)
-          //     .set(
-          //       {
-          //         personal: { ...values },
-          //         onBoardingComplete: true,
-          //         updatedAt: Date.now(),
-          //       },
-          //       { merge: true },
-          //     );
-
-          //   try {
-          //     analytics.logEvent('onboarding completed');
-          //   } catch (ae) {
-          //     console.log(ae);
-          //   }
-          // } catch (error) {
-          //   setStatus(error.message);
-          //   setSubmitting(false);
-          //   console.log('Error completing onboarding:', error);
-          //   throw new Error(error);
-          // }
-
-          // setSubmitting(false);
-          // Router.push('/survey/[step]', '/survey/welcome');
-          // setTimeout(() => {
-          //   close();
-          // }, 500);
         }}>
         {({ submitForm, isSubmitting, errors, values }) => (
           <Form>
