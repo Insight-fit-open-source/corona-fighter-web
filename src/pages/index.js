@@ -6,6 +6,7 @@ import { Alert } from '@material-ui/lab';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { default as React } from 'react';
+import FirestoreHelper from 'src/app/helpers/firestoreHelper';
 import IsProtectedPage from 'src/app/lib/firebase/auth/IsProtectedPage';
 import OrganisationHistory from 'src/components/OrganisationHistory';
 import Symptoms from 'src/components/Symptoms';
@@ -66,10 +67,24 @@ export const Home = props => {
   console.log('HOME PROPS:', props);
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const [hasOrganisation, setHasOrganisation] = React.useState(false);
+
+  React.useEffect(() => {
+    console.log('RENDER!');
+    CheckHasOrganisation();
+  }, []);
+
+  const CheckHasOrganisation = async () => {
+    console.log('LOADING', props);
+
+    const hasOrganisation = await FirestoreHelper.HasOrganisation(props.userId);
+    setHasOrganisation(hasOrganisation);
+  };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   return (
     <Admin pageTitle='Survey History'>
       <Alert

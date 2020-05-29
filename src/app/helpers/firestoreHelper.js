@@ -52,4 +52,18 @@ export default class FirestoreHelper {
       userName,
     });
   }
+
+  static async HasOrganisation(userId) {
+    const { firestore } = await FirebaseFactory.get();
+    const doc = await firestore
+      .collection(`profiles`)
+      .doc('userId')
+      .get();
+
+    const orgName = doc.get('organisationName');
+    if (orgName && orgName.length > 0) {
+      return true;
+    }
+    return false;
+  }
 }
